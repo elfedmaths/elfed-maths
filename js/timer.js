@@ -10,7 +10,7 @@ document.getElementById('start-timer').addEventListener('click', function(){
 
 document.getElementById('stop-timer').addEventListener('click', function(){
     stopTimer();
-    document.getElementById("timer").innerHTML = "00 : 00";
+    document.getElementById("timer").innerHTML = "00:00";
 });
 
 var x;
