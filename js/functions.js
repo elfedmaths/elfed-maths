@@ -2,6 +2,14 @@ function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + Math.ceil(min);
 }
 
+function randomNeg(min, max){
+    if(Math.random() > 0.5){
+        return randomInt(min, max);
+    }else{
+        return (-1) * randomInt(min, max);
+    }
+}
+
 function addRow(quest, ans){
     if (localStorage.getItem("quest-data") === null) {
         var data = [];

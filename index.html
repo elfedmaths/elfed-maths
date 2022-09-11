@@ -12,6 +12,7 @@
     <script src="./js/stopwatch.js" defer></script>
     <script src="./js/music.js" defer></script>
     <script src="./js/select.js" defer></script>
+    <script src="./js/calc.js"></script>
     <title>Maths @ Elfed</title>
 </head>
 <body>
@@ -85,23 +86,46 @@
                 </div>
                 <div>
                     <input type="button" value="Stop" id="stop-quest" class="disabled">
+                    <input type="button" value="Clear" id="clear-quest" class="hide">
                 </div>
             </div>
         </div>
         <div id="right">
             <div class="content">
-                <h2>Content</h2>
+                <h2>Topics</h2>
                 <p>Select topics you would like to practice</p>
-                <p class="error" id="error"></p>
+                <h3>Integer Arithmetic</h3>
                 <div class="flex-btn">
-                    <input type="checkbox" value="add" id="add" name="topics">
-                        <label for="add">Addition</label>
-                    <input type="checkbox" value="sub" id="sub" name="topics">
-                        <label for="sub">Subtraction</label>
-                    <input type="checkbox" value="mult" id="mult" name="topics">
-                        <label for="mult">Multiplication</label>
-                    <input type="checkbox" value="div" id="div" name="topics">
-                        <label for="div">Division</label>
+                    <input type="checkbox" value="int-add" id="int-add" name="topics">
+                        <label for="int-add">Addition</label>
+                    <input type="checkbox" value="int-sub" id="int-sub" name="topics">
+                        <label for="int-sub">Subtraction</label>
+                    <input type="checkbox" value="int-mult" id="int-mult" name="topics">
+                        <label for="int-mult">Multiplication</label>
+                    <input type="checkbox" value="int-div" id="int-div" name="topics">
+                        <label for="int-div">Division</label>
+                </div>
+                <h3>Decimal Arithmetic</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="dec-add" id="dec-add" name="topics">
+                        <label for="dec-add">Addition</label>
+                    <input type="checkbox" value="dec-sub" id="dec-sub" name="topics">
+                        <label for="dec-sub">Subtraction</label>
+                    <input type="checkbox" value="dec-mult" id="dec-mult" name="topics">
+                        <label for="dec-mult">Multiplication</label>
+                    <input type="checkbox" value="dec-div" id="dec-div" name="topics">
+                        <label for="dec-div">Division</label>
+                </div>
+                <h3>Negatives Arithmetic</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="neg-add" id="neg-add" name="topics">
+                        <label for="neg-add">Addition</label>
+                    <input type="checkbox" value="neg-sub" id="neg-sub" name="topics">
+                        <label for="neg-sub">Subtraction</label>
+                    <input type="checkbox" value="neg-mult" id="neg-mult" name="topics">
+                        <label for="neg-mult">Multiplication</label>
+                    <input type="checkbox" value="neg-div" id="neg-div" name="topics">
+                        <label for="neg-div">Division</label>
                 </div>
             </div>
         </div>
@@ -112,5 +136,13 @@
 </body>
 </html>
 <script>
- 
+clearData();
+window.addEventListener('resize', function(event) {
+    if (window.innerWidth < 550) {
+        var mess = "<p>This page is not yet optimised for smaller screens</p><br><p>We recommend a minimum screen width of 550px</p>";
+        document.getElementById('question').innerHTML = mess;
+    }else{
+        document.getElementById('question').innerHTML = "";
+    }
+}, true);
 </script>
