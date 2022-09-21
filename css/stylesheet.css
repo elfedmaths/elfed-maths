@@ -88,6 +88,12 @@ body{
     cursor: context-menu;
 }
 
+#header h1 a{
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--main-font);
+}
+
 #header h1:before, #header h1:after {
     content: "";
     display: inline-block;
@@ -269,6 +275,25 @@ input[type=button].hide{
 #right input[type="checkbox"]:checked+label {
     font-weight: bold;
     text-decoration: underline;
+}
+
+
+/* -------------------- */
+
+/* Main Nav Buttons */
+
+.center-button{
+    height: 100%;
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center-button a{
+    text-decoration: none;
+    font-size: 5vw;
+    color: var(--main-font);
 }
 
 /* -------------------- */
