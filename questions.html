@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Questions</title>
+	<meta name="author" content="M. Massey">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/resetstyle.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+    <script src="./js/math.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/textfit.min.js"></script>
+    <script src="./js/timer.js" defer></script>
+    <script src="./js/stopwatch.js" defer></script>
+    <script src="./js/music.js" defer></script>
+    <script src="./js/select.js" defer></script>
+    <script src="./js/calc.js"></script>
+	<meta name="description" content="Maths practice resource">
+</head>
+<body>
+    <div id="header">
+        <h1><a href="./index.html">Maths Practice</a></h1>
+    </div>
+    <div id="main">
+        <div id="left">
+            <div class="content">
+                <div id="stopwatch">
+                    <h2>Stopwatch</h2>
+                    <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    <input type="button" id="button-start" value="Start">
+                    <input type="button" id="button-stop" value="Stop" class="disabled">
+                    <input type="button" id="button-reset" value="Reset" class="disabled hide">
+                </div> 
+            </div>
+            <div class="line"></div>
+            <div class="content">
+                <h2>Timer</h2>
+                <div class="flex-btn">
+                    <label for="min-1">1 min
+                        <input type="radio" value="1" id="min-1" name="minutes" checked>
+                    </label>
+                    <label for="min-2">2 mins
+                        <input type="radio" value="2" id="min-2" name="minutes">
+                    </label>
+                    <label for="min-5">5 mins
+                        <input type="radio" value="5" id="min-5" name="minutes">
+                    </label>
+                    <label for="min-10">10 mins
+                        <input type="radio" value="10" id="min-10" name="minutes">
+                    </label>
+                    <label for="min-30">30 mins
+                        <input type="radio" value="30" id="min-30" name="minutes">
+                    </label>
+                    <label for="min-60">60 mins
+                        <input type="radio" value="60" id="min-60" name="minutes">
+                    </label>
+                </div>
+                <input type="button" id="start-timer" value="Start">
+                <input type="button" id="stop-timer" value="Stop" class="disabled">
+                <p id="timer">00:00</p>
+            </div>
+            <div class="line"></div>
+            <div class="content">
+                <div id="music-player">
+                    <select name="audioSelect" id="audioSelect">
+                        <option value="./audio/smooth-waters.mp3">Smooth Waters</option>
+                        <option value="./audio/electronic-future-beats.mp3">Electronic Future Beats</option>
+                        <option value="./audio/field-grass.mp3">Field Grass</option>
+                        <option value="./audio/for-when-it-rains.mp3">For When It Rains</option>
+                        <option value="./audio/piano-moment.mp3">Piano Moment</option>
+                        <option value="./audio/price-of-freedom.mp3">Price of Freedom</option>
+                    </select>
+                    <audio id="audio" controls autoplay loop>
+                        <source id="audioSrc" src="./audio/smooth-waters.mp3"></source>
+                        Your browser does not support the audio format.
+                    </audio>
+                </div>
+            </div>
+        </div>
+        <div id="center">
+            <div id="container">
+                <div id="question"></div>
+            </div>
+            <div id="controls">
+                <div>
+                    <input type="button" value="Start" id="hide-quest" class="disabled">
+                    <input type="button" value="Start" id="start-quest" class="hide">
+                </div>
+                <div>
+                    <input type="button" value="Stop" id="stop-quest" class="disabled">
+                    <input type="button" value="Clear" id="clear-quest" class="hide">
+                </div>
+            </div>
+        </div>
+        <div id="right">
+            <div class="content">
+                <h2>Topics</h2>
+                <p>Select topics you would like to practice</p>
+                <h3>Integer Arithmetic</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="int-add" id="int-add" name="topics">
+                        <label for="int-add">Addition</label>
+                    <input type="checkbox" value="int-sub" id="int-sub" name="topics">
+                        <label for="int-sub">Subtraction</label>
+                    <input type="checkbox" value="int-mult" id="int-mult" name="topics">
+                        <label for="int-mult">Multiplication</label>
+                    <input type="checkbox" value="int-div" id="int-div" name="topics">
+                        <label for="int-div">Division</label>
+                </div>
+                <h3>Decimal Arithmetic</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="dec-add" id="dec-add" name="topics">
+                        <label for="dec-add">Addition</label>
+                    <input type="checkbox" value="dec-sub" id="dec-sub" name="topics">
+                        <label for="dec-sub">Subtraction</label>
+                    <input type="checkbox" value="dec-mult" id="dec-mult" name="topics">
+                        <label for="dec-mult">Multiplication</label>
+                    <input type="checkbox" value="dec-div" id="dec-div" name="topics">
+                        <label for="dec-div">Division</label>
+                </div>
+                <h3>Negatives Arithmetic</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="neg-add" id="neg-add" name="topics">
+                        <label for="neg-add">Addition</label>
+                    <input type="checkbox" value="neg-sub" id="neg-sub" name="topics">
+                        <label for="neg-sub">Subtraction</label>
+                    <input type="checkbox" value="neg-mult" id="neg-mult" name="topics">
+                        <label for="neg-mult">Multiplication</label>
+                    <input type="checkbox" value="neg-div" id="neg-div" name="topics">
+                        <label for="neg-div">Division</label>
+                </div>
+                <h3>Percentages</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="perc-find-1" id="perc-find-1" name="topics">
+                        <label for="perc-find-1">Percentages of Amounts (1)</label>
+                    <input type="checkbox" value="perc-find-2" id="perc-find-2" name="topics">
+                        <label for="perc-find-2">Percentages of Amounts (2)</label>
+                    <input type="checkbox" value="perc-find-3" id="perc-find-3" name="topics">
+                        <label for="perc-find-3">Percentages of Amounts (3)</label>
+                    <input type="checkbox" value="perc-inc" id="perc-inc" name="topics">
+                        <label for="perc-inc">Percentage Increase</label>
+                    <input type="checkbox" value="perc-dec" id="perc-dec" name="topics">
+                        <label for="perc-dec">Percentage Decrease</label>
+                    <input type="checkbox" value="perc-mult" id="perc-mult" name="topics">
+                        <label for="perc-mult">Percentage Multipliers</label>
+                </div>
+                <h3>Precision</h3>
+                <div class="flex-btn">
+                    <input type="checkbox" value="round-dec" id="round-dec" name="topics">
+                        <label for="round-dec">Rounding Decimals</label>
+                    <input type="checkbox" value="round-sig" id="round-sig" name="topics">
+                        <label for="round-sig">Rounding Significant Figures (Large)</label>
+                    <input type="checkbox" value="round-sig-dec" id="round-sig-dec" name="topics">
+                        <label for="round-sig-dec">Rounding Significant Figures (Decimals)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; M. Massey 2022;</p>
+    </div>
+</body>
+</html>
+<script>
+clearData();
+</script>
