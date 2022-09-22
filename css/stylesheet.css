@@ -440,10 +440,22 @@ input[type=button].hide{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 80%;
-    width: auto;
     box-shadow: 0 0 0 100vh rgba(0,0,0,0.7);
     z-index: 1;
+}
+
+@media (orientation: landscape) {
+    .video-container .video .active{
+        height: 80%;
+        width: auto;
+    }
+}
+
+@media (orientation: portrait) {
+    .video-container .video .active{
+        height: auto;
+        width: 80%;
+    }
 }
 
 .video-container .video .active:hover{
