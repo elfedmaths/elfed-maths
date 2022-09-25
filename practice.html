@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Questions</title>
+	<title>Practice</title>
 	<meta name="author" content="M. Massey">
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
     <script src="./js/math.js"></script>
     <script src="./js/functions.js"></script>
     <script src="./js/textfit.min.js"></script>
-    <script src="./js/timer.js" defer></script>
+    <script src="./js/practice.timer.js" defer></script>
     <script src="./js/stopwatch.js" defer></script>
     <script src="./js/music.js" defer></script>
     <script src="./js/select.js" defer></script>
@@ -37,24 +37,18 @@
             <div class="content">
                 <h2>Timer</h2>
                 <div class="flex-btn">
-                    <label for="min-1">1 min
-                        <input type="radio" value="1" id="min-1" name="minutes" checked>
-                    </label>
-                    <label for="min-2">2 mins
-                        <input type="radio" value="2" id="min-2" name="minutes">
-                    </label>
-                    <label for="min-5">5 mins
-                        <input type="radio" value="5" id="min-5" name="minutes">
-                    </label>
-                    <label for="min-10">10 mins
-                        <input type="radio" value="10" id="min-10" name="minutes">
-                    </label>
-                    <label for="min-30">30 mins
-                        <input type="radio" value="30" id="min-30" name="minutes">
-                    </label>
-                    <label for="min-60">60 mins
-                        <input type="radio" value="60" id="min-60" name="minutes">
-                    </label>
+                    <input type="radio" value="1" id="min-1" name="minutes" checked>
+                        <label for="min-1">1 min</label>
+                    <input type="radio" value="2" id="min-2" name="minutes">
+                        <label for="min-2">2 mins</label>
+                    <input type="radio" value="5" id="min-5" name="minutes">
+                        <label for="min-5">5 mins</label>
+                    <input type="radio" value="10" id="min-10" name="minutes">
+                        <label for="min-10">10 mins</label>
+                    <input type="radio" value="30" id="min-30" name="minutes">
+                        <label for="min-30">30 mins</label>
+                    <input type="radio" value="60" id="min-60" name="minutes">
+                        <label for="min-60">60 mins</label>
                 </div>
                 <input type="button" id="start-timer" value="Start">
                 <input type="button" id="stop-timer" value="Stop" class="disabled">
@@ -84,12 +78,14 @@
             </div>
             <div id="controls">
                 <div>
-                    <input type="button" value="Start" id="hide-quest" class="disabled">
-                    <input type="button" value="Start" id="start-quest" class="hide">
-                </div>
-                <div>
-                    <input type="button" value="Stop" id="stop-quest" class="disabled">
-                    <input type="button" value="Clear" id="clear-quest" class="hide">
+                    <div>
+                        <input type="button" value="Start" id="hide-quest" class="disabled">
+                        <input type="button" value="Start" id="start-quest" class="hide">
+                    </div>
+                    <div>
+                        <input type="button" value="Stop" id="stop-quest" class="disabled">
+                        <input type="button" value="Clear" id="clear-quest" class="hide">
+                    </div>
                 </div>
             </div>
         </div>

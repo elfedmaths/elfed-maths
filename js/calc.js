@@ -54,7 +54,7 @@ function getCalc(type){
             var dec1 = randomInt((Math.pow(10, dp1 - 1)), (Math.pow(10, dp1)) - 1);
             var dec2 = randomInt((Math.pow(10, dp2 - 1)), (Math.pow(10, dp2)) - 1);
             var quest = int1 + "." + dec1 + " x " + int2 + "." + dec2;
-            var ans = (parseFloat(int1 + "." + dec1) * parseFloat(int2 + "." + dec2)).toFixed((dp1 * dp2) + 1);
+            var ans = (parseFloat(int1 + "." + dec1) * parseFloat(int2 + "." + dec2)).toFixed(dp1 + dp2);
             break;
         case 'dec-div':
             var int1 = randomInt(0, 10);

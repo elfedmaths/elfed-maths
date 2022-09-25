@@ -20,6 +20,7 @@
 
 *{
     box-sizing: border-box;
+    cursor: context-menu;
 }
 
 body{
@@ -119,12 +120,19 @@ margin: 0 -55% 0 .5em;
 @media (orientation: landscape) {
     #main {
       flex-direction: row;
+      height: calc(100vh - 70px);
     }
 }
 
 @media (orientation: portrait) {
     #main {
         flex-direction: column;
+    }
+    #main #center{
+        order: 1;
+    }
+    #main #left, #main #right{
+        order: 2;
     }
 }
 
@@ -135,6 +143,11 @@ margin: 0 -55% 0 .5em;
     flex-wrap: nowrap;
     justify-content: flex-start;
     min-width: 160px;
+    margin: 10px 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    border-radius: 5px;
 }
 
 @media (orientation: landscape) {
@@ -184,7 +197,7 @@ input[type=button]{
     padding: 2px 5px;
     text-decoration: none;
     margin: 10px auto;
-    width: 60px;
+    width: 80px;
 }
     
 input[type=button]:hover {
@@ -246,6 +259,15 @@ input[type=button].hide{
     margin: 0 -55% 0 .5em;
 }
 
+.timer-row{
+    margin: 30px auto;
+}
+
+#timer-custom, #timer-none{
+    display: none;
+}
+
+
 /* -------------------- */
 
 /* Selection Button */
@@ -258,21 +280,26 @@ input[type=button].hide{
     margin: 5px auto;
 }
 
-#left .flex-btn label{
-    flex: 1 1 60px;
-    text-align: right;
+.flex-btn label{
+    flex: 1 1 40px;
+    text-align: center;
 }
 
-#right input[type="checkbox"]{
+input[type="checkbox"], input[type="radio"]{
     display: none;
 }
 
-#right input[type="checkbox"]+label {
+input[type="checkbox"]+label{
     flex: 1 1 78px;
     margin: 5px;
 }
 
-#right input[type="checkbox"]:checked+label {
+input[type="radio"]+label{
+    flex: 1 1 40px;
+    margin: 5px;
+}
+
+input[type="checkbox"]:checked+label, input[type="radio"]:checked+label{
     font-weight: bold;
     text-decoration: underline;
 }
@@ -283,17 +310,36 @@ input[type=button].hide{
 /* Main Nav Buttons */
 
 .center-button{
-    height: 100%;
+    height: calc(100% - 20px);
     flex: 1 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.center-button a{
+    text-decoration: none;
+    height: 100%;
+    width: 100%;
+    margin: 20px 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.center-button a{
+.center-button a p{
     text-decoration: none;
     font-size: 5vw;
     color: var(--main-font);
+}
+
+.center-button a:hover p{
+    transition: 0.2s linear;
+    transform: scale(1.2);
 }
 
 /* -------------------- */
@@ -304,6 +350,11 @@ input[type=button].hide{
     width: 80%;
     border-bottom: 1px solid var(--main-border);
     margin: 10px auto;
+}
+
+.width-50{
+    width: 50%;
+    margin: 5px auto;
 }
 
 /* -------------------- */
@@ -327,10 +378,49 @@ input[type=button].hide{
 
 #center #container{
     flex: 1 1;
+    margin: 10px 5px 5px 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+#center #container.top-mar-5{
+    margin-top: 5px;
 }
 
 #center #controls{
     flex: 0 0 150px;
+    margin: 5px 5px 10px 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    border-radius: 5px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#center .controls-top, #center .controls-bottom{
+    flex: 0 0 150px;
+    margin: 5px 5px 10px 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    border-radius: 5px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#center .controls-top{
+    margin: 10px 5px 5px 5px;
+}
+
+#center .controls-bottom{
+    margin: 5px 5px 10px 5px;
 }
 
 @media (orientation: landscape) {
@@ -382,13 +472,14 @@ input[type=button].hide{
 
 /* Topic Sub Titles */
 
-#right h3{
+#left h3, #right h3{
     margin: 5px auto 3px auto;
     font-size: 12px;
     text-decoration: none;
     cursor: context-menu;
 }
 
+#left h3:before, #left h3:after,
 #right h3:before, #right h3:after {
     content: "";
     display: inline-block;
@@ -398,7 +489,7 @@ input[type=button].hide{
     border-bottom: 1px solid var(--main-border);
 }
 
-#right h3:after {
+#left h3:after, #right h3:after {
     margin: 0 -55% 0 .5em;
 }
 
@@ -410,6 +501,8 @@ input[type=button].hide{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
 }
 
 .video-container .video{

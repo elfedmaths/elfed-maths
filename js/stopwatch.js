@@ -42,7 +42,6 @@ function startStopwatch () {
         appendTens.innerHTML = tens;
     } 
     if (tens > 99) {
-        console.log("seconds");
         seconds++;
         appendSeconds.innerHTML = "0" + seconds;
         tens = 0;
