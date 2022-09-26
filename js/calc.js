@@ -191,6 +191,139 @@ function getCalc(type){
             var quest = "Round " + parseFloat(num / Math.pow(10, dec)) + "<br>to " + places + " s.f.";
             var ans = (num / Math.pow(10, dec)).toPrecision(places);
             break;
+        /* -------------------- Fractions -------------------- */
+        case 'frac-add':
+            var den1 = randomInt(2, 15);
+            var num1 = randomInt(1, Math.floor(den1 / 2));
+            var den2 = randomInt(2, 15);
+            var num2 = randomInt(1, Math.floor(den2 / 2));
+            var ans1 = math.add(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
+            var quest = "<sup>" + num1 + "</sup>&frasl;<sub>" + den1 + "</sub> + <sup>" + num2 + "</sup>&frasl;<sub>" + den2 + "</sub>";
+            var ans = "<sup>" + ans1['n'] + "</sup>&frasl;<sub>" + ans1['d'] + "</sub>";
+            if(ans1['n'] == 1 && ans1['d'] == 1){
+                ans = 1;
+            }
+            if(ans1['n'] == 0){
+                ans = 0;
+            }
+            if(ans1['d'] == 1){
+                ans = ans1['n'];
+            }
+            break;
+        case 'frac-sub':
+            var den1 = randomInt(2, 15);
+            var num1 = randomInt(1, Math.floor(den1 / 2));
+            var den2 = randomInt(2, 15);
+            var num2 = randomInt(1, Math.floor(den2 / 2));
+            var ans1 = math.subtract(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
+            var quest = "<sup>" + num1 + "</sup>&frasl;<sub>" + den1 + "</sub> - <sup>" + num2 + "</sup>&frasl;<sub>" + den2 + "</sub>";
+            var ans = "<sup>" + ans1['n'] + "</sup>&frasl;<sub>" + ans1['d'] + "</sub>";
+            if(ans1['n'] == 1 && ans1['d'] == 1){
+                ans = 1;
+            }
+            if(ans1['n'] == 0){
+                ans = 0;
+            }
+            if(ans1['d'] == 1){
+                ans = ans1['n'];
+            }
+            break;
+        case 'frac-mult':
+            var den1 = randomInt(2, 15);
+            var num1 = randomInt(1, Math.floor(den1 / 2));
+            var den2 = randomInt(2, 15);
+            var num2 = randomInt(1, Math.floor(den2 / 2));
+            var ans1 = math.multiply(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
+            var quest = "<sup>" + num1 + "</sup>&frasl;<sub>" + den1 + "</sub> x <sup>" + num2 + "</sup>&frasl;<sub>" + den2 + "</sub>";
+            var ans = "<sup>" + ans1['n'] + "</sup>&frasl;<sub>" + ans1['d'] + "</sub>";
+            if(ans1['n'] == 1 && ans1['d'] == 1){
+                ans = 1;
+            }
+            if(ans1['n'] == 0){
+                ans = 0;
+            }
+            if(ans1['d'] == 1){
+                ans = ans1['n'];
+            }
+            break;
+        case 'frac-div':
+            var den1 = randomInt(2, 15);
+            var num1 = randomInt(1, Math.floor(den1 / 2));
+            var den2 = randomInt(2, 15);
+            var num2 = randomInt(1, Math.floor(den2 / 2));
+            var ans1 = math.divide(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
+            var quest = "<sup>" + num1 + "</sup>&frasl;<sub>" + den1 + "</sub> &divide; <sup>" + num2 + "</sup>&frasl;<sub>" + den2 + "</sub>";
+            var ans = "<sup>" + ans1['n'] + "</sup>&frasl;<sub>" + ans1['d'] + "</sub>";
+            if(ans1['n'] == 1 && ans1['d'] == 1){
+                ans = 1;
+            }
+            if(ans1['n'] == 0){
+                ans = 0;
+            }
+            if(ans1['d'] == 1){
+                ans = ans1['n'];
+            }
+            break;
+        case 'frac-simp':
+            var int1 = randomInt(2, 10);
+            var num1 = randomInt(1, 10) * int1;
+            var den1 = randomInt(num1 + 1, 15) * int1;
+            var ans1 = math.fraction(num1 + '/' + den1)
+            var quest = "Simplify <sup>" + num1 + "</sup>&frasl;<sub>" + den1 + "</sub>";
+            var ans = "<sup>" + ans1['n'] + "</sup>&frasl;<sub>" + ans1['d'] + "</sub>";
+            break;
+        case 'frac-amount':
+            var quest = "";
+            var ans = "";
+            break;
+        /* -------------------- Order of Operations -------------------- */
+        case 'bodmas':
+            var quest = "";
+            var ans = "";
+            break;
+        /* -------------------- Algebra -------------------- */
+        case 'alg-simp-1':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-simp-2':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-sub':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-solve-1':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-solve-2':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-exp':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'alg-fact':
+            var quest = "";
+            var ans = "";
+            break;
+        /* -------------------- Sequences -------------------- */
+        case 'seq-mult':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'seq-term':
+            var quest = "";
+            var ans = "";
+            break;
+        case 'seq-nth':
+            var quest = "";
+            var ans = "";
+            break;
+        /* -------------------- End -------------------- */
         default:
             var quest = 'More Questions Coming Soon';
             var ans = '-';
