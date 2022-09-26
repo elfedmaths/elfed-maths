@@ -23,14 +23,21 @@ document.getElementById('confirm-left').addEventListener('click', function(){
         confirmLeft = true;
         document.getElementById('confirm-left').classList.add('hide');
         document.getElementById('confirmed-left').classList.remove('hide');
-        var mins = document.getElementsByName("minutes");
-        mins.forEach(min => {
-            if(min.checked){
-                minutes = min.value;
-            }
-        });
-        if(minutes < 10){ minutes = "0" + minutes; }
-        document.getElementById("timer").innerHTML = minutes + " : 00";
+        if(document.querySelector('input[name="timer-opt"]:checked').value == "timed"){
+            var mins = document.getElementsByName("minutes");
+            mins.forEach(min => {
+                if(min.checked){
+                    minutes = min.value;
+                }
+            });
+            if(minutes < 10){ minutes = "0" + minutes; }
+            document.getElementById("timer").style.display = "block";
+            document.getElementById("timer").innerHTML = minutes + " : 00";
+        }else if(document.querySelector('input[name="timer-opt"]:checked').value == "none"){
+            document.getElementById("timer").style.display = "none";
+        }else if(document.querySelector('input[name="timer-opt"]:checked').value == "custom"){
+            document.getElementById("timer").style.display ="none";
+        }
         confirm();
     }
 });
@@ -52,13 +59,24 @@ function confirm(){
 
 document.getElementById('start-timer-quest').addEventListener('click', function(){
     clearData();
-    const mins = document.getElementsByName("minutes");
-    mins.forEach(min => {
-        if(min.checked){
-            startTimer(min.value);
-            document.getElementById('stop-timer-quest').classList.remove('disabled');
-        }
-    });
+    if(document.querySelector('input[name="timer-opt"]:checked').value == "timed"){
+        const mins = document.getElementsByName("minutes");
+        mins.forEach(min => {
+            if(min.checked){
+                minutes = min.value;
+            }
+        });
+        if(minutes < 10){ minutes = "0" + minutes; }
+        document.getElementById("timer").style.display ="block";
+        document.getElementById("timer").innerHTML = minutes + " : 00";
+        startTimer(minutes);
+    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "none"){
+        document.getElementById("timer").style.display ="none";
+    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "custom"){
+        document.getElementById("timer").style.display ="none";
+    }
+    document.getElementById('start-timer-quest').classList.add('disabled');
+    document.getElementById('stop-timer-quest').classList.remove('disabled');
     document.getElementById("input-num").disabled = false;
     newChallenge();
 });
@@ -66,6 +84,8 @@ document.getElementById('start-timer-quest').addEventListener('click', function(
 document.getElementById('stop-timer-quest').addEventListener('click', function(){
     stopTimer();
     stopChallenge();
+    document.getElementById('start-timer-quest').classList.remove('disabled');
+    document.getElementById('stop-timer-quest').classList.add('disabled');
     document.getElementById("timer").innerHTML = "00 : 00";
 });
 
