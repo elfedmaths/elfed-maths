@@ -5,6 +5,8 @@
     --main-font: #000000;
     --main-border: #000000;
 
+    --disabled-font: #b4b4b4;
+
     --button-back: #ffffff;
     --button-border: #000000;
     --button-hover: #cfcfcf;
@@ -184,6 +186,16 @@ h2{
     font-size: 20px;
 }
 
+sup{
+    vertical-align: super;
+    font-size: smaller;
+}
+
+sub{
+    vertical-align: sub;
+    font-size: smaller;
+}
+
 /* -------------------- */
 
 /* Inputs */
@@ -304,6 +316,10 @@ input[type="checkbox"]:checked+label, input[type="radio"]:checked+label{
     text-decoration: underline;
 }
 
+input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
+    color: var(--disabled-font);
+    text-decoration: line-through;
+}
 
 /* -------------------- */
 
