@@ -27,3 +27,30 @@ function stopTimer(){
     document.getElementById('stop-timer-quest').classList.add('disabled');
     clearInterval(x);
 }
+
+const timerOpt = document.querySelectorAll('input[name="timer-opt"]');
+timerOpt.forEach(opt => {
+    opt.addEventListener('change',function(){
+        var timerSelect = document.querySelector('input[name="timer-opt"]:checked').value;
+        switch (timerSelect) {
+            case 'none':
+                document.getElementById('timer-none').style.display = "block";
+                document.getElementById('timer-fixed').style.display = "none";
+                document.getElementById('timer-custom').style.display = "none";
+                break;
+            case 'timed':
+                document.getElementById('timer-none').style.display = "none";
+                document.getElementById('timer-fixed').style.display = "flex";
+                document.getElementById('timer-custom').style.display = "none";
+                break;
+            case 'custom':
+                document.getElementById('timer-none').style.display = "none";
+                document.getElementById('timer-fixed').style.display = "none";
+                document.getElementById('timer-custom').style.display = "block";
+                break;
+            default:
+                break;
+        }
+    });
+});
+
