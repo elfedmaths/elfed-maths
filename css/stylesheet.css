@@ -530,6 +530,18 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     border-radius: 1rem;
 }
 
+.video-container .video.shadow-blue{
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 255, 0.5);
+}
+
+.video-container .video.shadow-red{
+    box-shadow: 0 0.5rem 1rem rgba(255, 0, 0, 0.5);
+}
+
+.video-container .video.shadow-green{
+    box-shadow: 0 0.5rem 1rem rgba(0, 255, 0, 0.5);
+}
+
 .video-container .video video{
     height: 100%;
     width: 100%;
