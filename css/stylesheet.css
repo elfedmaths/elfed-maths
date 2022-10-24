@@ -2,7 +2,7 @@
 
 :root{
     --main-back: #ffffff;
-    --main-font: #000000;
+    --main-font: #020e44;
     --main-border: #000000;
 
     --disabled-font: #b4b4b4;
@@ -89,6 +89,7 @@ body{
     font-size: 20px;
     text-decoration: none;
     cursor: context-menu;
+    color: var(--main-font);
 }
 
 #header h1 a{
@@ -103,11 +104,11 @@ body{
     width: 10%;
     margin: 0 .5em 0 -55%;
     vertical-align: middle;
-    border-bottom: 1px solid var(--main-border);
+    border-bottom: 1px solid var(--main-font);
 }
 
 #header h1:after {
-margin: 0 -55% 0 .5em;
+    margin: 0 -55% 0 .5em;
 }
 
 /* -------------------- */
@@ -246,7 +247,7 @@ input[type=button].hide{
     width: 10%;
     margin: 0 .5em 0 -55%;
     vertical-align: middle;
-    border-bottom: 1px solid var(--main-border);
+    border-bottom: 1px solid var(--main-font);
 }
 
 #stopwatch p:after {
@@ -264,7 +265,7 @@ input[type=button].hide{
     width: 10%;
     margin: 0 .5em 0 -55%;
     vertical-align: middle;
-    border-bottom: 1px solid var(--main-border);
+    border-bottom: 1px solid var(--main-font);
 }
 
 #timer:after {
@@ -364,7 +365,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 
 .line{
     width: 80%;
-    border-bottom: 1px solid var(--main-border);
+    border-bottom: 1px solid var(--main-font);
     margin: 10px auto;
 }
 
@@ -502,7 +503,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     width: 10%;
     margin: 0 .5em 0 -55%;
     vertical-align: middle;
-    border-bottom: 1px solid var(--main-border);
+    border-bottom: 1px solid var(--main-font);
 }
 
 #left h3:after, #right h3:after {
