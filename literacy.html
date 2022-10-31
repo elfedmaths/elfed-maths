@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Literacy</title>
+	<meta name="author" content="M. Massey">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./css/resetstyle.css">
+    <link rel="stylesheet" href="./css/stylesheet.css">
+	<meta name="description" content="Maths practice resource">
+    <script src="./js/textfit.min.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/literacy.js" defer></script>
+</head>
+<body>
+    <div id="header">
+        <h1><a href="./">Maths Practice</a></h1>
+    </div>
+    <div id="main">
+        <div id="center" class="mar-10">
+            <div id="container">
+                <div id="word-main">Literacy in Mathematics</div>
+                <div id="word-sub">Select area below</div>
+            </div>
+            <div id="bottom-buttons">
+                <div class="box-button" id="btn-num">
+                    <p>Number</p>
+                </div>
+                <div class="box-button" id="btn-alg">
+                    <p>Algebra</p>
+                </div>
+                <div class="box-button" id="btn-ratio">
+                    <p>Ratio</p>
+                </div>
+                <div class="box-button" id="btn-geo">
+                    <p>Geometry</p>
+                </div>
+                <div class="box-button" id="btn-prob">
+                    <p>Probability</p>
+                </div>
+                <div class="box-button" id="btn-rand">
+                    <p>Random</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <p>Copyright &copy; M. Massey 2022;</p>
+    </div>
+</body>
+</html>
+<script>
+    textFit(document.getElementById('word-main'));
+    textFit(document.getElementById('word-sub'));
+</script>
