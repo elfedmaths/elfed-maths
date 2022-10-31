@@ -327,34 +327,47 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 /* Main Nav Buttons */
 
 .center-button{
-    height: calc(100% - 20px);
     flex: 1 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
+    margin: 0 10px;
 }
 
 .center-button a{
     text-decoration: none;
     height: 100%;
     width: 100%;
-    margin: 20px 10px;
+    margin: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     overflow: hidden;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .center-button a p{
     text-decoration: none;
     font-size: 5vw;
     color: var(--main-font);
+    cursor: pointer;
 }
 
 .center-button a:hover p{
+    transition: 0.2s linear;
+    transform: scale(1.2);
+}
+
+.center-button a img{
+    max-width: 60%;
+    max-height: 60%;
+    margin: 20px 0;
+}
+
+.center-button a:hover img{
     transition: 0.2s linear;
     transform: scale(1.2);
 }
@@ -372,6 +385,10 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 .width-50{
     width: 50%;
     margin: 5px auto;
+}
+
+.mar-10{
+    margin: 10px;
 }
 
 /* -------------------- */
@@ -426,7 +443,6 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     overflow-y: auto;
     border-radius: 5px;
-    display: flex;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -585,4 +601,52 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     transform: 
         translate(-50%, -50%)
         scale(1);
+}
+
+/* -------------------- */
+
+/* Literacy Styling */
+
+#center #container #word-main{
+    width: 100%;
+    height: 66%;
+    padding: 10px;
+}
+
+#center #container #word-sub{
+    width: 50%;
+    height: 33%;
+    padding: 10px;
+    margin: auto;
+}
+
+#center #bottom-buttons{
+    flex: 0 0 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#center #bottom-buttons .box-button{
+    width: 100%;
+    margin: 5px 5px 10px 5px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#center #bottom-buttons .box-button p{
+    text-decoration: none;
+    font-size: 2vw;
+    color: var(--main-font);
+    cursor: pointer;
+}
+
+#center #bottom-buttons .box-button:hover p{
+    transition: 0.2s linear;
+    transform: scale(1.2);
 }
