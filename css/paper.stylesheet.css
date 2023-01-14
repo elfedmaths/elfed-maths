@@ -1,0 +1,98 @@
+/* -------------------- */
+
+:root{
+    --main-back: #ffffff;
+    --main-font: #020e44;
+    --main-border: #000000;
+
+    --disabled-font: #b4b4b4;
+
+    --button-back: #ffffff;
+    --button-border: #000000;
+    --button-hover: #cfcfcf;
+
+    --scroll-back: #ffffff;
+    --scroll-main: #ececec;
+    --scroll-hover: #cfcfcf;
+}
+
+/* -------------------- */
+
+/* Main Structure */
+
+#footer.float{
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
+    font-size: 12px;
+    text-align: left;
+    cursor: context-menu;
+}
+
+/* -------------------- */
+
+/* Worksheets Layout */
+
+@media print{   
+    body{
+        overflow-y: scroll;
+    } 
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+
+.paper-print{
+    height: 100%;
+    overflow-y: scroll;
+    display: block;
+    margin-bottom: 50px;
+}
+
+.selection-pane{
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+    width: 200px;
+    background: white;
+    box-shadow: 0 0.5mm 2mm rgb(0 0 0 / 30%);
+    margin: 3px 10px;
+    padding: 5px;
+}
+
+.selection-pane h2{
+    font-size: 2vw;
+    color: var(--main-font);
+    cursor: pointer;
+}
+
+.selection-pane .list{
+    display: none;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.selection-pane .list a{
+    text-decoration: none;
+    color: var(--main-font);
+    cursor: pointer;
+}
+
+.selection-pane:hover .list{
+    display: block;
+}
+
+@media screen and (max-width: 830px) {
+    .selection-pane{
+        display: none;
+    }
+    #template{
+        display: none;
+    }
+    #header::after{
+        content: "Minimum Screen Width Of 830px Needed To View Worksheets";
+    }
+}

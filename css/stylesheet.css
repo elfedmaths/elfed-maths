@@ -125,6 +125,10 @@ body{
       flex-direction: row;
       height: calc(100vh - 70px);
     }
+    #main .center-row a p span:nth-child(1)::after{
+        content: "\a";
+        white-space: pre;
+    }
 }
 
 @media (orientation: portrait) {
@@ -136,6 +140,12 @@ body{
     }
     #main #left, #main #right{
         order: 2;
+    }
+    #main .center-row .center-button{
+        display: none;
+    }
+    #main .center-row:nth-child(even){
+        flex: calc(2/3) calc(2/3);
     }
 }
 
@@ -326,7 +336,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 
 /* Main Nav Buttons */
 
-.center-button{
+.center-row{
     flex: 1 1;
     display: flex;
     flex-direction: column;
@@ -335,7 +345,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     margin: 0 10px;
 }
 
-.center-button a{
+.center-row a{
     text-decoration: none;
     height: 100%;
     width: 100%;
@@ -349,25 +359,25 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     cursor: pointer;
 }
 
-.center-button a p{
+.center-row a p{
     text-decoration: none;
     font-size: 5vw;
     color: var(--main-font);
     cursor: pointer;
 }
 
-.center-button a:hover p{
+.center-row a:not(.no-click):hover p {
     transition: 0.2s linear;
     transform: scale(1.2);
 }
 
-.center-button a img{
+.center-row a img{
     max-width: 60%;
     max-height: 60%;
     margin: 20px 0;
 }
 
-.center-button a:hover img{
+.center-row a:hover img{
     transition: 0.2s linear;
     transform: scale(1.2);
 }
@@ -649,4 +659,68 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 #center #bottom-buttons .box-button:hover p{
     transition: 0.2s linear;
     transform: scale(1.2);
+}
+
+/* -------------------- */
+
+/* Activity Layout */
+
+#main .center-flex{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+    justify-content: center;
+    align-items: stretch;
+    cursor: pointer;
+    overflow-y: scroll;
+}
+
+#main .center-flex .content-box{
+    min-height: 100px;
+    flex: 1 1 400px;
+    margin: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#main .center-flex .content-box h2{
+    font-size: 2vw;
+    color: var(--main-font);
+    cursor: pointer;
+}
+
+#main .center-flex .content-box .content{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    display: none;
+}
+
+#main .center-flex .content-box:hover h2{
+    display: none;
+}
+
+#main .center-flex .content-box:hover .content{
+    display: block;
+}
+
+#main .center-flex .content-box .content h3{
+    width: 100%;
+    height: 40px;
+    font-size: 2vw;
+    color: var(--main-font);
+}
+
+#main .center-flex .content-box .content p{
+    font-size: 100%;
+    margin: 5px 0;
+}
+
+#main .center-flex .content-box .content p span{
+    font-weight: bold;
 }
