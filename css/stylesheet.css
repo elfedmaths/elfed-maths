@@ -141,11 +141,11 @@ body{
     #main #left, #main #right{
         order: 2;
     }
-    #main .center-row .center-button{
+    #main .center-row .center-button, #main .center-row .content-cell{
         display: none;
     }
     #main .center-row:nth-child(even){
-        flex: calc(2/3) calc(2/3);
+        flex: calc(1/3) calc(1/3);
     }
 }
 
@@ -345,7 +345,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     margin: 0 10px;
 }
 
-.center-row a{
+.center-row a, .center-row .content-cell{
     text-decoration: none;
     height: 100%;
     width: 100%;
@@ -359,14 +359,14 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     cursor: pointer;
 }
 
-.center-row a p{
+.center-row a p, .center-row .content-cell p{
     text-decoration: none;
     font-size: 5vw;
     color: var(--main-font);
     cursor: pointer;
 }
 
-.center-row a:not(.no-click):hover p {
+.center-row :hover p {
     transition: 0.2s linear;
     transform: scale(1.2);
 }
@@ -701,7 +701,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     display: none;
 }
 
-#main .center-flex .content-box:hover h2{
+#main .center-flex .content-box:hover h2:not(.fixed){
     display: none;
 }
 
@@ -724,3 +724,13 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 #main .center-flex .content-box .content p span{
     font-weight: bold;
 }
+
+#main .center-flex .double-width{
+    flex: 2 2 800px;
+}
+
+#main .center-flex .pos-1{ order: 0; }
+#main .center-flex .pos-2{ order: 1; }
+#main .center-flex .pos-3{ order: 2; }
+#main .center-flex .pos-4{ order: 3; }
+#main .center-flex .pos-5{ order: 4; }

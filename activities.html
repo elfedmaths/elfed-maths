@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="./css/resetstyle.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="./js/textfit.min.js"></script>
+    <script src="./js/stopwatch.js" defer></script>
 	<meta name="description" content="Maths practice resource">
 </head>
 <body>
@@ -17,7 +18,16 @@
     </div>
     <div id="main">
         <div class="center-flex">
-            <div class="content-box">
+            <div id="fixed-content" class="content-box">
+                <div id="stopwatch">
+                    <h2 class="fixed">Stopwatch</h2>
+                    <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    <input type="button" id="button-start" value="Start">
+                    <input type="button" id="button-stop" value="Stop" class="disabled">
+                    <input type="button" id="button-reset" value="Reset" class="disabled hide">
+                </div> 
+            </div>
+            <div class="content-box" style="order:1;">
                 <h2>The counting game</h2>
                 <div class="content">
                     <h3>The counting game</h3>
@@ -29,7 +39,7 @@
                     <p><span>Challenge: </span>students count up in multiples of 2 or 3.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:2;">
                 <h2>Mathletics</h2>
                 <div class="content">
                     <h3>Mathletics</h3>
@@ -43,7 +53,7 @@
                     <p><span>Challenge: </span>Continue counting further from 1 to 20, 1 to 30, etc.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:3;">
                 <h2>21</h2>
                 <div class="content">
                     <h3>21</h3>
@@ -55,7 +65,7 @@
                     <p><span>Challenge: </span>to complete the activity in Welsh.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:4;">
                 <h2>I'm thinking of a number</h2>
                 <div class="content">
                     <h3>I'm thinking of a number</h3>
@@ -67,7 +77,7 @@
                     <p><span>Challenge: </span>think of a number between 100 and 200.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:5;">
                 <h2>Bingo</h2>
                 <div class="content">
                     <h3>Bingo</h3>
@@ -79,7 +89,7 @@
                         mathematician could run this activity.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:6;">
                 <h2>Pointless Bingo</h2>
                 <div class="content">
                     <h3>Pointless Bingo</h3>
@@ -92,7 +102,7 @@
                         mathematician could run this activity.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:7;">
                 <h2>Doubling</h2>
                 <div class="content">
                     <h3>Doubling</h3>
@@ -103,7 +113,7 @@
                     <p><span>Challenge: </span>use numbers bigger than 50, or include fractions and decimals.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:8;">
                 <h2>&check; or &cross;</h2>
                 <div class="content">
                     <h3>&check; or &cross;</h3>
@@ -116,7 +126,7 @@
                     <p><span>Challenge: </span>use rules like squares numbers, cube numbers, and prime numbers.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:9;">
                 <h2>Oracy - Describe</h2>
                 <div class="content">
                     <h3>Oracy - Describe</h3>
@@ -131,7 +141,7 @@
                     <p><span>Challenge: </span>ask the students to give the welsh definition from the English description.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:10;">
                 <h2>Oracy - Define</h2>
                 <div class="content">
                     <h3>Oracy - Define</h3>
@@ -147,7 +157,7 @@
                         without any thinking time.</p>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" style="order:11;">
                 <h2>Oracy - Develop</h2>
                 <div class="content">
                     <h3>Oracy - Develop</h3>
@@ -161,12 +171,6 @@
                     <p><span>Challenge: </span>ask a student to create a sentence to a new random word without any thinking time.</p>
                 </div>
             </div>
-            <div class="content-box">
-                <h2>More Coming Soon...</h2>
-                <div class="content">
-                    <h3>More Coming Soon...</h3>
-                </div>
-            </div>
         </div>
     </div>
     <div id="footer">
@@ -175,5 +179,17 @@
 </body>
 </html>
 <script>
-    textFit(document.getElementsByTagName('h2'));
+    window.addEventListener("load", resizeFunction);  
+    window.addEventListener("resize", resizeFunction);
+    function resizeFunction(){
+        textFit(document.getElementsByTagName('h2'));
+        const itemWidth = document.querySelector('.content-box').offsetWidth;
+        const gridWidth = document.querySelector('.center-flex').offsetWidth;
+        const itemCount = parseInt(gridWidth / itemWidth);
+        document.querySelector('#fixed-content').className = 'content-box';
+        if( itemCount % 2 == 0){
+            document.querySelector('#fixed-content').classList.add('double-width');
+        }
+        document.querySelector('#fixed-content').classList.add('pos-' + itemCount);
+    }
 </script>
