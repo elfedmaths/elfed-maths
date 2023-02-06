@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./css/paper.stylesheet.css">
 	<meta name="description" content="Maths practice resource">
     <script src="./js/load.js"></script>
+    <script src="./js/load.data.js"></script>
+    <script src="./js/math.js"></script>
+    <script src="./js/functions.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
     <style>@page { size: A4 portrait }</style>
 </head>
@@ -18,13 +21,27 @@
     <div id="header"  class="no-print">
         <h1><a href="./">Maths Practice</a></h1>
     </div>
-    <div class="selection-pane no-print">
-        <h2>Worksheets</h2>
-        <div class="list">
-            <a href="#" onclick="loadHtml('test')">Worksheets Coming Soon</a>
+    <div class="nav-bar no-print">
+        <div id="nav-container">
+            <input type="checkbox" />
+            <span></span> 
+            <span></span> 
+            <span></span> 
+            <ul id="menu-items">
+                <a href="#" onclick="loadHtml('bar-charts')"><li>Bar Charts</li></a>
+                <a href="#" onclick="loadHtml('line-charts')"><li>Line Charts</li></a>
+                <a href="#" onclick="loadHtml('freq-diagrams')"><li>Frequency Diagrams</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Frequency Polygons</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Scatter Graphs</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Pictograms</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Cumulative Frequency</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Box Plots</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Pie Charts</li></a>
+                <a href="#" style="text-decoration: line-through;"><li>Bat Charts & Pictograms</li></a>
+            </ul>
         </div>
     </div>
-    <section class="sheet padding-10mm" id="template">
+    <section class="sheet" id="template">
     </section>
     <div id="footer" class="no-print float">
         <p>Copyright &copy; 2022 -  <script>document.write(new Date().getFullYear())</script>, M. Massey.</p>

@@ -1,4 +1,4 @@
-function loadHtml(filename, datatype){
+function loadHtml(filename){
     let xhttp;
     let element = document.getElementById('template');
     let file = filename;
@@ -8,6 +8,7 @@ function loadHtml(filename, datatype){
             if(this.readyState == 4){
                 if(this.status == 200){
                     element.innerHTML = this.responseText;
+                    loadData(filename);
                 }
                 if(this.status == 400){
                     element.innerHTML = "<h1>Page Not Found</h1>";

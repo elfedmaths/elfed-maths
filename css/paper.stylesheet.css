@@ -9,7 +9,13 @@
 
     --button-back: #ffffff;
     --button-border: #000000;
+    --button-font: #000000;
     --button-hover: #cfcfcf;
+
+    --table-head: #AC8C37;
+
+    --list-font: #7a7a7a;
+    --list-hover: #000000;
 
     --scroll-back: #ffffff;
     --scroll-main: #ececec;
@@ -50,43 +56,8 @@
     margin-bottom: 50px;
 }
 
-.selection-pane{
-    position: fixed;
-    z-index: 1;
-    top: 0px;
-    left: 0px;
-    width: 200px;
-    background: white;
-    box-shadow: 0 0.5mm 2mm rgb(0 0 0 / 30%);
-    margin: 3px 10px;
-    padding: 5px;
-}
-
-.selection-pane h2{
-    font-size: 2vw;
-    color: var(--main-font);
-    cursor: pointer;
-}
-
-.selection-pane .list{
-    display: none;
-    margin-bottom: 10px;
-    text-align: left;
-    padding-left: 10px;
-}
-
-.selection-pane .list a{
-    text-decoration: none;
-    color: var(--main-font);
-    cursor: pointer;
-}
-
-.selection-pane:hover .list{
-    display: block;
-}
-
 @media screen and (max-width: 830px) {
-    .selection-pane{
+    .nav-bar{
         display: none;
     }
     #template{
@@ -95,4 +66,176 @@
     #header::after{
         content: "Minimum Screen Width Of 830px Needed To View Worksheets";
     }
+}
+
+/* ----- Navigation Menu ----- */
+
+.nav-bar{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+#nav-container{
+    display: block;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#nav-container a{
+    text-decoration: none;
+    color: var(--list-font);
+    transition: color 0.3s ease;
+}
+
+#nav-container a:hover{
+    color: var(--list-hover);
+    font-weight: bold;
+}
+
+#nav-container input{
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+
+#nav-container span{
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    background: var(--button-font);
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+}
+
+#nav-container span:first-child{
+    transform-origin: 0% 0%;
+}
+
+#nav-container span:nth-last-child(2){
+    transform-origin: 0% 100%;
+}
+
+#nav-container input:checked ~ span{
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: var(--button-hover);
+}
+
+#nav-container input:checked ~ span:nth-last-child(3){
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#nav-container input:checked ~ span:nth-last-child(2){
+    transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu-items{
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased; 
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu-items li{
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+#nav-container input:checked ~ ul{
+    transform: none;
+}
+
+/* ----- Worksheet Banner ----- */
+
+#template .banner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#template .banner div:not(:nth-child(3)){
+    margin: 20px;
+    flex: 1 1;
+}
+
+#template .banner img{
+    height: 150px;
+    margin-right: 10px;
+}
+
+/* ----- Worksheet Content ----- */
+
+#template .content{
+    position: absolute;
+    top: 118px;
+    left: 0;
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#template .content .content-row{
+    width: 100%;
+    flex: 1 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#template .content .content-row object{
+    height: 300px;
+    margin-left: 50px;
+}
+
+#template .content .content-row table{
+    margin: auto;
+    width: 300px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+}
+
+#template .content .content-row table th{
+    border: 1px solid black;
+    height: 30px;
+    vertical-align: middle;
+    background-color: var(--table-head);
+}
+
+#template .content .content-row table td{
+    border: 1px solid black;
+    height: 25px;
+    vertical-align:middle
 }
