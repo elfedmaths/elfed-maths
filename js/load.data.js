@@ -23,17 +23,17 @@ function loadData(filename){
                 // Copy label options to an array
                 let arrLabels = Object.values(dataLabels[dataRow1]["labels"]);
                 // Multiplier and current max for values in table
-                const intMult = randomInt(1,10);
-                var intMax = 0;
+                const intMult = randomInt(dataLabels[dataRow1]["miny"], Math.ceil(dataLabels[dataRow1]["maxy"]/8));
+                let intMax = 0;
                 // Loop through array for 5 x - values
                 for (let i = 0; i <= 4; i++) {
-                    var intLabels = randomInt(0, arrLabels.length - 1);
-                    var randLabel = arrLabels[intLabels];
+                    let intLabels = randomInt(0, arrLabels.length - 1);
+                    let randLabel = arrLabels[intLabels];
                     // Change labels within svg and table
                     childNodes1[0].getElementById(`c1-txt-x-${i}`).innerHTML = randLabel[0];
                     document.querySelectorAll(`#c1-txt-x-${i}`)[0].innerHTML = randLabel;
                     // Change values with table
-                    var intNew = randomInt(1,8) * intMult;
+                    let intNew = randomInt(1,8) * intMult;
                     document.querySelectorAll(`#c1-val-x-${i}`)[0].innerHTML = intNew;
                     if(intNew > intMax){intMax = intNew;}
                     // Remove label after use
@@ -49,7 +49,7 @@ function loadData(filename){
             document.querySelectorAll("#c1-txt-label")[0].innerHTML = dataLabels[dataRow1]["label"];
             // Chart 2
             // Select random data group
-            var dataRow2 = randomInt(0, dataRows - 1);
+            let dataRow2 = randomInt(0, dataRows - 1);
             while (dataRow1 == dataRow2){
                 dataRow2 = randomInt(0, dataRows - 1);
             }
@@ -64,28 +64,25 @@ function loadData(filename){
                 // Copy label options to an array
                 let arrLabels = Object.values(dataLabels[dataRow2]["labels"]);
                 // Current max for values in table
-                var intMax = randomInt(1,2)*40;
+                let intMax = 0;
                 // Loop through array for 5 x - values
                 for (let i = 0; i <= 4; i++) {
-                    var intLabels = randomInt(0, arrLabels.length - 1);
-                    var randLabel = arrLabels[intLabels];
+                    let intLabels = randomInt(0, arrLabels.length - 1);
+                    let randLabel = arrLabels[intLabels];
                     // Change labels within table
                     document.querySelectorAll(`#c2-txt-x-${i}`)[0].innerHTML = randLabel;
                     // Change values with table
-                    var intNew = randomInt(1,intMax);
+                    let intNew = randomInt(dataLabels[dataRow2]["miny"], dataLabels[dataRow2]["maxy"]);
                     document.querySelectorAll(`#c2-val-x-${i}`)[0].innerHTML = intNew;
+                    if(intNew > intMax){intMax = intNew;}
                     // Remove label after use
                     arrLabels.splice(intLabels,1);
                 }
+                let intMultY = Math.ceil(intMax / 8);
                 // Loop through array for 9 y - values
                 for (let i = 1; i <= 8; i++) {
                     // Change scale within svg
-                    if(intMax==80){
-                        childNodes2[0].getElementById(`c2-txt-y-${i}`).innerHTML = i * 10;
-                    }else{
-                        childNodes2[0].getElementById(`c2-txt-y-${i}`).innerHTML = i * 5;
-                    }
-                    
+                    childNodes2[0].getElementById(`c2-txt-y-${i}`).innerHTML = i * intMultY;
                 }
             });
             // Change table within table
@@ -102,7 +99,7 @@ function loadData(filename){
                 let arrData = Object.values(dataFixed["data"]);
                 // Loop through array for 5 x - values
                 for (let i = 0; i <= 4; i++) {
-                    var intLabels = randomInt(0, arrData.length - 1);
+                    let intLabels = randomInt(0, arrData.length - 1);
                     // Change labels within table
                     document.querySelectorAll(`#c3-txt-x-${i}`)[0].innerHTML = arrData[intLabels]["county"];
                     // Change values with table
@@ -112,11 +109,12 @@ function loadData(filename){
                 }
             });
             break;
+
         case "freq-polygon":
             // Chart 1
-            // Get number of data groups
-            const dataGroups = Object.keys(dataGroup).length;
-            // Select random data group
+            // Get number of data groups continuous
+            const dataGroups = Object.keys(dataGrouped["continuous"]).length;
+            // Select random data group continuous
             const dataGroup1 = randomInt(0, dataGroups - 1);
             // Wait for object to load
             svgChart1.addEventListener("load", function() {
@@ -124,33 +122,88 @@ function loadData(filename){
                 const svgDoc1 = svgChart1.contentDocument;
                 const childNodes1 = svgDoc1.childNodes;
                 // Change title and labels within svg
-                childNodes1[0].getElementById("c1-txt-title").innerHTML = dataLabels[dataGroup1]["title"];
-                childNodes1[0].getElementById("c1-txt-label").innerHTML = dataLabels[dataGroup1]["label"];
+                childNodes1[0].getElementById("c1-txt-title").innerHTML = dataGrouped["continuous"][dataGroup1]["title"];
+                childNodes1[0].getElementById("c1-txt-label").innerHTML = dataGrouped["continuous"][dataGroup1]["label"];
                 // Multiplier and current max for values in table
-                const intMult = randomInt(1,10);
-                var intMax = 0;
+                const intMultX = 1 + randomInt(dataGrouped["continuous"][dataGroup1]["minx"], Math.ceil((dataGrouped["continuous"][dataGroup1]["maxx"]-dataGrouped["continuous"][dataGroup1]["minx"])/11));
+                const intMultY = randomInt(dataGrouped["continuous"][dataGroup1]["miny"], Math.ceil(dataGrouped["continuous"][dataGroup1]["maxy"]/8));
+                let intMax = 0;
                 // Loop through array for 6 x - values
                 for (let i = 0; i <= 5; i++) {
-                    var intLabels = randomInt(0, arrLabels.length - 1);
-                    var randLabel = arrLabels[intLabels];
+                    let xLabel = (i + i * intMultX + dataGrouped["continuous"][dataGroup1]["minx"]) + " - " + (i + (i + 1) * intMultX + dataGrouped["continuous"][dataGroup1]["minx"])
                     // Change labels within svg and table
-                    childNodes1[0].getElementById(`c1-txt-x-${i}`).innerHTML = randLabel[0];
-                    document.querySelectorAll(`#c1-txt-x-${i}`)[0].innerHTML = randLabel;
+                    childNodes1[0].getElementById(`c1-txt-x-${2 * i}`).innerHTML = i + i * intMultX;
+                    childNodes1[0].getElementById(`c1-txt-x-${(2 * i) + 1}`).innerHTML = i + (i + 1) * intMultX;
+                    document.querySelectorAll(`#c1-txt-x-${i}`)[0].innerHTML = xLabel;
                     // Change values with table
-                    var intNew = randomInt(1,8) * intMult;
+                    let intNew = randomInt(1,8) * intMultY;
                     document.querySelectorAll(`#c1-val-x-${i}`)[0].innerHTML = intNew;
                     if(intNew > intMax){intMax = intNew;}
-                    // Remove label after use
-                    arrLabels.splice(intLabels,1);
                 }
                 // Loop through array for 9 y - values
-                for (let i = 1; i <= 11; i++) {
-                    // Change scale within svg
-                    childNodes1[0].getElementById(`c1-txt-y-${i}`).innerHTML = i * intMult;
+                for (let i = 1; i <= 8; i++) {
+                    childNodes1[0].getElementById(`c1-txt-y-${i}`).innerHTML = i * intMultY;
                 }
             });
             // Change table within table
-            document.querySelectorAll("#c1-txt-label")[0].innerHTML = dataLabels[dataRow1]["label"];
+            document.querySelectorAll("#c1-txt-label")[0].innerHTML = dataGrouped["continuous"][dataGroup1]["label"];
+            // Chart 2
+            // Select random data group
+            let dataGroup2 = randomInt(0, dataGroups - 1);
+            while (dataGroup1 == dataGroup2){
+                dataGroup2 = randomInt(0, dataGroups - 1);
+            }
+            // Wait for object to load
+            svgChart2.addEventListener("load", function() {
+                // Get the child elements of svg
+                const svgDoc2 = svgChart2.contentDocument;
+                const childNodes2 = svgDoc2.childNodes;
+                // Change title and labels within svg
+                childNodes2[0].getElementById("c2-txt-title").innerHTML = dataGrouped["continuous"][dataGroup2]["title"];
+                childNodes2[0].getElementById("c2-txt-label").innerHTML = dataGrouped["continuous"][dataGroup2]["label"];
+                // Multiplier and current max for values in table
+                const intMultX = 1 + randomInt(dataGrouped["continuous"][dataGroup2]["minx"], Math.ceil((dataGrouped["continuous"][dataGroup2]["maxx"]-dataGrouped["continuous"][dataGroup2]["minx"])/11));
+                let intMax = 0;
+                // Loop through array for 6 x - values
+                for (let i = 0; i <= 5; i++) {
+                    let xLabel = (i + i * intMultX + dataGrouped["continuous"][dataGroup2]["minx"]) + " &lt; x &le; " + (i + (i + 1) * intMultX + dataGrouped["continuous"][dataGroup2]["minx"])
+                    // Change labels within table
+                    document.querySelectorAll(`#c2-txt-x-${i}`)[0].innerHTML = xLabel;
+                    // Change values with table
+                    let intNew = randomInt(dataGrouped["continuous"][dataGroup2]["miny"], dataGrouped["continuous"][dataGroup2]["maxy"]);
+                    document.querySelectorAll(`#c2-val-x-${i}`)[0].innerHTML = intNew;
+                    if(intNew > intMax){intMax = intNew;}
+                }
+                let intMultY = Math.ceil(intMax / 8);
+                // Loop through array for 9 y - values
+                for (let i = 1; i <= 8; i++) {
+                    childNodes2[0].getElementById(`c2-txt-y-${i}`).innerHTML = i * intMultY;
+                }
+            });
+            // Change table within table
+            document.querySelectorAll("#c2-txt-label")[0].innerHTML = dataGrouped["continuous"][dataGroup2]["label"];
+            // Chart 3
+            // Get number of data groups continuous
+            const dataGroups3 = Object.keys(dataGrouped["discrete"]).length;
+            // Select random data group continuous
+            const dataGroup3 = randomInt(0, dataGroups3 - 1);
+            // Wait for object to load
+            svgChart3.addEventListener("load", function() {
+                // Get the child elements of svg
+                const svgDoc3 = svgChart3.contentDocument;
+                const childNodes3 = svgDoc3.childNodes;
+                // Change title and labels within svg
+                childNodes3[0].getElementById("c3-txt-title").innerHTML = dataGrouped["discrete"][dataGroup3]["title"];
+                // Copy label options to an array
+                let arrData = Object.values(dataFixed["data"]);
+                // Loop through array for 6 x - values
+                for (let i = 0; i <= 5; i++) {
+                    // Change labels within table
+                    document.querySelectorAll(`#c3-txt-x-${i}`)[0].innerHTML = dataGrouped["discrete"][dataGroup3]["labels"][i];
+                    // Change values with table
+                    document.querySelectorAll(`#c3-val-x-${i}`)[0].innerHTML = randomInt(dataGrouped["discrete"][dataGroup3]["miny"],dataGrouped["discrete"][dataGroup3]["maxy"]);
+                }
+            });
             break;
     
         default:
@@ -172,7 +225,9 @@ let dataLabels = {
             6: "Pink",
             7: "Silver",
             8: "Yellow"
-        }
+        },
+        miny: 1,
+        maxy: 100
     },
     1: {
         title: "Most popular book genre on Amazon",
@@ -187,7 +242,26 @@ let dataLabels = {
             6: "Adventure",
             7: "History",
             8: "Comedy"
-        }
+        },
+        miny: 1,
+        maxy: 100
+    },
+    2: {
+        title: "Most popular phone in year " + randomInt(7,11),
+        label: "Manufacturers",
+        labels: {
+            0: "Apple",
+            1: "Google Pixel",
+            2: "Samsung",
+            3: "Nokia",
+            4: "Motorola",
+            5: "Huawei",
+            6: "Sony",
+            7: "LG",
+            8: "HTC"
+        },
+        miny: 1,
+        maxy: 100
     }
 };
 
@@ -219,13 +293,39 @@ let dataFixed = {
     }
 }
 
-let dataGroup = {
-    0: {
-        title: "Achievement points earned this term",
-        label: "Achievement Points",
+let dataGrouped = {
+    "continuous": {
+        0: {
+            title: "Achievement points earned this term",
+            label: "Achievement Points",
+            minx: 0,
+            maxx: 80,
+            miny: 1,
+            maxy: 100
+        },
+        1: {
+            title: "Behaviour points earned this term",
+            label: "Behaviour Points",
+            minx: 0,
+            maxx: 80,
+            miny: 1,
+            maxy: 100
+        }
     },
-    1: {
-        title: "Begaviour points earned this term",
-        label: "Behaviour Points",
+    "discrete": {
+        0: {
+            title: "Monthly rainfall in Wales",
+            label: "Rainfall (mm)",
+            labels: {
+                0: "Jan - Feb",
+                1: "Mar - Apr",
+                2: "May - Jun",
+                3: "Jul - Aug",
+                4: "Sep - Oct",
+                5: "Nov - Dec",
+            },
+            miny: 1,
+            maxy: 50
+        }
     }
 }
