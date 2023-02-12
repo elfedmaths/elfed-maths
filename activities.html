@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="./js/textfit.min.js"></script>
     <script src="./js/stopwatch.js" defer></script>
+    <script src="./js/stopwatch.sub.js" defer></script>
+    <script src="./js/popup.activities.js" defer></script>
 	<meta name="description" content="Maths practice resource">
 </head>
 <body>
@@ -29,7 +31,8 @@
             </div>
             <div class="content-box" style="order:1;">
                 <h2>The counting game</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>The counting game</h3>
                     <p>The challenge is to count together as a class. Everybody is stood on their feet and somebody will start the 
                         game by saying one, somebody else then says two, a different person says three, and so on. Each student can only 
@@ -37,11 +40,15 @@
                         at the same time, then you must start again from zero.</p>
                     <p><span>Support: </span>students could sit down after they say their number.</p>
                     <p><span>Challenge: </span>students count up in multiples of 2 or 3.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:2;">
                 <h2>Mathletics</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Mathletics</h3>
                     <p>Students count to 10 together as a class.</p>
                     <p><i>Stage 1: </i>every time you say a multiple of 2, you put your right arm in the air.</p>
@@ -51,11 +58,15 @@
                     <p>By this stage, every number should have an action, apart from 1 and 7.</p>
                     <p><span>Support: </span>Complete each stage individually before doing them together.</p>
                     <p><span>Challenge: </span>Continue counting further from 1 to 20, 1 to 30, etc.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:3;">
                 <h2>21</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>21</h3>
                     <p>Students can say up to three numbers, starting with one. The first student starts 
                         and says either 1, or 1,2 or 1,2,3. The next student then continues counting, 
@@ -63,11 +74,15 @@
                         the next student in line then starts again from 1. The last student remaining is the winner.</p>
                     <p><span>Support: </span>to play up to 11 instead, using the same rules, for a quicker game.</p>
                     <p><span>Challenge: </span>to complete the activity in Welsh.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:4;">
                 <h2>I'm thinking of a number</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>I'm thinking of a number</h3>
                     <p>Think of a number between 1 and 100. The students then have five questions to try and 
                         narrow down the answer, before attempting to correctly guess the number first time. 
@@ -75,11 +90,15 @@
                         number is between. For example: is it odd? Is it less than 50? Is it greater than 30? And so on…</p>
                     <p><span>Support: </span>think of a number between 1 and 20.</p>
                     <p><span>Challenge: </span>think of a number between 100 and 200.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:5;">
                 <h2>Bingo</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Bingo</h3>
                     <p>Ask students to choose six numbers between 1 and 20, and write the numbers in the back 
                         of their book. You then ask a maths question, where the answer is the bingo number called. 
@@ -87,11 +106,15 @@
                     <p><span>Support: </span>to ask simple multiplication of two numbers to find the answers.</p>
                     <p><span>Challenge: </span>to ask more challenging questions using both plus and minus - a MAT 
                         mathematician could run this activity.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:6;">
                 <h2>Pointless Bingo</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Pointless Bingo</h3>
                     <p>Ask students to choose four numbers between 1 and 10, and write the numbers in the back of 
                         their book. You then ask a maths question, where the answer is the bingo number called. 
@@ -100,22 +123,30 @@
                     <p><span>Support: </span>to ask simple multiplication of two numbers to find the answers.</p>
                     <p><span>Challenge: </span>to ask more challenging questions using both plus and minus - a MAT 
                         mathematician could run this activity.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:7;">
                 <h2>Doubling</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Doubling</h3>
                     <p>Two students are selected to play the game. You call a number out, and the first person to 
                         correctly double the number and shout out the right answer gets a point. Play first to three 
                         points, and then winner stays on.</p>
                     <p><span>Support: </span>only use numbers less than 10.</p>
                     <p><span>Challenge: </span>use numbers bigger than 50, or include fractions and decimals.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:8;">
                 <h2>&check; or &cross;</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>&check; or &cross;</h3>
                     <p>Have two columns on the board for 'good' and 'bad' numbers. Make up a secret rule for what makes
                         a number a 'good' or 'bad' number. For example, 'good' numbers might be multiples of 3. Students take 
@@ -124,11 +155,15 @@
                     </p>
                     <p><span>Support: </span>stick to times times or numbers containing a certain digit.</p>
                     <p><span>Challenge: </span>use rules like squares numbers, cube numbers, and prime numbers.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:9;">
                 <h2>Oracy - Describe</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Oracy - Describe</h3>
                     <p>This is using the literacy option on the website. There are five different areas of mathematics, 
                         as well as a random option, which could be any word from the categories. The word appears on the 
@@ -139,11 +174,15 @@
                     <p><span>Support: </span>allow students to stand at the front in groups of two or three, to answer 
                         the questions in teams.</p>
                     <p><span>Challenge: </span>ask the students to give the welsh definition from the English description.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:10;">
                 <h2>Oracy - Define</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Oracy - Define</h3>
                     <p>This is using the literacy option on the website. There are five different areas of mathematics, 
                         as well as a random option, which could be any word from the categories. The word appears on the 
@@ -155,11 +194,15 @@
                         and refining if necessary, before feeding back to the group.</p>
                     <p><span>Challenge: </span>ask a student to provide a verbal example and nonexample to a new random word 
                         without any thinking time.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
             <div class="content-box" style="order:11;">
                 <h2>Oracy - Develop</h2>
-                <div class="content">
+                <div id="popup-background" class="background hidden"></div>
+                <div class="content hidden">
                     <h3>Oracy - Develop</h3>
                     <p>This is using the literacy option on the website. There are five different areas of mathematics, as 
                         well as a random option, which could be any word from the categories. The word appears on the board 
@@ -169,6 +212,9 @@
                     <p><span>Support: </span>encourage students to share their sentence with a partner, and refining if necessary, 
                         before feeding back to the group.</p>
                     <p><span>Challenge: </span>ask a student to create a sentence to a new random word without any thinking time.</p>
+                    <div id="stopwatch-sub" class="stopwatch">
+                        <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,7 +228,6 @@
     window.addEventListener("load", resizeFunction);  
     window.addEventListener("resize", resizeFunction);
     function resizeFunction(){
-        textFit(document.getElementsByTagName('h2'));
         const itemWidth = document.querySelector('.content-box').offsetWidth;
         const gridWidth = document.querySelector('.center-flex').offsetWidth;
         const itemCount = parseInt(gridWidth / itemWidth);

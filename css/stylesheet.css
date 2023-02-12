@@ -52,6 +52,10 @@ body{
     cursor: context-menu;
 }
 
+.hidden{
+    display: none !important;
+}
+
 /* -------------------- */
 
 /* Scroll Bar */
@@ -267,6 +271,7 @@ input[type=button].hide{
 #timer{
     font-size: 30px;
     margin: 20px auto;
+    cursor: default;
 }
 
 #timer:before, #timer:after {
@@ -315,11 +320,13 @@ input[type="checkbox"], input[type="radio"]{
 input[type="checkbox"]+label{
     flex: 1 1 78px;
     margin: 5px;
+    cursor: pointer;
 }
 
 input[type="radio"]+label{
     flex: 1 1 40px;
     margin: 5px;
+    cursor: pointer;
 }
 
 input[type="checkbox"]:checked+label, input[type="radio"]:checked+label{
@@ -671,7 +678,6 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     align-content: stretch;
     justify-content: center;
     align-items: stretch;
-    cursor: pointer;
     overflow-y: scroll;
 }
 
@@ -694,35 +700,68 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     cursor: pointer;
 }
 
-#main .center-flex .content-box .content{
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    display: none;
+@media (orientation: portrait) {
+    #main .center-flex .content-box h2{
+        font-size: 4vw;
+    }
+    #main .center-flex .content-box:hover h2:not(.fixed){
+        display: none;
+    }
+    #main .center-flex .content-box:hover .content{
+        display: block;
+    }
 }
 
-#main .center-flex .content-box:hover h2:not(.fixed){
-    display: none;
-}
+@media (orientation: landscape) {
+    #main .center-flex .content-box .content{
+        position: fixed;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        padding: 50px;
+        border-radius: 10px;
+        background-color: var(--main-back);
+        box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #main .center-flex .content-box .content h3{
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        font-size: 2vw;
+        color: var(--main-font);
+    }
+    #main .center-flex .content-box .content p{
+        font-size: 100%;
+        margin: 5px 0;
+    }
+    #main .center-flex .content-box .content p .textFitted span{
+        font-weight: bold;
+    }
+    #main .center-flex .content-box .content .stopwatch{
+        position: absolute;
+        bottom: 10px;
+        left: 25%;
+        width: 50%;
+        height: 40px;
+        padding: 10px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+        cursor: pointer;
+    }
 
-#main .center-flex .content-box:hover .content{
-    display: block;
-}
+    #main .center-flex .content-box .content .stopwatch p{
+        cursor: pointer;
+    }
 
-#main .center-flex .content-box .content h3{
-    width: 100%;
-    height: 40px;
-    font-size: 2vw;
-    color: var(--main-font);
-}
-
-#main .center-flex .content-box .content p{
-    font-size: 100%;
-    margin: 5px 0;
-}
-
-#main .center-flex .content-box .content p span{
-    font-weight: bold;
+    #main .center-flex .content-box .content .stopwatch p span{
+        cursor: pointer;
+    }
 }
 
 #main .center-flex .double-width{
@@ -734,3 +773,110 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 #main .center-flex .pos-3{ order: 2; }
 #main .center-flex .pos-4{ order: 3; }
 #main .center-flex .pos-5{ order: 4; }
+
+/* -------------------- */
+
+/* Popup Styles */
+
+#popup-menu {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+    z-index: 2;
+}
+
+#popup-menu input{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+
+#popup-menu span{
+    display: block;
+    width: 30px;
+    height: 4px;
+    margin: 5px 10px;
+    position: relative;
+    background: var(--main-border);
+    border-radius: 3px;
+    z-index: 1;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+}
+
+#popup-menu span:first-of-type{
+    margin-top: 13px;
+}
+
+#popup-menu input:checked ~ span{
+    opacity: 1;
+    transform: translate(0px, -6px) rotate(45deg);
+    background: var(--button-hover);
+}
+
+#popup-menu input:checked ~ span:nth-last-child(3){
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#popup-menu input:checked ~ span:nth-last-child(2){
+    transform: translate(0px, 2px) rotate(-45deg);
+}
+
+#popup-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#popup-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    padding: 20px;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+#popup-content h1{
+    font-size: 32px;
+    color: var(--main-font);
+    cursor: default;
+    margin: 10px;
+}
+
+#popup-content h2{
+    font-size: 28px;
+    color: var(--main-font);
+    cursor: default;
+    margin: 8px;
+}
+
+#popup-content p{
+    font-size: 18px;
+    color: var(--main-font);
+    cursor: default;
+    margin: 5px;
+}
