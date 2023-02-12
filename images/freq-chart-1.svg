@@ -109,9 +109,16 @@ m470 0 l0 -230 -230 0 -230 0 0 230 0 230 230 0 230 0 0 -230z m-4720 -465 l0
 <text id="c1-txt-y-7" x="32" y="89">7</text>
 <text id="c1-txt-y-8" x="32" y="42">8</text>
 <text id="c1-txt-label" x="150" y="460">Label</text>
-<text id="c1-txt-x-0" x="156" y="435">0</text>
-<text id="c1-txt-x-1" x="251" y="435">0</text>
-<text id="c1-txt-x-2" x="346" y="435">0</text>
-<text id="c1-txt-x-3" x="441" y="435">0</text>
-<text id="c1-txt-x-4" x="536" y="435">0</text>
+<text id="c1-txt-x-0" x="61" y="435">0</text>
+<text id="c1-txt-x-1" x="109" y="435">0</text>
+<text id="c1-txt-x-2" x="156" y="435">0</text>
+<text id="c1-txt-x-3" x="204" y="435">0</text>
+<text id="c1-txt-x-4" x="251" y="435">0</text>
+<text id="c1-txt-x-5" x="299" y="435">0</text>
+<text id="c1-txt-x-6" x="346" y="435">0</text>
+<text id="c1-txt-x-7" x="394" y="435">0</text>
+<text id="c1-txt-x-8" x="441" y="435">0</text>
+<text id="c1-txt-x-9" x="489" y="435">0</text>
+<text id="c1-txt-x-10" x="536" y="435">0</text>
+<text id="c1-txt-x-11" x="584" y="435">0</text>
 </svg>

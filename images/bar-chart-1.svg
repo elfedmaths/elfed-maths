@@ -97,21 +97,21 @@ m470 0 l0 -230 -230 0 -230 0 0 230 0 230 230 0 230 0 0 -230z m-4720 -465 l0
 -220 0 0 39 c0 22 -4 43 -10 46 -6 4 -10 77 -10 186 l0 179 230 0 230 0 0
 -225z"/>
 </g>
-<text id="bc1-txt-title" x="150" y="15" style="font-size:24px;text-decoration:underline;">Title</text>
-<text id="bc1-txt-frequency" x="0" y="0" transform="translate(20,250) rotate(-90)">Frequency</text>
-<text id="bc1-txt-y-0" x="32" y="418">0</text>
-<text id="bc1-txt-y-1" x="32" y="371">1</text>
-<text id="bc1-txt-y-2" x="32" y="324">2</text>
-<text id="bc1-txt-y-3" x="32" y="277">3</text>
-<text id="bc1-txt-y-4" x="32" y="230">4</text>
-<text id="bc1-txt-y-5" x="32" y="183">5</text>
-<text id="bc1-txt-y-6" x="32" y="136">6</text>
-<text id="bc1-txt-y-7" x="32" y="89">7</text>
-<text id="bc1-txt-y-8" x="32" y="42">8</text>
-<text id="bc1-txt-label" x="150" y="460">Label</text>
-<text id="bc1-txt-x-0" x="132" y="435">0</text>
-<text id="bc1-txt-x-1" x="227" y="435">0</text>
-<text id="bc1-txt-x-2" x="322" y="435">0</text>
-<text id="bc1-txt-x-3" x="417" y="435">0</text>
-<text id="bc1-txt-x-4" x="512" y="435">0</text>
+<text id="c1-txt-title" x="150" y="15" style="font-size:24px;text-decoration:underline;">Title</text>
+<text id="c1-txt-frequency" x="0" y="0" transform="translate(20,250) rotate(-90)">Frequency</text>
+<text id="c1-txt-y-0" x="32" y="418">0</text>
+<text id="c1-txt-y-1" x="32" y="371">1</text>
+<text id="c1-txt-y-2" x="32" y="324">2</text>
+<text id="c1-txt-y-3" x="32" y="277">3</text>
+<text id="c1-txt-y-4" x="32" y="230">4</text>
+<text id="c1-txt-y-5" x="32" y="183">5</text>
+<text id="c1-txt-y-6" x="32" y="136">6</text>
+<text id="c1-txt-y-7" x="32" y="89">7</text>
+<text id="c1-txt-y-8" x="32" y="42">8</text>
+<text id="c1-txt-label" x="150" y="460">Label</text>
+<text id="c1-txt-x-0" x="132" y="435">0</text>
+<text id="c1-txt-x-1" x="227" y="435">0</text>
+<text id="c1-txt-x-2" x="322" y="435">0</text>
+<text id="c1-txt-x-3" x="417" y="435">0</text>
+<text id="c1-txt-x-4" x="512" y="435">0</text>
 </svg>

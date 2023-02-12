@@ -308,5 +308,5 @@ c-1 55 0 106 2 113 4 10 33 13 116 13 l110 0 0 -115z m230 0 l0 -115 -110 0
 -110 0 0 115 0 115 110 0 110 0 0 -115z m240 0 l0 -115 -110 0 -110 0 0 115 0
 115 110 0 110 0 0 -115z"/>
 </g>
-<text id="bc3-txt-title" x="150" y="15" style="font-size:24px;text-decoration:underline;">Title</text>
+<text id="c3-txt-title" x="150" y="15" style="font-size:24px;text-decoration:underline;">Title</text>
 </svg>
