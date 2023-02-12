@@ -46,7 +46,7 @@ function loadData(filename){
                 }
             });
             // Change table within table
-            document.querySelectorAll("#c1-txt-label")[0].innerHTML = dataLabels[dataRow1]["label"];
+            document.querySelectorAll("#c1-txt-x-label")[0].innerHTML = dataLabels[dataRow1]["label"];
             // Chart 2
             // Select random data group
             let dataRow2 = randomInt(0, dataRows - 1);
@@ -86,7 +86,7 @@ function loadData(filename){
                 }
             });
             // Change table within table
-            document.querySelectorAll("#c2-txt-label")[0].innerHTML = dataLabels[dataRow2]["label"];
+            document.querySelectorAll("#c2-txt-x-label")[0].innerHTML = dataLabels[dataRow2]["label"];
             // Chart 3
             // Wait for object to load
             svgChart3.addEventListener("load", function() {
@@ -108,6 +108,9 @@ function loadData(filename){
                     arrData.splice(intLabels,1);
                 }
             });
+            // Change table within table
+            document.querySelectorAll("#c3-txt-x-label")[0].innerHTML = "County";
+            document.querySelectorAll("#c3-txt-y-label")[0].innerHTML = "Population";
             break;
 
         case "freq-polygon":
@@ -146,7 +149,7 @@ function loadData(filename){
                 }
             });
             // Change table within table
-            document.querySelectorAll("#c1-txt-label")[0].innerHTML = dataGrouped["continuous"][dataGroup1]["label"];
+            document.querySelectorAll("#c1-txt-x-label")[0].innerHTML = dataGrouped["continuous"][dataGroup1]["label"];
             // Chart 2
             // Select random data group
             let dataGroup2 = randomInt(0, dataGroups - 1);
@@ -181,7 +184,7 @@ function loadData(filename){
                 }
             });
             // Change table within table
-            document.querySelectorAll("#c2-txt-label")[0].innerHTML = dataGrouped["continuous"][dataGroup2]["label"];
+            document.querySelectorAll("#c2-txt-x-label")[0].innerHTML = dataGrouped["continuous"][dataGroup2]["label"];
             // Chart 3
             // Get number of data groups continuous
             const dataGroups3 = Object.keys(dataGrouped["discrete"]).length;
@@ -204,7 +207,106 @@ function loadData(filename){
                     document.querySelectorAll(`#c3-val-x-${i}`)[0].innerHTML = randomInt(dataGrouped["discrete"][dataGroup3]["miny"],dataGrouped["discrete"][dataGroup3]["maxy"]);
                 }
             });
+            // Change table within table
+            document.querySelectorAll("#c3-txt-x-label")[0].innerHTML = dataGrouped["discrete"][dataGroup3]["xlabel"];
+            document.querySelectorAll("#c3-txt-y-label")[0].innerHTML = dataGrouped["discrete"][dataGroup3]["ylabel"];
             break;
+
+            case "scatter-graph":
+                // Chart 1
+                // Get number of data groups continuous
+                const dataScatters = Object.keys(dataScatter).length;
+                // Select random data group continuous
+                const dataScatter1 = randomInt(0, dataScatters - 1);
+                // Wait for object to load
+                svgChart1.addEventListener("load", function() {
+                    // Get the child elements of svg
+                    const svgDoc1 = svgChart1.contentDocument;
+                    const childNodes1 = svgDoc1.childNodes;
+                    // Change title and labels within svg
+                    childNodes1[0].getElementById("c1-txt-title").innerHTML = dataScatter[dataScatter1]["title"];
+                    childNodes1[0].getElementById("c1-txt-label").innerHTML = dataScatter[dataScatter1]["xlabel"];
+                    childNodes1[0].getElementById("c1-txt-frequency").innerHTML = dataScatter[dataScatter1]["ylabel"];
+                    // Loop through 8 table values
+                    for (let i = 0; i <= 7; i++) {
+                        // Change values with table
+                        let intNewX = randomInt(dataScatter[dataScatter1]["minx"],dataScatter[dataScatter1]["maxx"]);
+                        document.querySelectorAll(`#c1-txt-x-${i}`)[0].innerHTML = intNewX;
+                        let intNewY = randomInt(dataScatter[dataScatter1]["miny"],dataScatter[dataScatter1]["maxy"]);
+                        document.querySelectorAll(`#c1-val-x-${i}`)[0].innerHTML = intNewY;
+                    }
+                    // Loop through 9 y - values
+                    for (let i = 0; i <= 8; i++) {
+                        let intNewY = dataScatter[dataScatter1]["miny"] + (i * Math.ceil(dataScatter[dataScatter1]["maxy"]/9));
+                        childNodes1[0].getElementById(`c1-txt-y-${i}`).innerHTML = intNewY;
+                    }
+                    // Loop through 12 x - values
+                    for (let i = 0; i <= 11; i++) {
+                        let intNewX = dataScatter[dataScatter1]["minx"] + (i * Math.ceil(dataScatter[dataScatter1]["maxx"]/12));
+                        childNodes1[0].getElementById(`c1-txt-x-${i}`).innerHTML = intNewX;
+                    }
+                });
+                // Change table within table
+                document.querySelectorAll("#c1-txt-x-label")[0].innerHTML = dataScatter[dataScatter1]["xlabel"];
+                document.querySelectorAll("#c1-txt-y-label")[0].innerHTML = dataScatter[dataScatter1]["ylabel"];
+                // Chart 2
+                // Select random data group
+                let dataScatter2 = randomInt(0, dataScatters - 1);
+                while (dataScatter1 == dataScatter2){
+                    dataScatter2 = randomInt(0, dataScatters - 1);
+                }
+                // Wait for object to load
+                svgChart2.addEventListener("load", function() {
+                    // Get the child elements of svg
+                    const svgDoc2 = svgChart2.contentDocument;
+                    const childNodes2 = svgDoc2.childNodes;
+                    // Change title and labels within svg
+                    childNodes2[0].getElementById("c2-txt-title").innerHTML = dataScatter[dataScatter2]["title"];
+                    childNodes2[0].getElementById("c2-txt-label").innerHTML = dataScatter[dataScatter2]["xlabel"];
+                    childNodes2[0].getElementById("c2-txt-frequency").innerHTML = dataScatter[dataScatter2]["ylabel"];
+                    // Loop through 8 table values
+                    for (let i = 0; i <= 7; i++) {
+                        // Change values with table
+                        let intNewX = randomInt(dataScatter[dataScatter2]["minx"],dataScatter[dataScatter2]["maxx"]);
+                        document.querySelectorAll(`#c2-txt-x-${i}`)[0].innerHTML = intNewX;
+                        let intNewY = randomInt(dataScatter[dataScatter2]["miny"],dataScatter[dataScatter2]["maxy"]);
+                        document.querySelectorAll(`#c2-val-x-${i}`)[0].innerHTML = intNewY;
+                    }
+                    // Loop through 9 y - values
+                    for (let i = 0; i <= 8; i++) {
+                        let intNewY = dataScatter[dataScatter2]["miny"] + (i * Math.ceil(dataScatter[dataScatter2]["maxy"]/9));
+                        childNodes2[0].getElementById(`c2-txt-y-${i}`).innerHTML = intNewY;
+                    }
+                });
+                // Change table within table
+                document.querySelectorAll("#c2-txt-y-label")[0].innerHTML = dataScatter[dataScatter2]["ylabel"];
+                document.querySelectorAll("#c2-txt-x-label")[0].innerHTML = dataScatter[dataScatter2]["xlabel"];
+                // Chart 3
+                // Select random data group
+                let dataScatter3 = randomInt(0, dataScatters - 1);
+                while (dataScatter3 == dataScatter1 || dataScatter3 == dataScatter2){
+                    dataScatter3 = randomInt(0, dataScatters - 1);
+                }
+                // Wait for object to load
+                svgChart3.addEventListener("load", function() {
+                    // Get the child elements of svg
+                    const svgDoc3 = svgChart3.contentDocument;
+                    const childNodes3 = svgDoc3.childNodes;
+                    // Change title and labels within svg
+                    childNodes3[0].getElementById("c3-txt-title").innerHTML = dataScatter[dataScatter3]["title"];
+                    // Loop through 8 table values
+                    for (let i = 0; i <= 7; i++) {
+                        // Change values with table
+                        let intNewX = randomInt(dataScatter[dataScatter3]["minx"],dataScatter[dataScatter3]["maxx"]);
+                        document.querySelectorAll(`#c3-txt-x-${i}`)[0].innerHTML = intNewX;
+                        let intNewY = randomInt(dataScatter[dataScatter3]["miny"],dataScatter[dataScatter3]["maxy"]);
+                        document.querySelectorAll(`#c3-val-x-${i}`)[0].innerHTML = intNewY;
+                    }
+                });
+                // Change table within table
+                document.querySelectorAll("#c3-txt-y-label")[0].innerHTML = dataScatter[dataScatter3]["ylabel"];
+                document.querySelectorAll("#c3-txt-x-label")[0].innerHTML = dataScatter[dataScatter3]["xlabel"];
+                break;
     
         default:
             break;
@@ -315,7 +417,8 @@ let dataGrouped = {
     "discrete": {
         0: {
             title: "Monthly rainfall in Wales",
-            label: "Rainfall (mm)",
+            xlabel: "Months",
+            ylabel: "Rainfall (mm)",
             labels: {
                 0: "Jan - Feb",
                 1: "Mar - Apr",
@@ -327,5 +430,35 @@ let dataGrouped = {
             miny: 1,
             maxy: 50
         }
+    }
+}
+
+let dataScatter = {
+    0: {
+        title: "Car sale values against the age of the car",
+        xlabel: "Car Age (Years)",
+        ylabel: "Car Value (£1000)",
+        minx: 1,
+        maxx: 10,
+        miny: 1,
+        maxy: 30
+    },
+    1: {
+        title: "Year " + randomInt(7,9) + " procedural score against reading age",
+        xlabel: "Procedural Score",
+        ylabel: "Reading Age",
+        minx: 80,
+        maxx: 120,
+        miny: 1,
+        maxy: 10
+    },
+    2: {
+        title: "Year " + randomInt(7,9) + " reasoning score against reading age",
+        xlabel: "Reasoning Score",
+        ylabel: "Reading Age",
+        minx: 80,
+        maxx: 120,
+        miny: 1,
+        maxy: 10
     }
 }
