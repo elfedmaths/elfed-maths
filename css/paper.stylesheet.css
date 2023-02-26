@@ -74,6 +74,7 @@
     position: fixed;
     top: 10px;
     left: 10px;
+    z-index: 1;
 }
 
 #nav-container{
@@ -151,6 +152,7 @@
 #menu-items{
     position: absolute;
     width: 300px;
+    height: calc(100vh + 150px);
     margin: -100px 0 0 -50px;
     padding: 50px;
     padding-top: 125px;
@@ -168,6 +170,8 @@
 
 #nav-container input:checked ~ ul{
     transform: none;
+    background-color: rgba(0,0,0,0.05);
+    box-shadow: 0 -25px 25px 25px rgba(0,0,0,0.05);
 }
 
 /* ----- Worksheet Banner ----- */
@@ -206,6 +210,10 @@
     align-items: flex-start;
 }
 
+#template .content.space-around{
+    justify-content: space-around;
+}
+
 #template .content .content-row{
     width: 100%;
     flex: 1 1;
@@ -219,12 +227,47 @@
     margin-left: 50px;
 }
 
+#template .content .content-row object.large-chart{
+    height: 380px;
+}
+
+#template .content .content-col{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#template .content .content-col object{
+    height: auto;
+    width: 80%;
+    margin: 20px auto;
+}
+
+#template .content .content-col .title{
+    font-size: 18px;
+    text-decoration: underline;
+    text-align: center;
+    padding-left: 20px;
+}
+
+/* --- Table Styles --- */
+
 #template .content .content-row table{
     margin: auto;
     width: 300px;
     border-collapse: collapse;
     table-layout: fixed;
     text-align: center;
+}
+
+#template .content .content-row table.wide-table{
+    width: 600px;
+    table-layout: auto;
+}
+
+#template .content .content-row table.translate-up{
+    transform: translate(0px, -70px);
 }
 
 #template .content .content-row table th{
@@ -238,4 +281,78 @@
     border: 1px solid black;
     height: 25px;
     vertical-align:middle
+}
+
+#template .content .content-row table .no-border td{
+    border: 0px;
+}
+
+#template .content .content-row table .tall-row td{
+    height: 50px;
+}
+
+#template .content .content-row table.wide-table tr .title{
+    font-size: 18px;
+    text-decoration: underline;
+    text-align: left;
+    padding-left: 20px;
+}
+
+#template .content .content-row table.wide-table th.no-border,
+#template .content .content-row table.wide-table td.no-border{
+    border: 0px;
+    width: 30px;
+    background-color: transparent;
+}
+
+#template .content .content-row table.wide-table th.wide-column,
+#template .content .content-row table.wide-table td.wide-column{
+    width: 300px;
+}
+
+#template .content .content-row table.wide-table th.fixed-column,
+#template .content .content-row table.wide-table td.fixed-column{
+    width: 100px;
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    padding-right: 25px;
+    background-color: var(--table-head);
+    border: 0.5px solid #000000;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    padding-right: 25px;
+    background-color: var(--table-head);
+    border: 0.5px solid #000000;
+    border-radius: 50%;
+}
+
+.square p, .circle p{
+    margin-left: 30px;
+    font-size: 20px;
+    width: 40px;
+}
+
+#template .content .content-col table{
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    text-align: center;
+}
+
+#template .content .content-col table td{
+    height: 40px;
+    vertical-align: middle;
+}
+
+#template .content .content-col table td:nth-child(odd) {
+    text-align: right;
 }

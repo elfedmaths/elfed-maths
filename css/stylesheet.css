@@ -11,6 +11,8 @@
     --button-border: #000000;
     --button-hover: #cfcfcf;
 
+    --menu-line: #020e44;
+
     --scroll-back: #ffffff;
     --scroll-main: #ececec;
     --scroll-hover: #cfcfcf;
@@ -700,15 +702,40 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     cursor: pointer;
 }
 
+#main .center-flex .content-box .content .stopwatch{
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+#main .center-flex .content-box .content .stopwatch p{
+    cursor: pointer;
+}
+
+#main .center-flex .content-box .content .stopwatch p span{
+    cursor: pointer;
+}
+
 @media (orientation: portrait) {
+    #main .center-flex .content-box .background{
+        display: none;
+    }
+    #main .center-flex .content-box .hidden-mobile{
+        display: none;
+    }
     #main .center-flex .content-box h2{
         font-size: 4vw;
     }
-    #main .center-flex .content-box:hover h2:not(.fixed){
-        display: none;
+    #main .center-flex .content-box h3{
+        margin: 5px auto;
     }
     #main .center-flex .content-box:hover .content{
-        display: block;
+        padding: 10px 5px;
+    }
+    #main .center-flex .content-box .content .stopwatch{
+        margin: 10px auto;
+        width: 40%;
+        height: 20px;
+        padding: 4px;
     }
 }
 
@@ -738,7 +765,6 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
         color: var(--main-font);
     }
     #main .center-flex .content-box .content p{
-        font-size: 100%;
         margin: 5px 0;
     }
     #main .center-flex .content-box .content p .textFitted span{
@@ -747,20 +773,10 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     #main .center-flex .content-box .content .stopwatch{
         position: absolute;
         bottom: 10px;
-        left: 25%;
+        left: 25%;    
         width: 50%;
         height: 40px;
         padding: 10px;
-        box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-        cursor: pointer;
-    }
-
-    #main .center-flex .content-box .content .stopwatch p{
-        cursor: pointer;
-    }
-
-    #main .center-flex .content-box .content .stopwatch p span{
-        cursor: pointer;
     }
 }
 
@@ -812,7 +828,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     height: 4px;
     margin: 5px 10px;
     position: relative;
-    background: var(--main-border);
+    background: var(--menu-line);
     border-radius: 3px;
     z-index: 1;
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
