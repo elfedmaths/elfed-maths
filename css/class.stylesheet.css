@@ -1,0 +1,99 @@
+/* --- Top Row -- */
+
+body .top-row{
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+}
+
+body .top-row p{
+    flex: 1 1;
+    text-decoration: underline;
+    font-size: 2vw;
+    text-align: left;
+    margin: 0 20px;
+}
+
+body .top-row p:nth-child(2){
+    text-align: right;
+    cursor: pointer;
+}
+
+/* --- Main Layout --- */
+
+@media (orientation: portrait) {
+  #main:after{
+    margin-top: 50px;
+    content: "Classroom not currently available on portrait devices";
+  }
+  #main .classroom{
+    display: none;
+  }
+}
+
+@media (orientation: landscape) {
+  #main .classroom{
+    flex: 1 1;
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+  }
+}
+
+#main .classroom .left-pane{
+    flex: 1 1;
+}
+
+#main .classroom .main-pane{
+    flex: 3 3;
+}
+
+#main .classroom .right-pane{
+    flex: 1 1;
+}
+
+/* --- Side Menu --- */
+
+.menu {
+    width: 100%;
+    padding: 10px;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: 5px;
+}
+
+.menu ul li a {
+    display: block;
+    font-size: 2vw;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.1)
+}
+
+.menu ul li .submenu {
+    display: none;
+}
+
+.menu ul li .submenu li {
+    margin-bottom: 5px;
+}
+
+.menu ul li .submenu li a {
+    font-size: 2vw;
+}
+
+.menu ul li .submenu li a:hover {
+    background-color: rgba(255, 255, 255, 1)
+}
+  
