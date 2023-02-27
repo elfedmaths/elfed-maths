@@ -38,19 +38,58 @@ dateElem.addEventListener('click', function() {
 });
 
 // Side Menu Options
-
-var menuItems = document.querySelectorAll('.menu > ul > li');
-
-menuItems.forEach(function(item) {
-  item.addEventListener('click', function(e) {
-    var submenu = e.target.nextElementSibling;
-    if (submenu.classList.contains('submenu')) {
-      e.preventDefault();
-      if (submenu.style.display === 'block') {
-        submenu.style.display = 'none';
-      } else {
-        submenu.style.display = 'block';
-      }
-    }
+var selectBtn = document.querySelectorAll('.menu > ul > li > ul > li > button');
+selectBtn.forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    genQuest(e.target.id);
+    var allmenu = document.querySelectorAll('.submenu');
+    allmenu.forEach(function(elem){
+      elem.previousElementSibling.classList.remove('selected');
+    });
+    var submenu = e.target.parentElement.parentElement.previousElementSibling;
+    submenu.classList.add('selected');
   });
 });
+
+// Generate Questions
+function genQuest(id){
+  var quest1, quest2, quest3, quest4, quest5;
+  switch (id) {
+    case 'btn-set-a':
+      quest1 = getCalc('int-add');
+      quest2 = getCalc('int-mult');
+      quest3 = getCalc('perc-find-1');
+      quest4 = getCalc('alg-simp-1');
+      quest5 = getCalc('seq-mult');
+      break;
+    case 'btn-set-b':
+      
+      break;
+    case 'btn-set-c':
+      
+      break;
+    case 'btn-set-d':
+      
+      break;
+    case 'btn-set-e':
+      
+      break;
+    case 'btn-set-f':
+      
+      break;
+    case 'btn-set-g':
+      
+      break;
+    case 'btn-set-h':
+      
+      break;
+
+    default:
+      break;
+  }
+  document.getElementById('question-1').innerHTML = quest1[0];
+  document.getElementById('question-2').innerHTML = quest2[0];
+  document.getElementById('question-3').innerHTML = quest3[0];
+  document.getElementById('question-4').innerHTML = quest4[0];
+  document.getElementById('question-5').innerHTML = quest5[0];
+}

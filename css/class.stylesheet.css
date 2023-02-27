@@ -81,8 +81,16 @@ body .top-row p:nth-child(2){
     background-color: rgba(0, 0, 0, 0.1)
 }
 
+.menu ul li a.selected {
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
 .menu ul li .submenu {
     display: none;
+}
+
+.menu ul li:hover .submenu {
+    display: block;
 }
 
 .menu ul li .submenu li {
@@ -96,4 +104,23 @@ body .top-row p:nth-child(2){
 .menu ul li .submenu li a:hover {
     background-color: rgba(255, 255, 255, 1)
 }
-  
+
+/* --- Main Pane --- */
+
+.main-pane{
+    padding: 20px;
+}
+
+.main-pane ol{
+    list-style-position: outside;
+    margin-left: 5vw;
+}
+
+.main-pane ol li{
+    font-size: 5vw;
+}
+
+.main-pane ol li br{
+    display: none;
+    margin-left: 10vw;
+}

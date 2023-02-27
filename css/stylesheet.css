@@ -877,21 +877,21 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 }
 
 #popup-content h1{
-    font-size: 32px;
+    font-size: 4vw;
     color: var(--main-font);
     cursor: default;
     margin: 10px;
 }
 
 #popup-content h2{
-    font-size: 28px;
+    font-size: 3vw;
     color: var(--main-font);
     cursor: default;
     margin: 8px;
 }
 
 #popup-content p{
-    font-size: 18px;
+    font-size: 2vw;
     color: var(--main-font);
     cursor: default;
     margin: 5px;
