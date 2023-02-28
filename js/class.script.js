@@ -63,33 +63,68 @@ function genQuest(id){
       quest5 = getCalc('seq-mult');
       break;
     case 'btn-set-b':
-      
+      quest1 = getCalc('int-mult');
+      quest2 = getCalc('dec-add');
+      quest3 = getCalc('perc-find-2');
+      quest4 = getCalc('int-sub');
+      quest5 = getCalc('frac-simp');
       break;
     case 'btn-set-c':
-      
+      quest1 = getCalc('dec-sub');
+      quest2 = getCalc('int-div');
+      quest3 = getCalc('dec-mult');
+      quest4 = getCalc('perc-find-3');
+      quest5 = getCalc('alg-simp-2');
       break;
     case 'btn-set-d':
-      
+      quest1 = getCalc('neg-add');
+      quest2 = getCalc('round-dec');
+      quest3 = getCalc('perc-inc');
+      quest4 = getCalc('frac-add');
+      quest5 = getCalc('alg-sub');
       break;
     case 'btn-set-e':
-      
+      quest1 = getCalc('round-sig');
+      quest2 = getCalc('seq-term');
+      quest3 = getCalc('perc-dec');
+      quest4 = getCalc('frac-sub');
+      quest5 = getCalc('alg-solve-1');
       break;
     case 'btn-set-f':
-      
+      quest1 = getCalc('ooo-add-sub');
+      quest2 = getCalc('round-sig-dec');
+      quest3 = getCalc('perc-mult');
+      quest4 = getCalc('frac-mult');
+      quest5 = getCalc('alg-solve-2');
       break;
     case 'btn-set-g':
-      
+      quest1 = getCalc('ooo-mult-div');
+      quest2 = getCalc('alg-exp');
+      quest3 = getCalc('neg-div');
+      quest4 = getCalc('seq-nth');
+      quest5 = getCalc('frac-div');
       break;
     case 'btn-set-h':
-      
+      quest1 = getCalc('frac-amount');
+      quest2 = getCalc('dec-div');
+      quest3 = getCalc('neg-sub');
+      quest4 = getCalc('neg-mult');
+      quest5 = getCalc('alg-fact');
       break;
 
     default:
       break;
   }
+  // Update Questions
   document.getElementById('question-1').innerHTML = quest1[0];
   document.getElementById('question-2').innerHTML = quest2[0];
   document.getElementById('question-3').innerHTML = quest3[0];
   document.getElementById('question-4').innerHTML = quest4[0];
   document.getElementById('question-5').innerHTML = quest5[0];
+  // Update Answers
+  document.getElementById('answer-1').innerHTML = quest1[1];
+  document.getElementById('answer-2').innerHTML = quest2[1];
+  document.getElementById('answer-3').innerHTML = quest3[1];
+  document.getElementById('answer-4').innerHTML = quest4[1];
+  document.getElementById('answer-5').innerHTML = quest5[1];
 }

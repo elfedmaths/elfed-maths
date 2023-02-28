@@ -3,6 +3,7 @@
 body .top-row{
     display: flex;
     width: 100vw;
+    color: #000000;
     justify-content: space-between;
 }
 
@@ -20,6 +21,10 @@ body .top-row p:nth-child(2){
 }
 
 /* --- Main Layout --- */
+
+#main .classroom{
+    color: #000000;
+}
 
 @media (orientation: portrait) {
   #main:after{
@@ -91,6 +96,7 @@ body .top-row p:nth-child(2){
 
 .menu ul li:hover .submenu {
     display: block;
+    margin: 10px 0;
 }
 
 .menu ul li .submenu li {
@@ -98,7 +104,7 @@ body .top-row p:nth-child(2){
 }
 
 .menu ul li .submenu li a {
-    font-size: 2vw;
+    font-size: 1vw;
 }
 
 .menu ul li .submenu li a:hover {
@@ -112,15 +118,42 @@ body .top-row p:nth-child(2){
 }
 
 .main-pane ol{
+    height: 100%;
     list-style-position: outside;
     margin-left: 5vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 }
 
 .main-pane ol li{
-    font-size: 5vw;
+    font-size: 3vw;
+    text-align: left;
 }
 
 .main-pane ol li br{
     display: none;
     margin-left: 10vw;
+}
+
+/* --- Right Answer Pane --- */
+
+.right-pane{
+    padding: 20px;
+}
+
+.right-pane ol{
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+.right-pane ol li{
+    font-size: 3vw;
+    text-align: left;
+    color: #ff0000;
 }
