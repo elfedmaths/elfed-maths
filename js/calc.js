@@ -220,7 +220,7 @@ function getCalc(type){
                 [`${int1} + (${int2} - ${int3})`, int1 + (int2 - int3)],
                 [`${int1} - (${int2} + ${int3})`, int1 - (int2 + int3)]
             ];
-            var num = randomInt(0, form1.length);
+            var num = randomInt(0, form1.length-1);
             var quest = form1[num][0], ans = form1[num][1];
             break;
         case 'ooo-mult-div':
@@ -234,7 +234,7 @@ function getCalc(type){
                 [`${int2} x (${int4} &divide; ${int1})`, int2 * (int4 / int1)],
                 [`${int5} &divide; (${int2} x ${int3})`, int5 / (int2 * int3)]
             ];
-            var num = randomInt(0, form1.length);
+            var num = randomInt(0, form1.length-1);
             var quest = form1[num][0], ans = form1[num][1];
             break;
         /* -------------------- Algebra -------------------- */
