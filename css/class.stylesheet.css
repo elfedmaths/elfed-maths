@@ -22,7 +22,7 @@ body .top-row p:nth-child(2){
 
 /* --- Main Layout --- */
 
-#main .classroom{
+#main #classroom{
     color: #000000;
 }
 
@@ -31,13 +31,13 @@ body .top-row p:nth-child(2){
     margin-top: 50px;
     content: "Classroom not currently available on portrait devices";
   }
-  #main .classroom{
+  #main #classroom{
     display: none;
   }
 }
 
 @media (orientation: landscape) {
-  #main .classroom{
+  #main #classroom{
     flex: 1 1;
     display: flex;
     width: 100vw;
@@ -45,79 +45,21 @@ body .top-row p:nth-child(2){
   }
 }
 
-#main .classroom .left-pane{
-    flex: 1 1;
-}
-
-#main .classroom .main-pane{
+#main #classroom #main-pane{
     flex: 3 3;
 }
 
-#main .classroom .right-pane{
+#main #classroom #right-pane{
     flex: 1 1;
-}
-
-/* --- Side Menu --- */
-
-.menu {
-    width: 100%;
-    padding: 10px;
-}
-
-.menu ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu ul li {
-    margin-bottom: 5px;
-}
-
-.menu ul li a {
-    display: block;
-    font-size: 2vw;
-    color: #000000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.menu ul li a:hover {
-    background-color: rgba(0, 0, 0, 0.1)
-}
-
-.menu ul li a.selected {
-    background-color: rgba(0, 0, 0, 0.2)
-}
-
-.menu ul li .submenu {
-    display: none;
-}
-
-.menu ul li:hover .submenu {
-    display: block;
-    margin: 10px 0;
-}
-
-.menu ul li .submenu li {
-    margin-bottom: 5px;
-}
-
-.menu ul li .submenu li a {
-    font-size: 1vw;
-}
-
-.menu ul li .submenu li a:hover {
-    background-color: rgba(255, 255, 255, 1)
 }
 
 /* --- Main Pane --- */
 
-.main-pane{
+#main-pane{
     padding: 20px;
 }
 
-.main-pane ol{
+#main-pane ol{
     height: 100%;
     list-style-position: outside;
     margin-left: 5vw;
@@ -127,23 +69,23 @@ body .top-row p:nth-child(2){
     justify-content: space-around;
 }
 
-.main-pane ol li{
+#main-pane ol li{
     font-size: 3vw;
     text-align: left;
 }
 
-.main-pane ol li br{
+#main-pane ol li br{
     display: none;
-    margin-left: 10vw;
+    width: 10px;
 }
 
 /* --- Right Answer Pane --- */
 
-.right-pane{
+#right-pane{
     padding: 20px;
 }
 
-.right-pane ol{
+#right-pane ol{
     height: 100%;
     list-style: none;
     display: flex;
@@ -152,8 +94,136 @@ body .top-row p:nth-child(2){
     justify-content: space-around;
 }
 
-.right-pane ol li{
+#right-pane ol li{
     font-size: 3vw;
     text-align: left;
     color: #ff0000;
+    display: none;
+}
+
+#right-pane.show ol li{
+    display: block;
+}
+
+/* --- Classroom Settings --- */
+
+.settings-btn {
+    position: fixed;
+    bottom: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.settings-btn#refresh-quest{
+    right: 160px;
+}
+
+.settings-btn#show-ans{
+    right: 90px;
+}
+
+.settings-btn#settings-menu{
+    right: 20px;
+}
+
+.settings-btn input{
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+
+.settings-btn img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#refresh-quest:hover img{
+    transform: rotate(20deg);
+}
+
+#settings-menu:hover img{
+    transform: rotate(20deg);
+}
+
+#settings-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#settings-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vh;
+    padding: 20px;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+#settings-content h1{
+    font-size: 24px;
+    color: var(--main-font);
+    cursor: default;
+    margin: 10px;
+}
+
+#settings-content .flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+#settings-content .flex-row .option-btn{
+    cursor: pointer;
+    flex: 1 1 150px;
+    padding-bottom: 10px;
+}
+
+#settings-content .flex-row .option-btn.selected{
+    background-color: rgba(80, 80, 80, 0.1)
+}
+
+#settings-content .flex-row .option-btn:hover{
+    background-color: rgba(150, 150, 150, 0.2)
+}
+
+/* --- Topic Menu --- */
+
+.option-btn h2 {
+    font-size: 20px;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.option-btn .submenu li{
+    cursor: pointer;
+    margin-bottom: 5px;
+    list-style: none;
 }

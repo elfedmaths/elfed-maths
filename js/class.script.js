@@ -37,19 +37,65 @@ dateElem.addEventListener('click', function() {
   }
 });
 
-// Side Menu Options
-var selectBtn = document.querySelectorAll('.menu > ul > li > ul > li > button');
+// Select Topic Options
+var selectBtn = document.querySelectorAll('.option-btn');
 selectBtn.forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
-    genQuest(e.target.id);
-    var allmenu = document.querySelectorAll('.submenu');
+  btn.addEventListener('click', function(e){
+    var allmenu = document.querySelectorAll('.option-btn');
     allmenu.forEach(function(elem){
-      elem.previousElementSibling.classList.remove('selected');
+      elem.classList.remove('selected');
     });
-    var submenu = e.target.parentElement.parentElement.previousElementSibling;
-    submenu.classList.add('selected');
+    btn.classList.add('selected');
   });
 });
+
+// New Quest Button
+var newQuest = document.getElementById('new-quest-btn');
+newQuest.addEventListener('click', function(){
+  selectBtn.forEach(function(btn) {
+    if(btn.classList.contains('selected')){
+      hideAns();
+      genQuest(btn.id);
+      closeWindow();
+    }
+  });
+});
+
+// Refresh Quest
+var refreshQuest = document.getElementById('refresh-quest');
+refreshQuest.addEventListener('click', function(){
+  selectBtn.forEach(function(btn) {
+    if(btn.classList.contains('selected')){
+      hideAns();
+      genQuest(btn.id);
+      closeWindow();
+    }
+  });
+});
+
+//Show-Hide Quest
+var toggleAns = document.getElementById('show-ans');
+var rightPane = document.getElementById('right-pane');
+var showIcon = document.getElementById('show-ans-icon');
+var hideIcon = document.getElementById('hide-ans-icon');
+toggleAns.addEventListener('click', function(){
+  if(rightPane.classList.contains('show')){
+    hideAns();
+  }else{
+    rightPane.classList.add('show');
+    showIcon.classList.add('hidden');
+    hideIcon.classList.remove('hidden');
+  }
+});
+
+function hideAns(){
+  var rightPane = document.getElementById('right-pane');
+  var showIcon = document.getElementById('show-ans-icon');
+  var hideIcon = document.getElementById('hide-ans-icon');
+  rightPane.classList.remove('show');
+  showIcon.classList.remove('hidden');
+  hideIcon.classList.add('hidden');
+}
 
 // Generate Questions
 function genQuest(id){
@@ -115,12 +161,26 @@ function genQuest(id){
     default:
       break;
   }
+
+  // Format Line Breaks
+  function formatStr(str){
+    var brIndex = str.indexOf('<br>');
+    console.log(brIndex);
+    if(brIndex > 0){
+      var charAfter = str.charAt(brIndex + 4);
+      var charSrc = "<br>" + charAfter;
+      str = str.replace(charSrc, " " + charAfter.toLowerCase());
+    } 
+    return str;
+  };
+
   // Update Questions
-  document.getElementById('question-1').innerHTML = quest1[0];
-  document.getElementById('question-2').innerHTML = quest2[0];
-  document.getElementById('question-3').innerHTML = quest3[0];
-  document.getElementById('question-4').innerHTML = quest4[0];
-  document.getElementById('question-5').innerHTML = quest5[0];
+  document.getElementById('question-1').innerHTML = formatStr(quest1[0]);
+  document.getElementById('question-2').innerHTML = formatStr(quest2[0]);
+  document.getElementById('question-3').innerHTML = formatStr(quest3[0]);
+  document.getElementById('question-4').innerHTML = formatStr(quest4[0]);
+  document.getElementById('question-5').innerHTML = formatStr(quest5[0]);
+  
   // Update Answers
   document.getElementById('answer-1').innerHTML = quest1[1];
   document.getElementById('answer-2').innerHTML = quest2[1];

@@ -2,7 +2,7 @@
 
 :root{
     --main-back: #ffffff;
-    --main-font: #020e44;
+    --main-font: #000000;
     --main-border: #000000;
 
     --disabled-font: #b4b4b4;
@@ -11,7 +11,7 @@
     --button-border: #000000;
     --button-hover: #cfcfcf;
 
-    --menu-line: #020e44;
+    --menu-line: #000000;
 
     --scroll-back: #ffffff;
     --scroll-main: #ececec;

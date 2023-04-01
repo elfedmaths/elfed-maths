@@ -14,6 +14,7 @@
     <script src="./js/calc.js"></script>
     <script src="./js/functions.js"></script>
     <script src="./js/textfit.min.js"></script>
+    <script src="./js/popup.classroom.js" defer></script>
 	<meta name="description" content="Maths practice resource">
 </head>
 <body>
@@ -25,116 +26,130 @@
         <p id="date" class="type-1">00/00/0000</p>
     </div>
     <div id="main">
-        <div class="classroom">
-            <div class="left-pane menu">
-                <ul>
-                    <li>
-                        <a href="#">Set A</a>
-                        <ul class="submenu">
-                            <li><a href="#">Adding Integers</a></li>
-                            <li><a href="#">Multiplying Integers</a></li>
-                            <li><a href="#">Percentages of Amounts</a></li>
-                            <li><a href="#">Simplifying Expressions</a></li>
-                            <li><a href="#">Multiples</a></li>
-                            <li><button id="btn-set-a">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set B</a>
-                        <ul class="submenu">
-                            <li><a href="#">Multiplying Integers</a></li>
-                            <li><a href="#">Adding Decimals</a></li>
-                            <li><a href="#">Percentages of Amounts</a></li>
-                            <li><a href="#">Subtracting Integers</a></li>
-                            <li><a href="#">Simplifying Fractions</a></li>
-                            <li><button id="btn-set-b">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set C</a>
-                        <ul class="submenu">
-                            <li><a href="#">Subtracting Decimals</a></li>
-                            <li><a href="#">Dividing Integers</a></li>
-                            <li><a href="#">Multiplying Decimals</a></li>
-                            <li><a href="#">Percentages of Amounts</a></li>
-                            <li><a href="#">Simplifying Expressions</a></li>
-                            <li><button id="btn-set-c">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set D</a>
-                        <ul class="submenu">
-                            <li><a href="#">Adding Negatives</a></li>
-                            <li><a href="#">Rounding Decimals</a></li>
-                            <li><a href="#">Percentage Increase</a></li>
-                            <li><a href="#">Adding Fractions</a></li>
-                            <li><a href="#">Substitution</a></li>
-                            <li><button id="btn-set-d">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set E</a>
-                        <ul class="submenu">
-                            <li><a href="#">Rounding to Significant Figures</a></li>
-                            <li><a href="#">Finding Missing Terms</a></li>
-                            <li><a href="#">Percentage Decrease</a></li>
-                            <li><a href="#">Subtracting Fractions</a></li>
-                            <li><a href="#">Solving One-Step Equations</a></li>
-                            <li><button id="btn-set-e">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set F</a>
-                        <ul class="submenu">
-                            <li><a href="#">Order of Operations</a></li>
-                            <li><a href="#">Rounding to Significant Figures</a></li>
-                            <li><a href="#">Percentage Multipliers</a></li>
-                            <li><a href="#">Multiplying Fractions</a></li>
-                            <li><a href="#">Solving Two-Step Equations</a></li>
-                            <li><button id="btn-set-f">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set G</a>
-                        <ul class="submenu">
-                            <li><a href="#">Order of Operations</a></li>
-                            <li><a href="#">Expanding Brackets</a></li>
-                            <li><a href="#">Dividing Negatives</a></li>
-                            <li><a href="#">n<sup>th</sup> Term</a></li>
-                            <li><a href="#">Dividing Fractions</a></li>
-                            <li><button id="btn-set-g">Select</button></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">Set H</a>
-                        <ul class="submenu">
-                            <li><a href="#">Fractions of Amounts</a></li>
-                            <li><a href="#">Dividing Decimals</a></li>
-                            <li><a href="#">Subtracting Negatives</a></li>
-                            <li><a href="#">Multiplying Negatives</a></li>
-                            <li><a href="#">Factorising Expressions</a></li>
-                            <li><button id="btn-set-h">Select</button></li>
-                        </ul>
-                    </li>
-                </ul>                  
-            </div>
-            <div class="main-pane">
+        <div id="classroom">
+            <div id="main-pane">
                 <ol>
-                    <li id="question-1">TEMP</li>
-                    <li id="question-2">TEMP</li>
-                    <li id="question-3">TEMP</li>
-                    <li id="question-4">TEMP</li>
-                    <li id="question-5">TEMP</li>
+                    <li id="question-1"></li>
+                    <li id="question-2"></li>
+                    <li id="question-3"></li>
+                    <li id="question-4"></li>
+                    <li id="question-5"></li>
                 </ol>
             </div>
-            <div class="right-pane">
+            <div id="right-pane">
                 <ol>
-                    <li id="answer-1">TEMP</li>
-                    <li id="answer-2">TEMP</li>
-                    <li id="answer-3">TEMP</li>
-                    <li id="answer-4">TEMP</li>
-                    <li id="answer-5">TEMP</li>
+                    <li id="answer-1"></li>
+                    <li id="answer-2"></li>
+                    <li id="answer-3"></li>
+                    <li id="answer-4"></li>
+                    <li id="answer-5"></li>
                 </ol>
+            </div>
+        </div>
+    </div>
+    <div id="settings-container">
+        <div class="settings-btn" id="refresh-quest">
+            <img src="./images/refresh-icon.svg" alt="Refresh">
+        </div>
+        <div class="settings-btn" id="show-ans">
+            <img src="./images/show-ans-icon.svg" id="show-ans-icon" alt="Show">
+            <img src="./images/hide-ans-icon.svg" id="hide-ans-icon" alt="Show" class="hidden">
+        </div>
+        <div class="settings-btn" id="settings-menu">
+            <input type="checkbox" />
+            <img src="./images/settings-icon.svg" alt="Settings">
+        </div>
+        <div id="settings-background" class=""></div>
+        <div id="settings-window" class="">
+            <div id="settings-content">
+                <h1>Classroom Settings</h1>
+                <div class="flex-row">
+                    <div class="option-btn" id="btn-set-a">
+                        <h2>Set A</h2>
+                        <ul class="submenu">
+                            <li>Adding Integers</li>
+                            <li>Multiplying Integers</li>
+                            <li>Percentages of Amounts</li>
+                            <li>Simplifying Expressions</li>
+                            <li>Multiples</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-b">
+                        <h2>Set B</h2>
+                        <ul class="submenu">
+                            <li>Multiplying Integers</li>
+                            <li>Adding Decimals</li>
+                            <li>Percentages of Amounts</li>
+                            <li>Subtracting Integers</li>
+                            <li>Simplifying Fractions</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-c">
+                        <h2>Set C</h2>
+                        <ul class="submenu">
+                            <li>Subtracting Decimals</li>
+                            <li>Dividing Integers</li>
+                            <li>Multiplying Decimals</li>
+                            <li>Percentages of Amounts</li>
+                            <li>Simplifying Expressions</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-d">
+                        <h2>Set D</h2>
+                        <ul class="submenu">
+                            <li>Adding Negatives</li>
+                            <li>Rounding Decimals</li>
+                            <li>Percentage Increase</li>
+                            <li>Adding Fractions</li>
+                            <li>Substitution</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="option-btn" id="btn-set-e">
+                        <h2>Set E</h2>
+                        <ul class="submenu">
+                            <li>Rounding to Significant Figures</li>
+                            <li>Finding Missing Terms</li>
+                            <li>Percentage Decrease</li>
+                            <li>Subtracting Fractions</li>
+                            <li>Solving One-Step Equations</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-f">
+                        <h2>Set F</h2>
+                        <ul class="submenu">
+                            <li>Order of Operations</li>
+                            <li>Rounding to Significant Figures</li>
+                            <li>Percentage Multipliers</li>
+                            <li>Multiplying Fractions</li>
+                            <li>Solving Two-Step Equations</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-g">
+                        <h2>Set G</h2>
+                        <ul class="submenu">
+                            <li>Order of Operations</li>
+                            <li>Expanding Brackets</li>
+                            <li>Dividing Negatives</li>
+                            <li>n<sup>th</sup> Term</li>
+                            <li>Dividing Fractions</li>
+                        </ul>
+                    </div>
+                    <div class="option-btn" id="btn-set-h">
+                        <h2>Set H</h2>
+                        <ul class="submenu">
+                            <li>Fractions of Amounts</li>
+                            <li>Dividing Decimals</li>
+                            <li>Subtracting Negatives</li>
+                            <li>Multiplying Negatives</li>
+                            <li>Factorising Expressions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <input type="button" id="new-quest-btn" value="Select">
+                </div>
             </div>
         </div>
     </div>
