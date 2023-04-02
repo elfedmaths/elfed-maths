@@ -65,11 +65,12 @@ h1 {
 }
 
 .flex-row{
-  width: 200px;
+  width: 400px;
   margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: nowrap;
 }
 
 .img-icon img{
@@ -84,4 +85,13 @@ h1 {
 
 #home-btn img:hover{
   transform: scale(1.05);
+}
+
+form.hidden{
+  display: none;
+}
+
+input[type='text']{
+  width: 150px;
+  height: 20px;
 }

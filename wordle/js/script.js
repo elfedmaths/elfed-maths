@@ -5,7 +5,17 @@ let nextLetter = 0;
 let strCorrect = newRandom().toLocaleLowerCase();
 let lenCorrect = strCorrect.length;
 
-console.log(strCorrect);
+function initGame(str){
+  if(str){
+    if(str.length<=10){
+      strCorrect = str;
+      lenCorrect = strCorrect.length;
+    }else{
+      document.getElementById("error-box").innerHTML = "Word not accepted!";
+    }
+  }
+  initBoard();
+}
 
 function initBoard() {
   let board = document.getElementById("game-board");
@@ -139,23 +149,25 @@ const animateCSS = (element, animation, prefix = "animate__") =>
   });
 
 document.addEventListener("keyup", (e) => {
-  if (guessesRemaining === 0) {
-    return;
-  }
-  let pressedKey = String(e.key);
-  if (pressedKey === "Backspace" && nextLetter !== 0) {
-    deleteLetter();
-    return;
-  }
-  if (pressedKey === "Enter") {
-    checkGuess();
-    return;
-  }
-  let found = pressedKey.match(/[a-z]/gi);
-  if (!found || found.length > 1) {
-    return;
-  } else {
-    insertLetter(pressedKey);
+  if (e.target.tagName.toLowerCase() !== 'input') {
+    if (guessesRemaining === 0) {
+      return;
+    }
+    let pressedKey = String(e.key);
+    if (pressedKey === "Backspace" && nextLetter !== 0) {
+      deleteLetter();
+      return;
+    }
+    if (pressedKey === "Enter") {
+      checkGuess();
+      return;
+    }
+    let found = pressedKey.match(/[a-z]/gi);
+    if (!found || found.length > 1) {
+      return;
+    } else {
+      insertLetter(pressedKey);
+    }
   }
 });
 
@@ -173,7 +185,21 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 
 var refreshBtn = document.getElementById("refresh-btn");
 refreshBtn.addEventListener("click", function(){
-  location.reload();
+  const url = window.location.href.split("?")[0];
+  window.location.href = url;
 })
 
-initBoard();
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+if(params.get("txt")){
+  const str = atob(params.get("txt"));
+  const regex = /^[a-zA-Z]{4,10}$/;
+  if (regex.test(str)) {
+    initGame(str);
+  } else {
+    initGame();
+    document.getElementById("error-box").innerHTML = "Word not accepted!";
+  }
+}else{
+  initGame();
+}

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordle</title>
     <link rel="stylesheet" href="style.css">
-    <script src="./math.js"></script>
-    <script src="./words.js"></script>
-    <script src="./script.js" defer></script>
+    <script src="./js/math.js"></script>
+    <script src="./js/words.js"></script>
+    <script src="./js/script.js" defer></script>
+    <script src="./js/input.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -54,11 +55,18 @@
     <div id="success-box"></div>
     <div class="flex-row">
         <div id="home-btn" class="img-icon">
-            <a href="../"><img src="./home-icon.svg" alt="Home"></a>
+            <a href="../"><img src="./img/home-icon.svg" alt="Home"></a>
         </div>
         <div id="refresh-btn" class="img-icon">
-            <img src="./refresh-icon.svg" alt="Refresh">
+            <img src="./img/refresh-icon.svg" alt="Refresh">
         </div>
+        <div id="text-btn" class="img-icon">
+            <img src="./img/text-icon.svg" alt="Text">
+        </div>
+        <form id="text-form" action="./" method="get" class="hidden">
+            <input type="text" name="txt" id="txt">
+            <input type="submit" hidden />
+        </form>
     </div>
 </body>
 </html>
