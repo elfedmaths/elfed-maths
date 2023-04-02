@@ -149,7 +149,7 @@ const animateCSS = (element, animation, prefix = "animate__") =>
   });
 
 document.addEventListener("keyup", (e) => {
-  if (e.target.tagName.toLowerCase() !== 'input') {
+  if (!e.target.tagName || e.target.tagName.toLowerCase() !== 'input') {
     if (guessesRemaining === 0) {
       return;
     }
