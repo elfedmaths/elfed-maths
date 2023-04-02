@@ -1,6 +1,5 @@
-const NUMBER_OF_GUESSES = 6;
-let guessesRemaining = NUMBER_OF_GUESSES;
-let currentGuess = [];
+let remGuess = 6;
+let currGuess = [];
 let nextLetter = 0;
 let strCorrect = newRandom().toLocaleLowerCase();
 let lenCorrect = strCorrect.length;
@@ -19,7 +18,7 @@ function initGame(str){
 
 function initBoard() {
   let board = document.getElementById("game-board");
-  for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
+  for (let i = 0; i < 6; i++) {
     let row = document.createElement("div");
     row.classList.add("letter-row");
     for (let j = 0; j < lenCorrect; j++) {
@@ -48,19 +47,19 @@ function shadeKeyBoard(letter, color) {
 }
 
 function deleteLetter() {
-  let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining];
+  let row = document.getElementsByClassName("letter-row")[6 - remGuess];
   let box = row.children[nextLetter - 1];
   box.textContent = "";
   box.classList.remove("filled-box");
-  currentGuess.pop();
+  currGuess.pop();
   nextLetter -= 1;
 }
 
 function checkGuess() {
-  let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining];
+  let row = document.getElementsByClassName("letter-row")[6 - remGuess];
   let guessString = "";
   let rightGuess = Array.from(strCorrect);
-  for (const val of currentGuess) {
+  for (const val of currGuess) {
     guessString += val;
   }
   if (guessString.length != lenCorrect) {
@@ -71,20 +70,16 @@ function checkGuess() {
   for (let i = 0; i < lenCorrect; i++) {
     letterColor.push("gray");
   }
-  //check green
   for (let i = 0; i < lenCorrect; i++) {
-    if (rightGuess[i] == currentGuess[i]) {
+    if (rightGuess[i] == currGuess[i]) {
       letterColor[i] = "green";
       rightGuess[i] = "#";
     }
   }
-  //check yellow
-  //checking guess letters
   for (let i = 0; i < lenCorrect; i++) {
     if (letterColor[i] == "green") continue;
-    //checking right letters
     for (let j = 0; j < lenCorrect; j++) {
-      if (rightGuess[j] == currentGuess[i]) {
+      if (rightGuess[j] == currGuess[i]) {
         letterColor[i] = "yellow";
         rightGuess[j] = "#";
       }
@@ -94,24 +89,21 @@ function checkGuess() {
     let box = row.children[i];
     let delay = 250 * i;
     setTimeout(() => {
-      //flip box
-      animateCSS(box, "flipInX");
-      //shade box
       box.style.backgroundColor = letterColor[i];
       shadeKeyBoard(guessString.charAt(i) + "", letterColor[i]);
     }, delay);
   }
   if (guessString === strCorrect) {
-    document.getElementById("success-box").innerHTML = "You guessed right! Game over!";
-    guessesRemaining = 0;
+    document.getElementById("success-box").innerHTML = "Correct!";
+    remGuess = 0;
     return;
   } else {
-    guessesRemaining -= 1;
-    currentGuess = [];
+    remGuess -= 1;
+    currGuess = [];
     nextLetter = 0;
     document.getElementById("success-box").innerHTML = "";
     document.getElementById("error-box").innerHTML = "";
-    if (guessesRemaining === 0) {
+    if (remGuess === 0) {
       document.getElementById("error-box").innerHTML = `You've run out of guesses! Game over!<br>The right word was: "${strCorrect}"`;
     }
   }
@@ -122,35 +114,17 @@ function insertLetter(pressedKey) {
     return;
   }
   pressedKey = pressedKey.toLowerCase();
-  let row = document.getElementsByClassName("letter-row")[NUMBER_OF_GUESSES - guessesRemaining];
+  let row = document.getElementsByClassName("letter-row")[6 - remGuess];
   let box = row.children[nextLetter];
-  animateCSS(box, "pulse");
   box.textContent = pressedKey;
   box.classList.add("filled-box");
-  currentGuess.push(pressedKey);
+  currGuess.push(pressedKey);
   nextLetter += 1;
 }
 
-const animateCSS = (element, animation, prefix = "animate__") =>
-  // We create a Promise and return it
-  new Promise((resolve, reject) => {
-    const animationName = `${prefix}${animation}`;
-    // const node = document.querySelector(element);
-    const node = element;
-    node.style.setProperty("--animate-duration", "0.3s");
-    node.classList.add(`${prefix}animated`, animationName);
-    // When the animation ends, we clean the classes and resolve the Promise
-    function handleAnimationEnd(event) {
-      event.stopPropagation();
-      node.classList.remove(`${prefix}animated`, animationName);
-      resolve("Animation ended");
-    }
-    node.addEventListener("animationend", handleAnimationEnd, { once: true });
-  });
-
 document.addEventListener("keyup", (e) => {
   if (!e.target.tagName || e.target.tagName.toLowerCase() !== 'input') {
-    if (guessesRemaining === 0) {
+    if (remGuess === 0) {
       return;
     }
     let pressedKey = String(e.key);

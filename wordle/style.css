@@ -9,8 +9,8 @@ h1 {
 }
 
 .letter-box {
-  border: 2px solid gray;
-  border-radius: 3px;
+  border: 2px solid rgb(210, 210, 210);
+  border-radius: 5px;
   margin: 2px;
   font-size: 2.5rem;
   font-weight: 700;
@@ -46,6 +46,9 @@ h1 {
 }
 
 .keyboard-button {
+  background-color: rgb(255, 255, 255);
+  border: 2px solid rgb(210, 210, 210);
+  border-radius: 5px;
   font-size: 1rem;
   font-weight: 700;
   padding: 0.5rem;
@@ -85,6 +88,10 @@ h1 {
 
 #home-btn img:hover{
   transform: scale(1.05);
+}
+
+.img-icon img.hidden{
+  display: none;
 }
 
 form.hidden{

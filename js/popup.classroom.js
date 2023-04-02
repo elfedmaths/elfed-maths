@@ -1,8 +1,8 @@
 /* --- Index Page Popup --- */
 
 const toggleButton = document.querySelector("#settings-menu");
-const popupWindow = document.querySelector("#settings-window");
-const popupBackground = document.querySelector("#settings-background");
+const popupWindow = document.querySelector("#popup-window");
+const popupBackground = document.querySelector("#popup-background");
 
 toggleButton.addEventListener("click", function() {
     if(popupWindow.classList.contains("hidden")){

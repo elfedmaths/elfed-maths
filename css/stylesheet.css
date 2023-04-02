@@ -822,17 +822,37 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 
 /* Popup Styles */
 
-#popup-menu {
+.corner-menu {
     position: fixed;
+    right: 10px;
     bottom: 10px;
-    right: 20px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
+
+.corner-btn{
+    flex: 0 0;
     width: 50px;
     height: 50px;
+    margin: 0 10px;
     border-radius: 10px;
     background-color: var(--main-back);
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     cursor: pointer;
     z-index: 2;
+}
+
+.corner-btn img{
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
 }
 
 #popup-menu input{
@@ -923,4 +943,12 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     color: var(--main-font);
     cursor: default;
     margin: 5px;
+}
+
+#refresh-quest:hover img, #settings-menu:hover img{
+    transform: rotate(20deg);
+}
+
+#home-btn:hover img{
+    transform: scale(1.2);
 }
