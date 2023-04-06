@@ -74,25 +74,29 @@ refreshQuest.addEventListener('click', function(){
 });
 
 //Show-Hide Quest
+var ansPane = document.querySelectorAll('.quest-ans');
 var toggleAns = document.getElementById('show-ans');
-var rightPane = document.getElementById('right-pane');
 var showIcon = document.getElementById('show-ans-icon');
 var hideIcon = document.getElementById('hide-ans-icon');
 toggleAns.addEventListener('click', function(){
-  if(rightPane.classList.contains('show')){
+  if(ansPane[0].classList.contains('show')){
     hideAns();
   }else{
-    rightPane.classList.add('show');
+    ansPane.forEach(ansRow => {
+      ansRow.classList.add('show');
+    });
     showIcon.classList.add('hidden');
     hideIcon.classList.remove('hidden');
   }
 });
 
 function hideAns(){
-  var rightPane = document.getElementById('right-pane');
+  var ansPane = document.querySelectorAll('.quest-ans');
   var showIcon = document.getElementById('show-ans-icon');
   var hideIcon = document.getElementById('hide-ans-icon');
-  rightPane.classList.remove('show');
+  ansPane.forEach(ansRow => {
+    ansRow.classList.remove('show');
+  });
   showIcon.classList.remove('hidden');
   hideIcon.classList.add('hidden');
 }
@@ -157,20 +161,106 @@ function genQuest(id){
       quest4 = getCalc('neg-mult');
       quest5 = getCalc('alg-fact');
       break;
+    //WJEC Numeracy Questions
+    case 'btn-set-nf':
+      var nf = [];
+      for (let i = 1; i <= 12; i++) nf.push(`nf${i}`);
+      var index = randomInt(0,nf.length - 1);
+      quest1 = getCalcNum(nf[index]);
+      nf.splice(index, 1);
+      index = randomInt(0,nf.length - 1);
+      quest2 = getCalcNum(nf[index]);
+      nf.splice(index, 1);
+      index = randomInt(0,nf.length - 1);
+      quest3 = getCalcNum(nf[index]);
+      nf.splice(index, 1);
+      index = randomInt(0,nf.length - 1);
+      quest4 = getCalcNum(nf[index]);
+      nf.splice(index, 1);
+      index = randomInt(0,nf.length - 1);
+      quest5 = getCalcNum(nf[index]);
+      break;
+    case 'btn-set-nif':
+      var nif = [];
+      for (let i = 1; i <= 10; i++) nif.push(`nif${i}`);
+      var index = randomInt(0,nif.length - 1);
+      quest1 = getCalcNum(nif[index]);
+      nif.splice(index, 1);
+      index = randomInt(0,nif.length - 1);
+      quest2 = getCalcNum(nif[index]);
+      nif.splice(index, 1);
+      index = randomInt(0,nif.length - 1);
+      quest3 = getCalcNum(nif[index]);
+      nif.splice(index, 1);
+      index = randomInt(0,nif.length - 1);
+      quest4 = getCalcNum(nif[index]);
+      nif.splice(index, 1);
+      index = randomInt(0,nif.length - 1);
+      quest5 = getCalcNum(nif[index]);
+      break;
+    case 'btn-set-nih':
+      var nih = [];
+      for (let i = 1; i <= 10; i++) nih.push(`nih${i}`);
+      var index = randomInt(0,nih.length - 1);
+      quest1 = getCalcNum(nih[index]);
+      nih.splice(index, 1);
+      index = randomInt(0,nih.length - 1);
+      quest2 = getCalcNum(nih[index]);
+      nih.splice(index, 1);
+      index = randomInt(0,nih.length - 1);
+      quest3 = getCalcNum(nih[index]);
+      nih.splice(index, 1);
+      index = randomInt(0,nih.length - 1);
+      quest4 = getCalcNum(nih[index]);
+      nih.splice(index, 1);
+      index = randomInt(0,nih.length - 1);
+      quest5 = getCalcNum(nih[index]);
+      break;
+    case 'btn-set-nh':
+      var nh = [];
+      for (let i = 1; i <= 10; i++) nh.push(`nh${i}`);
+      var index = randomInt(0,nh.length - 1);
+      quest1 = getCalcNum(nh[index]);
+      nh.splice(index, 1);
+      index = randomInt(0,nh.length - 1);
+      quest2 = getCalcNum(nh[index]);
+      nh.splice(index, 1);
+      index = randomInt(0,nh.length - 1);
+      quest3 = getCalcNum(nh[index]);
+      nh.splice(index, 1);
+      index = randomInt(0,nh.length - 1);
+      quest4 = getCalcNum(nh[index]);
+      nh.splice(index, 1);
+      index = randomInt(0,nh.length - 1);
+      quest5 = getCalcNum(nh[index]);
+      break;
 
     default:
+      quest1 = ["-","-"];
+      quest2 = ["-","-"];
+      quest3 = ["-","-"];
+      quest4 = ["-","-"];
+      quest5 = ["-","-"];
       break;
   }
 
   // Format Line Breaks
   function formatStr(str){
+    str = String(str);
     var brIndex = str.indexOf('<br>');
-    console.log(brIndex);
-    if(brIndex > 0){
+    if(brIndex >= 0){
       var charAfter = str.charAt(brIndex + 4);
       var charSrc = "<br>" + charAfter;
       str = str.replace(charSrc, " " + charAfter.toLowerCase());
     } 
+    var nocalcIndex = str.indexOf('NOCALC');
+    if(nocalcIndex >= 0){
+      str = str.replace("NOCALC", "<img src='./images/non-calc-icon.svg' alt='No Calc' class='quest-icon'>");
+    }
+    var calcIndex = str.indexOf('CALC');
+    if(calcIndex >= 0){
+      str = str.replace("CALC", "<img src='./images/calc-icon.svg' alt='Calc' class='quest-icon'>");
+    }
     return str;
   };
 

@@ -922,6 +922,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     padding: 20px;
     background-color: var(--main-back);
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    overflow-y: scroll;
 }
 
 #popup-content h1{
@@ -945,10 +946,25 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     margin: 5px;
 }
 
-#refresh-quest:hover img, #settings-menu:hover img{
-    transform: rotate(20deg);
+#refresh-quest:hover img, #settings-menu:hover img, #format-btn:hover img{
+    animation: rotate 2s linear infinite;
 }
 
-#home-btn:hover img{
-    transform: scale(1.2);
+#home-btn:hover img, #show-ans:hover img{
+    animation: pulse 2s linear infinite;
+}
+
+/* -------------------- */
+
+/* Keyframes */
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }

@@ -8,110 +8,94 @@ body .top-row{
 }
 
 body .top-row p{
-    flex: 1 1;
     text-decoration: underline;
     font-size: 2vw;
     text-align: left;
     margin: 0 20px;
+    cursor: pointer;
 }
 
 body .top-row p:nth-child(2){
     text-align: right;
-    cursor: pointer;
 }
 
 /* --- Main Layout --- */
 
-#main #classroom{
-    color: #000000;
-}
-
-@media (orientation: portrait) {
-  #main:after{
-    margin-top: 50px;
-    content: "Classroom not currently available on portrait devices";
-  }
-  #main #classroom{
-    display: none;
-  }
-}
-
-@media (orientation: landscape) {
-  #main #classroom{
-    flex: 1 1;
-    display: flex;
+#classroom{
+    height: calc(100vh - 130px);
     width: 100vw;
-    justify-content: space-between;
-  }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    font-size: 2.5vw;
 }
 
-#main #classroom #main-pane{
+#classroom .quest-row{
+    flex: 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+#classroom .quest-row p sup{
+    font-size: 1.6vw;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+#classroom .quest-row p sub{
+    font-size: 1.6vw;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#classroom .quest-row .quest-num{
+    flex: 0 0;
+    text-align: left;
+    margin: auto 20px;
+}
+
+#classroom .quest-row .quest-val{
     flex: 3 3;
+    text-align: left;
+    display: flex;
+    align-items: center;
 }
 
-#main #classroom #right-pane{
+#classroom .quest-row .quest-val .quest-icon{
+    height: 20px;
+    margin: 5px;
+}
+
+#classroom .quest-row .quest-ans{
+    visibility: hidden;
+    color: #ff0000;
     flex: 1 1;
 }
 
-/* --- Main Pane --- */
-
-#main-pane{
-    padding: 20px;
-}
-
-#main-pane ol{
-    height: 100%;
-    list-style-position: outside;
-    margin-left: 5vw;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-
-#main-pane ol li{
-    font-size: 3vw;
-    text-align: left;
-}
-
-#main-pane ol li br{
-    display: none;
-    width: 10px;
-}
-
-/* --- Right Answer Pane --- */
-
-#right-pane{
-    padding: 20px;
-}
-
-#right-pane ol{
-    height: 100%;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-}
-
-#right-pane ol li{
-    font-size: 3vw;
-    text-align: left;
-    color: #ff0000;
-    display: none;
-}
-
-#right-pane.show ol li{
-    display: block;
+#classroom .quest-row .quest-ans.show{
+    visibility: visible;
 }
 
 /* --- Classroom Settings --- */
 
-#settings-content h1{
+#popup-window{
+    overflow-y: hidden;
+}
+
+#popup-window h1{
     font-size: 24px;
     color: var(--main-font);
     cursor: default;
     margin: 10px;
+}
+
+#settings-content{
+    overflow-y: scroll;
+    height: calc(100% - 84px);
 }
 
 #settings-content .flex-row{
@@ -148,4 +132,56 @@ body .top-row p:nth-child(2){
     cursor: pointer;
     margin-bottom: 5px;
     list-style: none;
+}
+
+#footer{
+    position: fixed;
+    bottom: 5px;
+}
+
+/* --- Color Picker --- */
+
+#color-picker-container{    
+    display: none;
+    position: absolute;
+    bottom: 55px;
+}
+
+#color-picker-container.show{
+    display: block;
+} 
+
+#color-picker-container input{
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+#font-size-container{
+    display: none;
+    width: 50px;
+    position: absolute;
+    bottom: 110px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#font-size-container.show{
+    display: flex;
+}
+
+#font-size-container .font-change-btn{
+    height: 24px;
+    width: 24px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 6px;
+    border: 0;
+    background-color: var(--main-back);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.5);
+    cursor: pointer;
 }
