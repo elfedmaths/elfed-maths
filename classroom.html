@@ -8,16 +8,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/resetstyle.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
-    <link rel="stylesheet" href="./css/class.stylesheet.css">
-    <script src="./js/math.js"></script>
-    <script src="./js/math.func.js"></script>
-    <script src="./js/calc.js"></script>
+    <script src="./js/function.main.js"></script>
+    <script src="./js/function.math.js"></script>
+    <script src="./js/calc.func.js"></script>
+    <script src="./js/calc.maths.js"></script>
     <script src="./js/calc.numeracy.js"></script>
-    <script src="./js/functions.js"></script>
-    <script src="./js/textfit.min.js"></script>
-    <script src="./js/class.script.js" defer></script>
-    <script src="./js/popup.classroom.js" defer></script>
-    <script src="./js/class.format.js" defer></script>
+    <script src="./js/function.format.js" defer></script>
+    <script src="./js/function.textfit.min.js"></script>
+    <script src="./js/script.classroom.js" defer></script>
+    <script src="./js/popup.index.js" defer></script>
 	<meta name="description" content="Maths practice resource">
 </head>
 <body>
@@ -55,33 +54,9 @@
             <p class="quest-ans" id="answer-5"></p>
         </div>
     </div>
-    <div class="corner-menu">
-        <div class="corner-btn" id="refresh-quest">
-            <img src="./images/refresh-icon.svg" alt="Refresh">
-        </div>
-        <div class="corner-btn" id="show-ans">
-            <img src="./images/show-ans-icon.svg" id="show-ans-icon" alt="Show">
-            <img src="./images/hide-ans-icon.svg" id="hide-ans-icon" alt="Show" class="hidden">
-        </div>
-        <div class="corner-btn" id="settings-menu">
-            <input type="checkbox" />
-            <img src="./images/settings-icon.svg" alt="Settings">
-        </div>
-        <div class="corner-btn" id="format-btn">
-            <img src="./images/color-icon.svg" alt="Color">
-            <div id="color-picker-container">
-                <input type="color" id="color-picker" name="color-picker" value="#ffffff">
-            </div>
-            <div id="font-size-container">
-                <div class="font-change-btn" id="font-decrease-btn">&minus;</div>
-                <div class="font-change-btn" id="font-increase-btn">+</div>
-            </div>
-        </div>
-        <div class="corner-btn" id="home-btn">
-            <a href="./"><img src="./images/home-icon.svg" alt="Home"></a>
-        </div>
-        <div id="popup-background"></div>
-        <div id="popup-window">
+    <div id="popup-background"></div>
+    <div id="popup-container">
+        <div class="popup-window" id="popup-menu">
             <h1>Classroom Settings</h1>
             <div id="settings-content">
                 <div class="flex-row">
@@ -204,7 +179,32 @@
             </div>
         </div>
     </div>
-    <div id="footer">
+    <div class="corner-menu">
+        <div class="corner-btn rotate-btn" id="refresh-quest">
+            <img src="./images/refresh-icon.svg" alt="Refresh">
+        </div>
+        <div class="corner-btn pulse-btn" id="show-ans">
+            <img src="./images/show-ans-icon.svg" id="show-ans-icon" alt="Show">
+            <img src="./images/hide-ans-icon.svg" id="hide-ans-icon" alt="Show" class="hidden">
+        </div>
+        <div class="corner-btn rotate-btn popup-menu" data-id="popup-menu">
+            <img src="./images/settings-icon.svg" alt="Settings">
+        </div>
+        <div class="corner-btn rotate-btn" id="format-btn">
+            <img src="./images/color-icon.svg" alt="Color">
+            <div id="color-picker-container">
+                <input type="color" id="color-picker" name="color-picker" value="#ffffff">
+            </div>
+            <div id="font-size-container">
+                <div class="font-change-btn" id="font-decrease-btn">&minus;</div>
+                <div class="font-change-btn" id="font-increase-btn">+</div>
+            </div>
+        </div>
+        <div class="corner-btn pulse-btn" id="home-btn">
+            <a href="./"><img src="./images/home-icon.svg" alt="Home"></a>
+        </div>
+    </div>
+    <div id="footer" class="fixed">
         <p>Copyright &copy; 2022 -  <script>document.write(new Date().getFullYear())</script>, M. Massey.</p>
     </div>
 </body>

@@ -8,12 +8,12 @@ function getCalc(type){
             break;
         case 'int-sub':
             var int1 = randomInt(2, 100), int2 = randomInt(1, int1);
-            var quest = `${int1} - ${int2}`;
+            var quest = `${int1} &minus; ${int2}`;
             var ans = int1 - int2;
             break;
         case 'int-mult':
             var int1 = randomInt(1, 12), int2 = randomInt(1, 12);
-            var quest = `${int1} x ${int2}`;
+            var quest = `${int1} &times; ${int2}`;
             var ans = int1 * int2;
             break;
         case 'int-div':
@@ -35,7 +35,7 @@ function getCalc(type){
             var dp1 = randomInt(1, 4), dp2 = randomInt(1, 4);
             var dec1 = randomInt((Math.pow(10, dp1 - 1)), (Math.pow(10, dp1)) - 1);
             var dec2 = randomInt((Math.pow(10, dp2 - 1)), (Math.pow(10, dp2)) - 1);
-            var quest = `${int2}.${dec2} - ${int1}.${dec1}`;
+            var quest = `${int2}.${dec2} &minus; ${int1}.${dec1}`;
             var ans = (parseFloat(int2 + "." + dec2) - parseFloat(int1 + "." + dec1)).toFixed(Math.max(dp1, dp2));
             break;
         case 'dec-mult':
@@ -43,7 +43,7 @@ function getCalc(type){
             var dp1 = randomInt(1, 4), dp2 = randomInt(1, 4);
             var dec1 = randomInt((Math.pow(10, dp1 - 1)), (Math.pow(10, dp1)) - 1);
             var dec2 = randomInt((Math.pow(10, dp2 - 1)), (Math.pow(10, dp2)) - 1);
-            var quest = `${int1}.${dec1} x ${int2}.${dec2}`;
+            var quest = `${int1}.${dec1} &times; ${int2}.${dec2}`;
             var ans = (parseFloat(int1 + "." + dec1) * parseFloat(int2 + "." + dec2)).toFixed(dp1 + dp2);
             break;
         case 'dec-div':
@@ -61,12 +61,12 @@ function getCalc(type){
             break;
         case 'neg-sub':
             var int1 = randomNeg(2, 100), int2 = randomNeg(1, int1);
-            var quest = `${int1} - ${int2}`;
+            var quest = `${int1} &minus; ${int2}`;
             var ans = int1 - int2;
             break;
         case 'neg-mult':
             var int1 = randomNeg(1, 12), int2 = randomNeg(1, 12);
-            var quest = `${int1} x ${int2}`;
+            var quest = `${int1} &times; ${int2}`;
             var ans = int1 * int2;
             break;
         case 'neg-div':
@@ -171,7 +171,7 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.subtract(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> - <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
+            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> &minus; <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
             var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
@@ -181,7 +181,7 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.multiply(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> x <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
+            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> &times; <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
             var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
@@ -213,12 +213,12 @@ function getCalc(type){
         case 'ooo-add-sub':
             var int1 = randomInt(1,20), int2 = randomInt(1,20), int3 = randomInt(1,20);
             var form1 = [                
-                [`${int1} + ${int2} - ${int3}`, (int1 + int2) - int3],
-                [`${int1} - ${int2} + ${int3}`, (int1 - int2) + int3],
-                [`(${int1} + ${int2}) - ${int3}`, (int1 + int2) - int3],
-                [`(${int1} - ${int2}) + ${int3}`, (int1 - int2) + int3],
-                [`${int1} + (${int2} - ${int3})`, int1 + (int2 - int3)],
-                [`${int1} - (${int2} + ${int3})`, int1 - (int2 + int3)]
+                [`${int1} + ${int2} &minus; ${int3}`, (int1 + int2) - int3],
+                [`${int1} &minus; ${int2} + ${int3}`, (int1 - int2) + int3],
+                [`(${int1} + ${int2}) &minus; ${int3}`, (int1 + int2) - int3],
+                [`(${int1} &minus; ${int2}) + ${int3}`, (int1 - int2) + int3],
+                [`${int1} + (${int2} &minus; ${int3})`, int1 + (int2 - int3)],
+                [`${int1} &minus; (${int2} + ${int3})`, int1 - (int2 + int3)]
             ];
             var num = randomInt(0, form1.length-1);
             var quest = form1[num][0], ans = form1[num][1];
@@ -227,12 +227,12 @@ function getCalc(type){
             var int1 = randomInt(1,10), int2 = randomInt(1,10), int3 = randomInt(1,10);
             var int4 = randomInt(2,5) * int1, int5 = randomInt(2,5) * int2 * int3;
             var form1 = [                
-                [`${int4} x ${int2} &divide; ${int1}`, (int4 * int2) / int1],
-                [`${int4} &divide; ${int1} x ${int3}`, (int4 / int1) * int3],
-                [`(${int4} x ${int2}) &divide; ${int1}`, (int4 * int2) / int1],
-                [`(${int4} &divide; ${int1}) x ${int2}`, (int4 / int1) * int2],
-                [`${int2} x (${int4} &divide; ${int1})`, int2 * (int4 / int1)],
-                [`${int5} &divide; (${int2} x ${int3})`, int5 / (int2 * int3)]
+                [`${int4} &times; ${int2} &divide; ${int1}`, (int4 * int2) / int1],
+                [`${int4} &divide; ${int1} &times; ${int3}`, (int4 / int1) * int3],
+                [`(${int4} &times; ${int2}) &divide; ${int1}`, (int4 * int2) / int1],
+                [`(${int4} &divide; ${int1}) &times; ${int2}`, (int4 / int1) * int2],
+                [`${int2} &times; (${int4} &divide; ${int1})`, int2 * (int4 / int1)],
+                [`${int5} &divide; (${int2} &times; ${int3})`, int5 / (int2 * int3)]
             ];
             var num = randomInt(0, form1.length-1);
             var quest = form1[num][0], ans = form1[num][1];
@@ -244,7 +244,7 @@ function getCalc(type){
             for (let i = 0; i < int1; i++) {
                 int2 = randomNeg(1, 10);
                 if(int2 == 1){ quest += ` + ${letter}`, ans += 1;
-                }else if(int2 == -1){ quest += ` - ${letter}`, ans += -1;
+                }else if(int2 == -1){ quest += ` &minus; ${letter}`, ans += -1;
                 }else if(int2 > 0){ quest += ` + ${int2}${letter}`, ans += int2;
                 }else{ quest += ` ${int2}${letter}`, ans += int2;
                 }                             
@@ -265,8 +265,8 @@ function getCalc(type){
                     }else{ quest += ` + ${letter2}`, ans2 += 1;
                     }
                 }else if(int2 == -1){ 
-                    if(int3 == 1){ quest += ` - ${letter1}`, ans1 += -1;
-                    }else{ quest += ` - ${letter2}`, ans2 += -1;
+                    if(int3 == 1){ quest += ` &minus; ${letter1}`, ans1 += -1;
+                    }else{ quest += ` &minus; ${letter2}`, ans2 += -1;
                     }
                 }else if(int2 > 0){
                     if(int3 == 1){ quest += ` + ${int2}${letter1}`, ans1 += int2;
@@ -315,8 +315,8 @@ function getCalc(type){
                     }
                     break;
                 case 2:
-                    if(sub <= 2){ var quest = `Solve ${int1} - ${letter} = ${int1 - int2}`, ans = int2;
-                    }else{ var quest = `Solve ${letter} - ${int1} = ${int2 - int1}`, ans = int2;
+                    if(sub <= 2){ var quest = `Solve ${int1} &minus; ${letter} = ${int1 - int2}`, ans = int2;
+                    }else{ var quest = `Solve ${letter} &minus; ${int1} = ${int2 - int1}`, ans = int2;
                     }
                     break;
                 case 3:
@@ -342,19 +342,19 @@ function getCalc(type){
                     var quest = `Solve ${int1}${letter} + ${int3} = ${(int1 * int2) + int3}`, ans = int2;
                     break;
                 case 2:
-                    var quest = `Solve ${int1}${letter} - ${int3} = ${(int1 * int2) - int3}`, ans = int2;
+                    var quest = `Solve ${int1}${letter} &minus; ${int3} = ${(int1 * int2) - int3}`, ans = int2;
                     break;
                 case 3:
                     var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub> + ${int3} = ${int2 + int3}`, ans = int1 * int2;
                     break;
                 case 4:
-                    var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub> - ${int3} = ${int2 - int3}`, ans = int1 * int2;
+                    var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub> &minus; ${int3} = ${int2 - int3}`, ans = int1 * int2;
                     break;
                 case 5:
                     var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub> + ${int3} = ${int1 + int3}`, ans = int2;
                     break;
                 case 6:
-                    var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub> - ${int3} = ${int1 - int3}`, ans = int2;
+                    var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub> &minus; ${int3} = ${int1 - int3}`, ans = int2;
                     break;
                 default:
                     break;
@@ -364,7 +364,7 @@ function getCalc(type){
             var letters = "abcdefghjkmnpqrstuvwxyz", letter = letters.charAt(randomInt(0, letters.length-1));
             var int1 = randomInt(2,10), int2 = randomInt(2,10), int3 = randomInt(1,10), operation = randomInt(1,2);
             if(operation == 1){ var quest = `Expand ${int1}(${int2}${letter} + ${int3})`, ans = `${int1 * int2}${letter} + ${int1 * int3}`;
-            }else{ var quest = `Expand ${int1}(${int2}${letter} - ${int3})`, ans = `${int1 * int2}${letter} - ${int1 * int3}`;
+            }else{ var quest = `Expand ${int1}(${int2}${letter} &minus; ${int3})`, ans = `${int1 * int2}${letter} - ${int1 * int3}`;
             }
             break;
         case 'alg-fact':
@@ -379,12 +379,12 @@ function getCalc(type){
                     var ans = `${gcd}(${(int1 * int2)/gcd}${letter} + ${(int1 * int3)/gcd})`;
                 }
             }else{ 
-                var quest = `Factorise ${int1 * int2}${letter} - ${int1 * int3}`;
+                var quest = `Factorise ${int1 * int2}${letter} &minus; ${int1 * int3}`;
                 var gcd = math.gcd((int1 * int2), (int1 * int3));
                 if((int1 * int2)/gcd == 1){
-                    var ans = `${gcd}(${letter} - ${(int1 * int3)/gcd})`;
+                    var ans = `${gcd}(${letter} &minus; ${(int1 * int3)/gcd})`;
                 }else{
-                    var ans = `${gcd}(${(int1 * int2)/gcd}${letter} - ${(int1 * int3)/gcd})`;
+                    var ans = `${gcd}(${(int1 * int2)/gcd}${letter} &minus; ${(int1 * int3)/gcd})`;
                 }
             }
             break;
@@ -421,7 +421,7 @@ function getCalc(type){
                 (int1 * 5) + int2,
                 (int1 * 6) + int2,
             ];
-            var quest = `Find the n<sup>th</sup> term of<br>${arr.toString()}`;
+            var quest = `Find the n<sup class="margin-right">th</sup>  term of<br>${arr.join(', ')}`;
             var ans = `${int1}n + ${int2}`;
             break;
         /* -------------------- End -------------------- */

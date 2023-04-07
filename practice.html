@@ -8,14 +8,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/resetstyle.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
-    <script src="./js/math.js"></script>
-    <script src="./js/functions.js"></script>
-    <script src="./js/textfit.min.js"></script>
-    <script src="./js/practice.timer.js" defer></script>
-    <script src="./js/stopwatch.js" defer></script>
-    <script src="./js/music.js" defer></script>
-    <script src="./js/select.js" defer></script>
-    <script src="./js/calc.js"></script>
+    <script src="./js/calc.maths.js"></script>
+    <script src="./js/function.main.js"></script>
+    <script src="./js/function.math.js"></script>
+    <script src="./js/function.textfit.min.js"></script>
+    <script src="./js/function.format.js" defer></script>
+    <script src="./js/function.drag.js" defer></script>
+    <script src="./js/time.timer.js" defer></script>
+    <script src="./js/time.stopwatch.js" defer></script>
+    <script src="./js/time.timer.challenge.js" defer></script>
+    <script src="./js/media.music.js" defer></script>
+    <script src="./js/script.practice.js" defer></script>
+    <script src="./js/popup.index.js" defer></script>
 	<meta name="description" content="Maths practice resource">
 </head>
 <body>
@@ -23,61 +27,13 @@
         <h1><a href="./">Maths Practice</a></h1>
     </div>
     <div id="main">
-        <div id="left">
-            <div class="content">
-                <div id="stopwatch">
-                    <h2>Stopwatch</h2>
-                    <p><span id="seconds">00</span>:<span id="tens">00</span></p>
-                    <input type="button" id="button-start" value="Start">
-                    <input type="button" id="button-stop" value="Stop" class="disabled">
-                    <input type="button" id="button-reset" value="Reset" class="disabled hide">
-                </div> 
-            </div>
-            <div class="line"></div>
-            <div class="content">
-                <h2>Timer</h2>
-                <div class="flex-btn">
-                    <input type="radio" value="1" id="min-1" name="minutes" checked>
-                        <label for="min-1">1 min</label>
-                    <input type="radio" value="2" id="min-2" name="minutes">
-                        <label for="min-2">2 mins</label>
-                    <input type="radio" value="5" id="min-5" name="minutes">
-                        <label for="min-5">5 mins</label>
-                    <input type="radio" value="10" id="min-10" name="minutes">
-                        <label for="min-10">10 mins</label>
-                    <input type="radio" value="30" id="min-30" name="minutes">
-                        <label for="min-30">30 mins</label>
-                    <input type="radio" value="60" id="min-60" name="minutes">
-                        <label for="min-60">60 mins</label>
-                </div>
-                <input type="button" id="start-timer" value="Start">
-                <input type="button" id="pause-timer" value="Pause" class="hide">
-                <input type="button" id="stop-timer" value="Stop" class="disabled">
-                <p id="timer">00:00</p>
-            </div>
-            <div class="line"></div>
-            <div class="content">
-                <div id="music-player">
-                    <select name="audioSelect" id="audioSelect">
-                        <option value="./audio/smooth-waters.mp3">Smooth Waters</option>
-                        <option value="./audio/electronic-future-beats.mp3">Electronic Future Beats</option>
-                        <option value="./audio/field-grass.mp3">Field Grass</option>
-                        <option value="./audio/for-when-it-rains.mp3">For When It Rains</option>
-                        <option value="./audio/piano-moment.mp3">Piano Moment</option>
-                        <option value="./audio/price-of-freedom.mp3">Price of Freedom</option>
-                    </select>
-                    <audio id="audio" controls autoplay loop>
-                        <source id="audioSrc" src="./audio/smooth-waters.mp3"></source>
-                        Your browser does not support the audio format.
-                    </audio>
-                </div>
-            </div>
-        </div>
         <div id="center">
             <div id="container">
+                <p id="timer-quest" class="hidden">00:00</p>
                 <div id="question"></div>
+                <div id="answer" style="display:none;"></div>
             </div>
-            <div id="controls">
+            <div id="practice-controls" class="controls">
                 <div>
                     <div>
                         <input type="button" value="Start" id="hide-quest" class="disabled">
@@ -89,125 +45,270 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="right">
-            <div class="content">
-                <h2>Topics</h2>
-                <p>Select topics you would like to practise</p>
-                <h3>Integer Arithmetic</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="int-add" id="int-add" name="topics">
-                        <label for="int-add">Addition</label>
-                    <input type="checkbox" value="int-sub" id="int-sub" name="topics">
-                        <label for="int-sub">Subtraction</label>
-                    <input type="checkbox" value="int-mult" id="int-mult" name="topics">
-                        <label for="int-mult">Multiplication</label>
-                    <input type="checkbox" value="int-div" id="int-div" name="topics">
-                        <label for="int-div">Division</label>
+            <div id="challenge-controls" class="controls hidden">
+                <div class="controls-top">
+                    <div id="timer-container">
+                        <input type="button" id="start-timer-quest" value="Start">
+                        <input type="button" id="stop-timer-quest" value="Stop" class="disabled">
+                    </div>
                 </div>
-                <h3>Decimal Arithmetic</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="dec-add" id="dec-add" name="topics">
-                        <label for="dec-add">Addition</label>
-                    <input type="checkbox" value="dec-sub" id="dec-sub" name="topics">
-                        <label for="dec-sub">Subtraction</label>
-                    <input type="checkbox" value="dec-mult" id="dec-mult" name="topics">
-                        <label for="dec-mult">Multiplication</label>
-                    <input type="checkbox" value="dec-div" id="dec-div" name="topics">
-                        <label for="dec-div">Division</label>
-                </div>
-                <h3>Negatives Arithmetic</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="neg-add" id="neg-add" name="topics">
-                        <label for="neg-add">Addition</label>
-                    <input type="checkbox" value="neg-sub" id="neg-sub" name="topics">
-                        <label for="neg-sub">Subtraction</label>
-                    <input type="checkbox" value="neg-mult" id="neg-mult" name="topics">
-                        <label for="neg-mult">Multiplication</label>
-                    <input type="checkbox" value="neg-div" id="neg-div" name="topics">
-                        <label for="neg-div">Division</label>
-                </div>
-                <h3>Percentages</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="perc-find-1" id="perc-find-1" name="topics">
-                        <label for="perc-find-1">Percentages of Amounts (1)</label>
-                    <input type="checkbox" value="perc-find-2" id="perc-find-2" name="topics">
-                        <label for="perc-find-2">Percentages of Amounts (2)</label>
-                    <input type="checkbox" value="perc-find-3" id="perc-find-3" name="topics">
-                        <label for="perc-find-3">Percentages of Amounts (3)</label>
-                    <input type="checkbox" value="perc-inc" id="perc-inc" name="topics">
-                        <label for="perc-inc">Percentage Increase</label>
-                    <input type="checkbox" value="perc-dec" id="perc-dec" name="topics">
-                        <label for="perc-dec">Percentage Decrease</label>
-                    <input type="checkbox" value="perc-mult" id="perc-mult" name="topics">
-                        <label for="perc-mult">Percentage Multipliers</label>
-                </div>
-                <h3>Precision</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="round-dec" id="round-dec" name="topics">
-                        <label for="round-dec">Rounding Decimals</label>
-                    <input type="checkbox" value="round-sig" id="round-sig" name="topics">
-                        <label for="round-sig">Rounding Significant Figures (Large)</label>
-                    <input type="checkbox" value="round-sig-dec" id="round-sig-dec" name="topics">
-                        <label for="round-sig-dec">Rounding Significant Figures (Decimals)</label>
-                </div>
-                <h3>Fractions</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="frac-add" id="frac-add" name="topics">
-                        <label for="frac-add">Addition</label>
-                    <input type="checkbox" value="frac-sub" id="frac-sub" name="topics">
-                        <label for="frac-sub">Subtraction</label>
-                    <input type="checkbox" value="frac-mult" id="frac-mult" name="topics">
-                        <label for="frac-mult">Multiplication</label>
-                    <input type="checkbox" value="frac-div" id="frac-div" name="topics">
-                        <label for="frac-div">Division</label>
-                    <input type="checkbox" value="frac-simp" id="frac-simp" name="topics">
-                        <label for="frac-simp">Simplify</label>
-                    <input type="checkbox" value="frac-amount" id="frac-amount" name="topics">
-                        <label for="frac-amount">Of Amounts</label>
-                </div>
-                <h3>Order Of Operations</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="ooo-add-sub" id="ooo-add-sub" name="topics">
-                        <label for="ooo-add-sub">Same Level (+/-)</label>
-                    <input type="checkbox" value="ooo-mult-div" id="ooo-mult-div" name="topics">
-                        <label for="ooo-mult-div">Same Level (x/&divide;)</label>
-                </div>
-                <h3>Algebra</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="alg-simp-1" id="alg-simp-1" name="topics">
-                        <label for="alg-simp-1">Simplify (1)</label>
-                    <input type="checkbox" value="alg-simp-2" id="alg-simp-2" name="topics">
-                        <label for="alg-simp-2">Simplify (2)</label>
-                    <input type="checkbox" value="alg-sub" id="alg-sub" name="topics">
-                        <label for="alg-sub">Substitution</label>
-                    <input type="checkbox" value="alg-solve-1" id="alg-solve-1" name="topics">
-                        <label for="alg-solve-1">One-step Equations</label>
-                    <input type="checkbox" value="alg-solve-2" id="alg-solve-2" name="topics">
-                        <label for="alg-solve-2">Two-step Equations</label>
-                    <input type="checkbox" value="alg-exp" id="alg-exp" name="topics">
-                        <label for="alg-exp">Expanding</label>
-                    <input type="checkbox" value="alg-fact" id="alg-fact" name="topics">
-                        <label for="alg-fact">Factorising</label>
-                </div>
-                <h3>Sequences</h3>
-                <div class="flex-btn">
-                    <input type="checkbox" value="seq-mult" id="seq-mult" name="topics">
-                        <label for="seq-mult">Multiples</label>
-                    <input type="checkbox" value="seq-term" id="seq-term" name="topics">
-                        <label for="seq-term">Missing Terms</label>
-                    <input type="checkbox" value="seq-nth" id="seq-nth" name="topics">
-                        <label for="seq-nth">n<sup>th</sup> Term</label>
+                <div class="controls-bottom">
+                    <div>
+                        <input type="text" inputmode="numeric" name="input-num" id="input-num" disabled>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div id="hover-container">
+        <div class="hover-window draggable">
+            <div class="top-drag"></div>
+            <h2>Stopwatch</h2>
+            <div id="stopwatch">
+                <p><span id="seconds">00</span>:<span id="tens">00</span></p>
+                <input type="button" id="button-start" value="Start">
+                <input type="button" id="button-stop" value="Stop" class="disabled">
+                <input type="button" id="button-reset" value="Reset" class="disabled hide">
+            </div> 
+        </div>
+        <div class="hover-window draggable">
+            <div class="top-drag"></div>
+            <h2>Timer</h2>
+            <div class="flex-btn">
+                <input type="radio" value="1" id="min-1" name="minutes" checked>
+                    <label for="min-1">1 min</label>
+                <input type="radio" value="2" id="min-2" name="minutes">
+                    <label for="min-2">2 mins</label>
+                <input type="radio" value="5" id="min-5" name="minutes">
+                    <label for="min-5">5 mins</label>
+                <input type="radio" value="10" id="min-10" name="minutes">
+                    <label for="min-10">10 mins</label>
+                <input type="radio" value="30" id="min-30" name="minutes">
+                    <label for="min-30">30 mins</label>
+                <input type="radio" value="60" id="min-60" name="minutes">
+                    <label for="min-60">60 mins</label>
+            </div>
+            <input type="button" id="start-timer" value="Start">
+            <input type="button" id="pause-timer" value="Pause" class="hide">
+            <input type="button" id="stop-timer" value="Stop" class="disabled">
+            <p id="timer">00:00</p>
+        </div>
+        <div class="hover-window draggable">
+            <div class="top-drag"></div>
+            <h2>Media Player</h2>
+            <div id="music-player">
+                <select name="audioSelect" id="audioSelect">
+                    <option value="./audio/smooth-waters.mp3">Smooth Waters</option>
+                    <option value="./audio/electronic-future-beats.mp3">Electronic Future Beats</option>
+                    <option value="./audio/field-grass.mp3">Field Grass</option>
+                    <option value="./audio/for-when-it-rains.mp3">For When It Rains</option>
+                    <option value="./audio/piano-moment.mp3">Piano Moment</option>
+                    <option value="./audio/price-of-freedom.mp3">Price of Freedom</option>
+                </select>
+                <audio id="audio" controls autoplay loop>
+                    <source id="audioSrc" src="./audio/smooth-waters.mp3"></source>
+                    Your browser does not support the audio format.
+                </audio>
+            </div>
+        </div>
+    </div>
+    <div id="popup-background"></div>
+    <div id="popup-container">
+        <div class="popup-window" id="popup-menu-1">
+            <h1>Practice or Challenge</h1>
+            <p>Select whether you wish to practice your maths skills or challenge them.</p>
+            <div class="flex-row-btns">
+                <div id="practice-btn">
+                    <h1>Practice</h1>
+                    <p>Practice your numeracy and arithmetic skills.
+                        A quick resource to practice one or more key skills.
+                        A timer or stopwatch can be used if you want to set yourself a challenge.</p>
+                </div>
+                <div id="challenge-btn">
+                    <h1>Challenge</h1>
+                    <p>Challenge yourself to answer as many questions as you can.
+                        Type your answer and progress if you get it right.</p>
+                </div>
+            </div>
+        </div>
+        <div class="popup-window hidden" id="popup-menu-2">
+            <h1>Topics</h1>
+            <p>Select topics you would like to practise</p>
+            <div class="line"></div>
+            <div id="settings-content" class="reduce-130">
+                <h3>Integer Arithmetic</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="int-add" id="int-add" name="topics">
+                            <label for="int-add">Addition</label>
+                        <input type="checkbox" value="int-sub" id="int-sub" name="topics">
+                            <label for="int-sub">Subtraction</label>
+                        <input type="checkbox" value="int-mult" id="int-mult" name="topics">
+                            <label for="int-mult">Multiplication</label>
+                        <input type="checkbox" value="int-div" id="int-div" name="topics">
+                            <label for="int-div">Division</label>
+                    </div>
+                    <h3>Decimal Arithmetic</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="dec-add" id="dec-add" name="topics">
+                            <label for="dec-add">Addition</label>
+                        <input type="checkbox" value="dec-sub" id="dec-sub" name="topics">
+                            <label for="dec-sub">Subtraction</label>
+                        <input type="checkbox" value="dec-mult" id="dec-mult" name="topics">
+                            <label for="dec-mult">Multiplication</label>
+                        <input type="checkbox" value="dec-div" id="dec-div" name="topics">
+                            <label for="dec-div">Division</label>
+                    </div>
+                    <h3>Negatives Arithmetic</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="neg-add" id="neg-add" name="topics">
+                            <label for="neg-add">Addition</label>
+                        <input type="checkbox" value="neg-sub" id="neg-sub" name="topics">
+                            <label for="neg-sub">Subtraction</label>
+                        <input type="checkbox" value="neg-mult" id="neg-mult" name="topics">
+                            <label for="neg-mult">Multiplication</label>
+                        <input type="checkbox" value="neg-div" id="neg-div" name="topics">
+                            <label for="neg-div">Division</label>
+                    </div>
+                    <h3>Percentages</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="perc-find-1" id="perc-find-1" name="topics">
+                            <label for="perc-find-1">Percentages of Amounts (1)</label>
+                        <input type="checkbox" value="perc-find-2" id="perc-find-2" name="topics">
+                            <label for="perc-find-2">Percentages of Amounts (2)</label>
+                        <input type="checkbox" value="perc-find-3" id="perc-find-3" name="topics">
+                            <label for="perc-find-3">Percentages of Amounts (3)</label>
+                        <input type="checkbox" value="perc-inc" id="perc-inc" name="topics">
+                            <label for="perc-inc">Percentage Increase</label>
+                        <input type="checkbox" value="perc-dec" id="perc-dec" name="topics">
+                            <label for="perc-dec">Percentage Decrease</label>
+                        <input type="checkbox" value="perc-mult" id="perc-mult" name="topics">
+                            <label for="perc-mult">Percentage Multipliers</label>
+                    </div>
+                    <h3>Precision</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="round-dec" id="round-dec" name="topics">
+                            <label for="round-dec">Rounding Decimals</label>
+                        <input type="checkbox" value="round-sig" id="round-sig" name="topics">
+                            <label for="round-sig">Rounding Significant Figures (Large)</label>
+                        <input type="checkbox" value="round-sig-dec" id="round-sig-dec" name="topics">
+                            <label for="round-sig-dec">Rounding Significant Figures (Decimals)</label>
+                    </div>
+                    <h3>Fractions</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="frac-add" id="frac-add" name="topics">
+                            <label for="frac-add">Addition</label>
+                        <input type="checkbox" value="frac-sub" id="frac-sub" name="topics">
+                            <label for="frac-sub">Subtraction</label>
+                        <input type="checkbox" value="frac-mult" id="frac-mult" name="topics">
+                            <label for="frac-mult">Multiplication</label>
+                        <input type="checkbox" value="frac-div" id="frac-div" name="topics">
+                            <label for="frac-div">Division</label>
+                        <input type="checkbox" value="frac-simp" id="frac-simp" name="topics">
+                            <label for="frac-simp">Simplify</label>
+                        <input type="checkbox" value="frac-amount" id="frac-amount" name="topics">
+                            <label for="frac-amount">Of Amounts</label>
+                    </div>
+                    <h3>Order Of Operations</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="ooo-add-sub" id="ooo-add-sub" name="topics">
+                            <label for="ooo-add-sub">Same Level (+/-)</label>
+                        <input type="checkbox" value="ooo-mult-div" id="ooo-mult-div" name="topics">
+                            <label for="ooo-mult-div">Same Level (x/&divide;)</label>
+                    </div>
+                    <h3>Algebra</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="alg-simp-1" id="alg-simp-1" name="topics">
+                            <label for="alg-simp-1">Simplify (1)</label>
+                        <input type="checkbox" value="alg-simp-2" id="alg-simp-2" name="topics">
+                            <label for="alg-simp-2">Simplify (2)</label>
+                        <input type="checkbox" value="alg-sub" id="alg-sub" name="topics">
+                            <label for="alg-sub">Substitution</label>
+                        <input type="checkbox" value="alg-solve-1" id="alg-solve-1" name="topics">
+                            <label for="alg-solve-1">One-step Equations</label>
+                        <input type="checkbox" value="alg-solve-2" id="alg-solve-2" name="topics">
+                            <label for="alg-solve-2">Two-step Equations</label>
+                        <input type="checkbox" value="alg-exp" id="alg-exp" name="topics">
+                            <label for="alg-exp">Expanding</label>
+                        <input type="checkbox" value="alg-fact" id="alg-fact" name="topics">
+                            <label for="alg-fact">Factorising</label>
+                    </div>
+                    <h3>Sequences</h3>
+                    <div class="flex-btn">
+                        <input type="checkbox" value="seq-mult" id="seq-mult" name="topics">
+                            <label for="seq-mult">Multiples</label>
+                        <input type="checkbox" value="seq-term" id="seq-term" name="topics">
+                            <label for="seq-term">Missing Terms</label>
+                        <input type="checkbox" value="seq-nth" id="seq-nth" name="topics">
+                            <label for="seq-nth">n<sup>th</sup> Term</label>
+                    </div>
+            </div>
+            <div class="line"></div>
+            <div class="flex-row">
+                <input type="button" id="close-quest-menu" value="Select" class="disabled">
+                <input type="button" id="open-time-menu" value="Select" class="disabled hidden">
+            </div>
+        </div>
+        <div class="popup-window hidden" id="time-menu">
+            <h2>Challenge Options</h2>
+            <div class="content">
+                <h2>Timer</h2>
+                <div class="flex-btn">
+                    <input type="radio" value="none" id="none" name="timer-opt" checked >
+                        <label for="none">Untimed</label>
+                    <input type="radio" value="timed" id="timed" name="timer-opt">
+                        <label for="timed">Timed</label>
+                    <input type="radio" value="custom" id="custom" name="timer-opt" disabled>
+                        <label for="custom">Custom</label>
+                </div>
+                <div id="timer-none" class="timer-row">
+                    <p>Untimed challenge - Questions will keep coming until you stop</p>
+                </div>
+                <div id="timer-fixed" class="timer-row hidden">
+                    <div class="flex-btn">
+                        <input type="radio" value="1" id="quest-min-1" name="quest-minutes" checked>
+                            <label for="quest-min-1">1 min</label>
+                        <input type="radio" value="2" id="quest-min-2" name="quest-minutes">
+                            <label for="quest-min-2">2 mins</label>
+                        <input type="radio" value="5" id="quest-min-5" name="quest-minutes">
+                            <label for="quest-min-5">5 mins</label>
+                        <input type="radio" value="10" id="quest-min-10" name="quest-minutes">
+                            <label for="quest-min-10">10 mins</label>
+                        <input type="radio" value="30" id="quest-min-30" name="quest-minutes">
+                            <label for="quest-min-30">30 mins</label>
+                        <input type="radio" value="60" id="quest-min-60" name="quest-minutes">
+                            <label for="quest-min-60">60 mins</label>
+                    </div>
+                </div>
+                <div id="timer-custom" class="timer-row hidden">
+                    <p>Custom</p>
+                </div>
+                <div id="start-container" class="timer-row">
+                    <input type="button" id="confirm-time" value="Select">
+                </div>
+            </div>
+        </div>
+    </div> 
     <div class="corner-menu">
-        <div class="corner-btn" id="home-btn">
+        <div class="corner-btn pulse-btn popup-menu" data-id="popup-menu-2">
+            <img src="./images/quest-icon.svg" alt="Quest">
+        </div>
+        <div class="corner-btn rotate-btn" id="timer-menu">
+            <img src="./images/time-icon.svg" alt="Timer">
+        </div>
+        <div class="corner-btn rotate-btn popup-menu" data-id="popup-menu-1">
+            <img src="./images/settings-icon.svg" alt="Settings">
+        </div>
+        <div class="corner-btn rotate-btn" id="format-btn">
+            <img src="./images/color-icon.svg" alt="Color">
+            <div id="color-picker-container">
+                <input type="color" id="color-picker" name="color-picker" value="#ffffff">
+            </div>
+        </div>
+        <div class="corner-btn pulse-btn" id="home-btn">
             <a href="./"><img src="./images/home-icon.svg" alt="Home"></a>
         </div>
     </div>
-    <div id="footer">
+    <div id="footer" class="button-spacing">
         <p>Copyright &copy; 2022 -  <script>document.write(new Date().getFullYear())</script>, M. Massey.</p>
     </div>
 </body>

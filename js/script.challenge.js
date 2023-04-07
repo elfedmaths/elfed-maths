@@ -1,3 +1,4 @@
+/*
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 checkboxes.forEach(checkbox => {
     checkbox.addEventListener('click', function(){
@@ -157,6 +158,5 @@ function checkAns(ans){
     }    
 }
 
-function clearData(){
-    localStorage.clear();
-}
+
+*/

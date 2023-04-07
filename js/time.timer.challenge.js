@@ -34,19 +34,19 @@ timerOpt.forEach(opt => {
         var timerSelect = document.querySelector('input[name="timer-opt"]:checked').value;
         switch (timerSelect) {
             case 'none':
-                document.getElementById('timer-none').style.display = "block";
-                document.getElementById('timer-fixed').style.display = "none";
-                document.getElementById('timer-custom').style.display = "none";
+                document.getElementById('timer-none').classList.remove('hidden');
+                document.getElementById('timer-fixed').classList.add('hidden');
+                document.getElementById('timer-custom').classList.add('hidden');
                 break;
             case 'timed':
-                document.getElementById('timer-none').style.display = "none";
-                document.getElementById('timer-fixed').style.display = "flex";
-                document.getElementById('timer-custom').style.display = "none";
+                document.getElementById('timer-none').classList.add('hidden');
+                document.getElementById('timer-fixed').classList.remove('hidden');
+                document.getElementById('timer-custom').classList.add('hidden');
                 break;
             case 'custom':
-                document.getElementById('timer-none').style.display = "none";
-                document.getElementById('timer-fixed').style.display = "none";
-                document.getElementById('timer-custom').style.display = "block";
+                document.getElementById('timer-none').classList.add('hidden');
+                document.getElementById('timer-fixed').classList.add('hidden');
+                document.getElementById('timer-custom').classList.remove('hidden');
                 break;
             default:
                 break;
