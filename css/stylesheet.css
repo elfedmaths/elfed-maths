@@ -103,6 +103,10 @@ body{
 
 /* Header */
 
+#header {
+    width: 100vw;
+}
+
 #header h1{
     margin: 15px auto;
     font-size: 20px;
@@ -264,6 +268,10 @@ input[type=button].hide{
 /* -------------------- */
 
 /* Clock */
+
+#stopwatch {
+    width: 100%;
+}
 
 #stopwatch p{
     font-size: 30px;

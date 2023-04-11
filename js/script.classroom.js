@@ -113,7 +113,7 @@ function genQuest(id){
       quest5 = getCalc('seq-mult');
       break;
     case 'btn-set-b':
-      quest1 = getCalc('int-mult');
+      quest1 = getCalc('int-mult-2x2');
       quest2 = getCalc('dec-add');
       quest3 = getCalc('perc-find-2');
       quest4 = getCalc('int-sub');

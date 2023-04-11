@@ -21,6 +21,11 @@ function getCalc(type){
             var quest = `${(int1 * int2)} &divide; ${int2}`;
             var ans = int1;
             break;
+        case 'int-mult-2x2':
+            var int1 = randomInt(10, 99), int2 = randomInt(10, 99);
+            var quest = `${int1} &times; ${int2}`;
+            var ans = int1 * int2;
+            break;
         /* -------------------- Decimal Arithmetic -------------------- */
         case 'dec-add':
             var int1 = randomInt(0, 100), int2 = randomInt(0, 100);
