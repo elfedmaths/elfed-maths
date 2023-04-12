@@ -71,10 +71,6 @@ body{
     display: none !important;
 }
 
-.disabled{
-    color: var(--disabled-font);
-}
-
 /* -------------------- */
 
 /* Scroll Bar */
@@ -393,6 +389,10 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     font-size: 5vw;
     color: var(--main-font);
     cursor: pointer;
+}
+
+.center-row a p.disabled{
+    color: var(--disabled-font);
 }
 
 .center-row :hover p {
