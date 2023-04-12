@@ -255,11 +255,11 @@ function genQuest(id){
     } 
     var nocalcIndex = str.indexOf('NOCALC');
     if(nocalcIndex >= 0){
-      str = str.replace("NOCALC", "<img src='./images/non-calc-icon.svg' alt='No Calc' class='quest-icon'>");
+      str = str.replace("NOCALC", "<img src='./img/non-calc-icon.svg' alt='No Calc' class='quest-icon'>");
     }
     var calcIndex = str.indexOf('CALC');
     if(calcIndex >= 0){
-      str = str.replace("CALC", "<img src='./images/calc-icon.svg' alt='Calc' class='quest-icon'>");
+      str = str.replace("CALC", "<img src='./img/calc-icon.svg' alt='Calc' class='quest-icon'>");
     }
     return str;
   };
