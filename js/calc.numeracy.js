@@ -300,20 +300,20 @@ function getCalcNum(type){
             var int1 = randomInt(1,10), int2 = randomInt(1,10), int3 = randomInt(1,10), int4 = randomInt(1,10);
             var int5 = (Math.ceil((int1+int2+int3+int4)/5)*5) - (int1+int2+int3+int4);
             var arr1 = [
-                'mean of ' + math.mean(int1,int2,int3,int4,int5),
-                'median of ' + math.median(int1,int2,int3,int4,int5),
+                'a mean of ' + String(math.mean(int1,int2,int3,int4,int5)),
+                'a median of ' + String(math.median(int1,int2,int3,int4,int5)),
                 math.mode(int1,int2,int3,int4,int5),
-                'range of ' + Math.max(int1,int2,int3,int4,int5) - Math.min(int1,int2,int3,int4,int5)
+                'a range of ' + String(Math.max(int1,int2,int3,int4,int5) - Math.min(int1,int2,int3,int4,int5))
             ]
             if(arr1[2].length > 2){
                 arr1[2] = 'no mode';
             }else if(arr1[2].length == 2){
-                arr1[2] = 'a mode of ' + arr1[2][0] + ' and ' + arr1[2][1];
+                arr1[2] = 'a mode of ' + String(arr1[2][0]) + ' and ' + String(arr1[2][1]);
             }else{
-                arr1[2][1] = 'a mode of ' + arr1[2][0];
+                arr1[2][1] = 'a mode of ' + String(arr1[2][0]);
             }
             var int6 = randomInt(0,3), int7 = randomIntExcl(0,3,int6), int8 = randomIntExcl(0,3,[int6,int7]);
-            quest = `CALC List 5 integers with a ${arr1[int6]}, a ${arr1[int7]}, and a ${arr1[int8]}.`;
+            quest = `CALC List 5 integers with ${arr1[int6]}, ${arr1[int7]}, and ${arr1[int8]}.`;
             ans = `I.e. ${int1}, ${int2}, ${int3}, ${int4}, and ${int5}`;
             break;
         case 'nih4': /* ----- Reverse Sharing in a Ratio (1:2) ----- */
@@ -449,20 +449,20 @@ function getCalcNum(type){
             var int4 = randomInt(1,12), int5 = randomInt(1,12);
             var int6 = (Math.ceil((int1+int2+int3+int4+int5)/6)*6) - (int1+int2+int3+int4+int5);
             var arr1 = [
-                'mean of ' + math.mean(int1,int2,int3,int4,int5,int6),
-                'median of ' + math.median(int1,int2,int3,int4,int5,int6),
+                'a mean of ' + String(math.mean(int1,int2,int3,int4,int5,int6)),
+                'a median of ' + String(math.median(int1,int2,int3,int4,int5,int6)),
                 math.mode(int1,int2,int3,int4,int5,int6),
-                'range of ' + Math.max(int1,int2,int3,int4,int5,int6) - Math.min(int1,int2,int3,int4,int5,int6)
+                'a range of ' + String(Math.max(int1,int2,int3,int4,int5,int6) - Math.min(int1,int2,int3,int4,int5,int6))
             ]
             if(arr1[2].length > 2){
                 arr1[2] = 'no mode';
             }else if(arr1[2].length == 2){
-                arr1[2] = 'a mode of ' + arr1[2][0] + ' and ' + arr1[2][1];
+                arr1[2] = 'a mode of ' + String(arr1[2][0]) + ' and ' + String(arr1[2][1]);
             }else{
-                arr1[2][1] = 'a mode of ' + arr1[2][0];
+                arr1[2][1] = 'a mode of ' + String(arr1[2][0]);
             }
             var int7 = randomInt(0,3), int8 = randomIntExcl(0,3,int7), int9 = randomIntExcl(0,3,[int7,int8]);
-            quest = `CALC List 5 integers with a ${arr1[int7]}, a ${arr1[int8]}, and a ${arr1[int9]}.`;
+            quest = `CALC List 6 integers with ${arr1[int7]}, ${arr1[int8]}, and ${arr1[int9]}.`;
             ans = `I.e. ${int1}, ${int2}, ${int3}, ${int4}, ${int5}, and ${int6}`;
             break;
         case 'nh5': /* ----- Reverse Sharing in a Ratio (1:2:3) ----- */
