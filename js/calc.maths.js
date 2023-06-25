@@ -142,6 +142,21 @@ function getCalc(type){
                 var ans = mult;
             }
             break;
+        case 'perc-simp-int':
+            var perc = (randomInt(1, 4) * 5), min = 10, max = 200;
+            var ans = randomInt(min/perc, max/perc) * perc;
+            var int1 = ans * 100 / perc;
+            var year = randomInt(2,5), ans = `£ ${int1 + (ans * year)}`;
+            var quest = `£${int1} is invested and earns ${perc}% per year in simple interest.
+                How much does it earn after ${year} years?`;
+            break;
+        case 'perc-comp-int':
+            var perc = randomInt(1,10), year = randomInt(3,8);
+            var int1 = randomInt(1,100) * 100;
+            var quest = `£${int1} is invested and earns ${perc}% per annum in compound interest.
+                How much does it earn after ${year} years?`;
+            var ans = `£${(int1 * Math.pow((100 + perc)/100,year)).toFixed(2)}`;
+            break;
         /* -------------------- Precision -------------------- */
         case 'round-dec':
             var places = randomInt(1, 5), digits = randomInt(places + 1, places + 5);
@@ -160,6 +175,43 @@ function getCalc(type){
             var int = Math.pow(10, digits) - 1, num = randomInt(1, int), dec = randomInt(digits, digits + 5);
             var quest = `Round ${parseFloat(num / Math.pow(10, dec))}<br>to ${places} s.f.`;
             var ans = (num / Math.pow(10, dec)).toPrecision(places);
+            break;
+        case 'round-app-1':
+            if(Math.random()<1/4){
+                var int1 = randomInt(2,4), int2 = int1 + randomInt(-1,1);
+                var int3 = randomInt(Math.pow(10,int1),Math.pow(10,int1+1)-1);
+                var int4 = randomInt(Math.pow(10,int2),Math.pow(10,int2+1)-1);
+                var quest = `Approximately, work out ${int3} + ${int4}.`;
+                var ans = parseFloat(int3.toPrecision(1)) + parseFloat(int4.toPrecision(1));
+            }else if(Math.random()<1/3){
+                var int1 = randomInt(2,4), int2 = int1 + randomInt(-1,1);
+                var int3 = randomInt(Math.pow(10,int1),Math.pow(10,int1+1)-1);
+                var int4 = randomInt(Math.pow(10,int2),Math.pow(10,int2+1)-1);
+                var quest = `Approximately, work out ${Math.max(int3,int4)} - ${Math.min(int3,int4)}.`;
+                var ans = parseFloat(Math.max(int3,int4).toPrecision(1)) - parseFloat(Math.min(int3,int4).toPrecision(1));
+            }else if(Math.random()<1/2){
+                var int1 = randomInt(2,4), int2 = int1 + randomInt(-1,1);
+                var int3 = randomInt(Math.pow(10,int1),Math.pow(10,int1+1)-1);
+                var int4 = randomInt(Math.pow(10,int2),Math.pow(10,int2+1)-1);
+                var quest = `Approximately, work out ${int3} &times; ${int4}.`;
+                var ans = parseFloat(int3.toPrecision(1)) * parseFloat(int4.toPrecision(1));
+            }else{
+                var arr1 = {
+                    1: randomInt(1,10),
+                    2: randomInt(1,5),
+                    3: randomInt(1,3),
+                    4: randomIntExcl(1,5,[3,4]),
+                    5: randomIntExcl(1,5,[3,4])
+                }
+                var int1 = randomInt(1,5), int2 = arr1[int1]; 
+                var int3 = int1 * int2;
+                var int4 = randomInt(2,5), int5 = randomInt(1,int4-1);
+                var int6 = int3 * Math.pow(10,int4), int7 = int2 * Math.pow(10,int5);
+                var int6 = int6 + randomInt((-1 * Math.floor((int6/2)/10)), Math.floor((int6/2)/10));
+                var int7 = int7 + randomInt((-1 * Math.floor((int7/2)/10)), Math.floor((int7/2)/10));
+                var quest = `Approximately, work ot ${int6} &divide; ${int7}.`;
+                var ans = parseFloat(int6.toPrecision(1)) / parseFloat(int7.toPrecision(1));
+            }
             break;
         /* -------------------- Fractions -------------------- */
         case 'frac-add':
