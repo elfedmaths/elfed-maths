@@ -1,5 +1,5 @@
-var seconds = 00; 
-var tens = 00; 
+var seconds = 0; 
+var tens = 0; 
 let intervalId;
 
 const stopwatchContainer = document.querySelectorAll(".stopwatch");

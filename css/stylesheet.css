@@ -141,11 +141,11 @@ body{
 #main{
     display: flex;
     flex-wrap: nowrap;
+    flex-direction: column;
 }
 
 @media (orientation: landscape) {
     #main {
-      flex-direction: row;
       height: calc(100vh - 70px);
     }
     #main .center-row a p span:nth-child(1)::after{
@@ -155,9 +155,6 @@ body{
 }
 
 @media (orientation: portrait) {
-    #main {
-        flex-direction: column;
-    }
     #main #center{
         order: 1;
     }
@@ -167,8 +164,8 @@ body{
     #main .center-row .center-button, #main .center-row .content-cell{
         display: none;
     }
-    #main .center-row:nth-child(even){
-        flex: calc(1/3) calc(1/3);
+    #main .center-row:first-child{
+        flex: calc(1/2) calc(1/2);
     }
 }
 
@@ -364,17 +361,17 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 .center-row{
     flex: 1 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 0 10px;
 }
 
 .center-row a, .center-row .content-cell{
+    flex: 1 1;
+    margin: 0 10px;
     text-decoration: none;
     height: 100%;
     width: 100%;
-    margin: 10px;
     box-shadow: 0 1px 5px var(--main-shadow);
     overflow: hidden;
     border-radius: 5px;
@@ -384,11 +381,41 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     cursor: pointer;
 }
 
+@media (orientation: landscape) {
+    .center-row:nth-child(1){ margin: 10px 10px 5px 10px; }
+    .center-row:nth-child(2){ margin: 5px 10px 5px 10px; }
+    .center-row:nth-child(3){ margin: 5px 10px 10px 10px; }
+}
+
+@media (orientation: portrait) {
+    .center-row{
+        flex-direction: column;
+        margin: 0 10px;
+    }
+    .center-row a{
+        margin: 5px 10px;
+    }
+    .center-row a:first-child{
+        margin-top: 10px;
+    }
+    .center-row a:last-child{
+        margin-bottom: 10px;
+    }
+}
+
 .center-row a p, .center-row .content-cell p{
     text-decoration: none;
-    font-size: 5vw;
+    font-size: 3.8vw;
     color: var(--main-font);
     cursor: pointer;
+}
+
+.center-row .content-cell input[type='button']{
+    margin: 2px auto;
+}
+
+.center-row .content-cell #timer{
+    margin: 2px auto;
 }
 
 .center-row a p.disabled{
@@ -400,10 +427,9 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     transform: scale(1.2);
 }
 
+
 .center-row a img{
-    max-width: 60%;
-    max-height: 60%;
-    margin: 20px 0;
+    height: 20vh;
 }
 
 .center-row a:hover img{
