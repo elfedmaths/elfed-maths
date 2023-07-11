@@ -418,15 +418,15 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     margin: 2px auto;
 }
 
-.center-row a p.disabled{
+.center-row a.disabled p, .center-row .content-cell.disabled p{
+    cursor: context-menu;
     color: var(--disabled-font);
 }
 
-.center-row :hover p {
+.center-row a:not(.disabled):hover p {
     transition: 0.2s linear;
     transform: scale(1.2);
 }
-
 
 .center-row a img{
     height: 20vh;
@@ -960,17 +960,21 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     transform: translate(-50%, -50%);
     width: 80vw;
     height: 80vh;
-    padding: 20px;
+    padding: 20px 5%;
     background-color: var(--main-back);
     box-shadow: 0 1px 5px var(--main-shadow);
     overflow-y: auto;
 }
 
 .popup-window h1{
-    font-size: 24px;
+    font-size: 3vw;
     color: var(--main-font);
     cursor: default;
     margin: 10px;
+}
+
+.popup-window .popup-content{
+    margin-bottom: 40px;
 }
 
 .popup-window .popup-content h1{
@@ -981,7 +985,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 }
 
 .popup-window .popup-content h2{
-    font-size: 2.5vw;
+    font-size: 1.5vw;
     color: var(--main-font);
     cursor: default;
     margin: 8px;
@@ -992,6 +996,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     color: var(--main-font);
     cursor: default;
     margin: 5px;
+    text-align: justify;
 }
 
 .popup-window .popup-content ul{
@@ -999,6 +1004,8 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     color: var(--main-font);
     cursor: default;
     list-style-position: outside;
+    text-align: left;
+    padding-left: 40px;
 }
 
 .popup-window .popup-content ul li{
@@ -1123,6 +1130,13 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     0% { transform: scale(1); }
     50% { transform: scale(1.2); }
     100% { transform: scale(1); }
+}
+
+@keyframes wobble {
+    0% { transform: rotate(0deg);}
+    25% { transform: rotate(5deg);}
+    50% { transform: rotate(0deg);}
+    75% { transform: rotate(-5deg);}
 }
 
 /* -------------------- */
@@ -1277,6 +1291,20 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 .flex-row-btns div{
     flex: 1 1 300px;
     padding: 20px;
+    cursor: pointer;
+}
+
+.flex-row-btns div img{
+    width: 50%;
+    cursor: pointer;
+}
+
+.flex-row-btns div h1, .flex-row-btns div p{
+    cursor: pointer;
+}
+
+.flex-row-btns div:hover img{
+    animation: wobble 1s linear infinite;
 }
 
 .flash-green {
