@@ -253,7 +253,7 @@ function getCalcNum(type){
             let d1 = new Date();
                 d1.setHours(int1);
                 d1.setMinutes(int2);
-            quest = `NOCALC What time is is ${int3} hours and ${int4} minutes after ${d1.toLocaleTimeString('en-GB', { hour12: true, hour: 'numeric', minute: 'numeric' })}?`
+            quest = `NOCALC What time is it ${int3} hours and ${int4} minutes after ${d1.toLocaleTimeString('en-GB', { hour12: true, hour: 'numeric', minute: 'numeric' })}?`
                 d1.setHours(d1.getHours() + int3);
                 d1.setMinutes(d1.getMinutes() + int4);
             ans = d1.toLocaleTimeString('en-GB', { hour12: true, hour: 'numeric', minute: 'numeric' });
@@ -310,7 +310,7 @@ function getCalcNum(type){
             }else if(arr1[2].length == 2){
                 arr1[2] = 'a mode of ' + String(arr1[2][0]) + ' and ' + String(arr1[2][1]);
             }else{
-                arr1[2][1] = 'a mode of ' + String(arr1[2][0]);
+                arr1[2] = 'a mode of ' + String(arr1[2][0]);
             }
             var int6 = randomInt(0,3), int7 = randomIntExcl(0,3,int6), int8 = randomIntExcl(0,3,[int6,int7]);
             quest = `CALC List 5 integers with ${arr1[int6]}, ${arr1[int7]}, and ${arr1[int8]}.`;
