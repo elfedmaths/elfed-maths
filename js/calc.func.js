@@ -36,3 +36,20 @@ function convertNum(num){
         return capLetter(convertNum(start) + ' thousand ' + convertNum(end));
     }
 }
+
+function formatArrList(arr) {
+  if (arr.length === 0) {
+    return ""
+  }else if(arr.length === 1){
+    return arr[0]
+  }else if(arr.length === 2){
+    return arr[0] + " and " + arr[1]
+  }else{
+    var output = arr[0];
+    for (let i = 1; i < arr.length - 1; i++) {
+      output = output + ", " + arr[i]
+    }
+    output = output + ", and " + arr[arr.length - 1]
+    return output;
+  }
+}

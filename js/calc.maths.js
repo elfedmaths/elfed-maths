@@ -481,6 +481,53 @@ function getCalc(type){
             var quest = `Find the n<sup class="margin-right">th</sup>  term of<br>${arr.join(', ')}`;
             var ans = `${int1}n + ${int2}`;
             break;
+        /* -------------------- Averages -------------------- */
+        case 'av-mean':
+            var int1 = randomInt(4, 7)
+            var intArr = []
+            for (let i = 0; i < int1; i++) {
+                intArr.push(randomInt(1,10))
+            }
+            var sum = math.sum(intArr)
+            intArr.push((int1 + 1) - math.mod(sum, int1 + 1))
+            var ans = math.mean(intArr);
+            var str1 = formatArrList(intArr)
+            var quest = `What is the mean of<br>${str1}`;
+            break;
+        case 'av-mode':
+            var int1 = randomInt(5, 8)
+            var intArr = []
+            for (let i = 0; i < int1; i++) {
+                intArr.push(randomInt(1,10))
+            }
+            var modeArr = math.sort(math.mode(intArr))
+            var ans = formatArrList(modeArr);
+            if(modeArr.length > 2){
+                ans = "No Mode"
+            }
+            var str1 = formatArrList(intArr)
+            var quest = `What is the mode of<br>${str1}`;
+            break;
+        case 'av-median':
+            var int1 = randomInt(5, 8)
+            var intArr = []
+            for (let i = 0; i < int1; i++) {
+                intArr.push(randomInt(1,10))
+            }
+            var ans = math.median(intArr);
+            var str1 = formatArrList(intArr)
+            var quest = `What is the median of<br>${str1}`;
+            break;
+        case 'av-range':
+            var int1 = randomInt(5, 8)
+            var intArr = []
+            for (let i = 0; i < int1; i++) {
+                intArr.push(randomInt(1,100))
+            }
+            var str1 = formatArrList(intArr)
+            var quest = `What is the range of<br>${str1}`;
+            var ans = Math.max(...intArr) - Math.min(...intArr);
+            break;
         /* -------------------- End -------------------- */
         default:
             var quest = 'More Questions Coming Soon';
