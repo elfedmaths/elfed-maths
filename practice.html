@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Practice</title>
+	<title>Maths Practice</title>
 	<meta name="author" content="M. Massey">
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <meta name="description" content="Elfed high school Maths department is proud to present it's Elfed Maths site.
+        Watch videos, practice questions, timestable challenge, games and more.">
+    <meta name="keywords" content="Maths, Elfed, Elfed High, Elfed High School, Elfed Maths">
+    <meta name="subject" content="Elfed Maths Resources">
+    <meta name="robots" content="nofollow, noimageindex, nositelinkssearchbox, notranslate">
+    <meta name="rating" content="General">
+    <meta name="theme-color" content="#000000">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/resetstyle.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="./js/calc.func.js"></script>
@@ -21,7 +28,6 @@
     <script src="./js/media.music.js" defer></script>
     <script src="./js/script.practice.js" defer></script>
     <script src="./js/popup.index.js" defer></script>
-	<meta name="description" content="Maths practice resource">
 </head>
 <body>
     <div id="header">
@@ -182,6 +188,8 @@
                         <label for="perc-find-3">Percentages of Amounts (3)</label>
                     <input type="checkbox" value="perc-inc" id="perc-inc" name="topics">
                         <label for="perc-inc">Percentage Increase</label>
+                </div>
+                <div class="flex-btn">
                     <input type="checkbox" value="perc-dec" id="perc-dec" name="topics">
                         <label for="perc-dec">Percentage Decrease</label>
                     <input type="checkbox" value="perc-mult" id="perc-mult" name="topics">
@@ -205,15 +213,15 @@
                 <h3>Fractions</h3>
                 <div class="flex-btn">
                     <input type="checkbox" value="frac-add" id="frac-add" name="topics">
-                        <label for="frac-add">Addition</label>
+                        <label for="frac-add" class="no-challenge">Addition</label>
                     <input type="checkbox" value="frac-sub" id="frac-sub" name="topics">
-                        <label for="frac-sub">Subtraction</label>
+                        <label for="frac-sub" class="no-challenge">Subtraction</label>
                     <input type="checkbox" value="frac-mult" id="frac-mult" name="topics">
-                        <label for="frac-mult">Multiplication</label>
+                        <label for="frac-mult" class="no-challenge">Multiplication</label>
                     <input type="checkbox" value="frac-div" id="frac-div" name="topics">
-                        <label for="frac-div">Division</label>
+                        <label for="frac-div" class="no-challenge">Division</label>
                     <input type="checkbox" value="frac-simp" id="frac-simp" name="topics">
-                        <label for="frac-simp">Simplify</label>
+                        <label for="frac-simp" class="no-challenge">Simplify</label>
                     <input type="checkbox" value="frac-amount" id="frac-amount" name="topics">
                         <label for="frac-amount">Of Amounts</label>
                 </div>
@@ -253,17 +261,23 @@
                 <h3>Standard Form</h3>
                 <div class="flex-btn">
                     <input type="checkbox" value="std-conv-1" id="std-conv-1" name="topics">
-                        <label for="std-conv-1">Converting (Large)</label>   
+                        <label for="std-conv-1" class="no-challenge">Converting To Standard Form (Large)</label>   
                     <input type="checkbox" value="std-conv-2" id="std-conv-2" name="topics">
-                        <label for="std-conv-2">Converting (Small)</label>   
+                        <label for="std-conv-2">Converting To Ordinary Numbers (Large)</label>   
+                    <input type="checkbox" value="std-conv-3" id="std-conv-3" name="topics">
+                        <label for="std-conv-3" class="no-challenge">Converting To Standard Form (Small)</label>   
+                    <input type="checkbox" value="std-conv-4" id="std-conv-4" name="topics">
+                        <label for="std-conv-4">Converting To Ordinary Numbers (Small)</label>   
+                </div>
+                <div class="flex-btn">    
                     <input type="checkbox" value="std-add" id="std-add" name="topics">
-                        <label for="std-add">Addition</label>
+                        <label for="std-add" class="no-challenge">Addition</label>
                     <input type="checkbox" value="std-sub" id="std-sub" name="topics">
-                        <label for="std-sub">Subtraction</label>
+                        <label for="std-sub" class="no-challenge">Subtraction</label>
                     <input type="checkbox" value="std-mult" id="std-mult" name="topics">
-                        <label for="std-mult">Multiplication</label>
+                        <label for="std-mult" class="no-challenge">Multiplication</label>
                     <input type="checkbox" value="std-div" id="std-div" name="topics">
-                        <label for="std-div">Division</label>
+                        <label for="std-div" class="no-challenge">Division</label>
                 </div>
                 <h3>Ratio</h3>
                 <div class="flex-btn">
@@ -279,7 +293,7 @@
                     <input type="checkbox" value="av-mean" id="av-mean" name="topics">
                         <label for="av-mean">Mean</label>
                     <input type="checkbox" value="av-mode" id="av-mode" name="topics">
-                        <label for="av-mode">Mode</label>
+                        <label for="av-mode" class="no-challenge">Mode</label>
                     <input type="checkbox" value="av-median" id="av-median" name="topics">
                         <label for="av-median">Median</label>
                     <input type="checkbox" value="av-range" id="av-range" name="topics">

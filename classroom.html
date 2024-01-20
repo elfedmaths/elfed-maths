@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Classroom</title>
+	<title>Maths Classroom</title>
 	<meta name="author" content="M. Massey">
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'>
+    <meta name="description" content="Elfed high school Maths department is proud to present it's Elfed Maths site.
+        Watch videos, practice questions, timestable challenge, games and more.">
+    <meta name="keywords" content="Maths, Elfed, Elfed High, Elfed High School, Elfed Maths">
+    <meta name="subject" content="Elfed Maths Resources">
+    <meta name="robots" content="nofollow, noimageindex, nositelinkssearchbox, notranslate">
+    <meta name="rating" content="General">
+    <meta name="theme-color" content="#000000">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/resetstyle.css">
     <link rel="stylesheet" href="./css/stylesheet.css">
     <script src="./js/function.main.js"></script>
@@ -15,9 +22,8 @@
     <script src="./js/calc.numeracy.js"></script>
     <script src="./js/function.format.js" defer></script>
     <script src="./js/function.textfit.min.js"></script>
-    <script src="./js/script.classroom.js" defer></script>
     <script src="./js/popup.index.js" defer></script>
-	<meta name="description" content="Maths practice resource">
+    <script src="./js/script.classroom.js" defer></script>
 </head>
 <body>
     <div id="header">
@@ -29,27 +35,27 @@
     </div>
     <div id="classroom">
         <div class="quest-row">
-            <p class="quest-num">1.</p>
+            <p class="quest-num" data-quest="1">1.</p>
             <p class="quest-val" id="question-1"></p>
             <p class="quest-ans" id="answer-1"></p>
         </div>
         <div class="quest-row">
-            <p class="quest-num">2.</p>
+            <p class="quest-num" data-quest="2">2.</p>
             <p class="quest-val" id="question-2"></p>
             <p class="quest-ans" id="answer-2"></p>
         </div>
         <div class="quest-row">
-            <p class="quest-num">3.</p>
+            <p class="quest-num" data-quest="3">3.</p>
             <p class="quest-val" id="question-3"></p>
             <p class="quest-ans" id="answer-3"></p>
         </div>
         <div class="quest-row">
-            <p class="quest-num">4.</p>
+            <p class="quest-num" data-quest="4">4.</p>
             <p class="quest-val" id="question-4"></p>
             <p class="quest-ans" id="answer-4"></p>
         </div>
         <div class="quest-row">
-            <p class="quest-num">5.</p>
+            <p class="quest-num" data-quest="5">5.</p>
             <p class="quest-val" id="question-5"></p>
             <p class="quest-ans" id="answer-5"></p>
         </div>
@@ -100,8 +106,6 @@
                             <li>Substitution</li>
                         </ul>
                     </div>
-                </div>
-                <div class="flex-row">
                     <div class="option-btn" id="btn-set-e">
                         <h2>Set E</h2>
                         <ul class="submenu">
@@ -166,7 +170,7 @@
                         </ul>
                     </div>
                     <div class="option-btn" id="btn-set-nh">
-                        <h2>Numeracy<BR>Higher</h2>
+                        <h2>Numeracy<br>Higher</h2>
                         <ul class="submenu">
                             <li>Mix of key Skills needed for</li>
                             <li>WJEC Numeracy Higher papers</li>
