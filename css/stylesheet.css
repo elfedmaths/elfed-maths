@@ -48,6 +48,7 @@ body{
     background-color: var(--main-back);
     color: var(--main-font);
     font-size: 12px;
+    user-select: none;
 }
 
 #main{
@@ -1206,6 +1207,12 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     flex: 0 0;
     text-align: left;
     margin: auto 20px;
+    cursor: pointer;
+}
+
+#classroom .quest-row .quest-num:hover:after{
+    content: '↻';
+    cursor: pointer;
 }
 
 #classroom .quest-row .quest-val{
@@ -1213,6 +1220,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     text-align: left;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 #classroom .quest-row .quest-val .quest-icon{
