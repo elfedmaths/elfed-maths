@@ -1,5 +1,4 @@
 function convertNum(num){
-    var output = "";
     var ones = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
     var tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
     var numString = num.toString();
@@ -52,4 +51,23 @@ function formatArrList(arr) {
     output = output + ", and " + arr[arr.length - 1]
     return output;
   }
+}
+
+function displayStandardForm(number) {
+  const scientificNotation = number.toExponential().split('e');
+  const coefficient = parseFloat(scientificNotation[0]);
+  const exponent = parseInt(scientificNotation[1]);
+  return `${coefficient} x 10<sup>${exponent}</sup> `;
+}
+
+function getRandomList(n, x, y) { //Num of values, Min, Max
+  if (y - x + 1 < n) return [];
+  var randomList = [];
+  var availableNumbers = Array.from({ length: y - x + 1 }, (_, index) => x + index);
+  for (var i = 0; i < n; i++) {
+    var randomIndex = Math.floor(Math.random() * availableNumbers.length);
+    var selectedNumber = availableNumbers.splice(randomIndex, 1)[0];
+    randomList.push(selectedNumber);
+  }
+  return randomList;
 }

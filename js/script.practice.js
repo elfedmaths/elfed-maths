@@ -7,6 +7,7 @@ const controlsPrac = document.getElementById('practice-controls');
 const controlsChal = document.getElementById('challenge-controls');
 const closeBtn = document.getElementById('close-quest-menu');
 const timeBtn = document.getElementById('open-time-menu');
+const noChallengeTopics = document.querySelectorAll('.no-challenge')
 
 const practiceBtn = document.getElementById('practice-btn');
 practiceBtn.addEventListener('click', function(){
@@ -17,6 +18,9 @@ practiceBtn.addEventListener('click', function(){
     closeBtn.classList.remove('hidden');
     timeBtn.classList.add('hidden');
     closeBtn.classList.remove('hidden');
+    noChallengeTopics.forEach(topic => {
+        topic.style.display = 'block';
+    })
 });
 
 const challengeBtn = document.getElementById('challenge-btn');
@@ -27,6 +31,9 @@ challengeBtn.addEventListener('click', function(){
     controlsChal.classList.remove('hidden');
     timeBtn.classList.remove('hidden');
     closeBtn.classList.add('hidden');
+    noChallengeTopics.forEach(topic => {
+        topic.style.display = 'none';
+    })
 });
 
 closeBtn.addEventListener('click', function(){

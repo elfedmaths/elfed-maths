@@ -481,6 +481,127 @@ function getCalc(type){
             var quest = `Find the n<sup class="margin-right">th</sup>  term of<br>${arr.join(', ')}`;
             var ans = `${int1}n + ${int2}`;
             break;
+        /* ----------------- Standard Form ------------------ */
+        case 'std-conv-1':
+            var int1 = randomInt(2,5), int2 = randomInt(2,5), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(0,9) * math.pow(10, i);
+            }
+            int3 = int3 * math.pow(10,int2);
+            var quest = `Convert ${int3} into standard form.`;
+            var ans = displayStandardForm(int3);
+            break;
+        case 'std-conv-2':
+            var int1 = randomInt(2,5), int2 = randomInt(2,5), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(0,9) * math.pow(10, i);
+            }
+            int3 = int3 * math.pow(10,int2);
+            var quest = `Convert ${displayStandardForm(int3)} into an ordinary number.`;
+            var ans = int3;
+            break;
+        case 'std-conv-3':
+            var int1 = randomInt(2,5), int2 = randomInt(int1 + 1,8), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(0,9) * math.pow(10, i);
+            }
+            int3 = int3 / math.pow(10,int2);
+            var quest = `Convert ${int3} into standard form.`;
+            var ans = displayStandardForm(int3);
+            break;
+        case 'std-conv-4':
+            var int1 = randomInt(2,5), int2 = randomInt(int1 + 1,8), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(0,9) * math.pow(10, i);
+            }
+            int3 = int3 / math.pow(10,int2);
+            var quest = `Convert ${displayStandardForm(int3)} into an ordinary number.`;
+            var ans = int3;
+            break;
+        case 'std-add':
+            var int1 = randomInt(1,3), int2 = randomInt(2,5), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(1,9) * math.pow(10, i);
+            }
+            int3 = int3 * math.pow(10,int2);
+            var str1 = displayStandardForm(int3);
+            var int4 = randomInt(1,3), int5 = randomInt(int2-1,int2+1), int6 = 0;
+            for (let i = 0; i < int4; i++) {
+                int6 = int6 + randomInt(1,9) * math.pow(10, i);
+            }
+            int6 = int6 * math.pow(10,int5);
+            var str2 = displayStandardForm(int6);
+            var quest = `${str1} + ${str2}<br>Give your answer in standard form`;
+            var ans = displayStandardForm(int3 + int6);
+            break;
+        case 'std-sub':
+            var int1 = randomInt(1,3), int2 = randomInt(2,4), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(1,9) * math.pow(10, i);
+            }
+            int3 = int3 * math.pow(10,int2);
+            var int4 = randomInt(1,3), int5 = randomInt(int2-1,int2+1), int6 = 0;
+            for (let i = 0; i < int4; i++) {
+                int6 = int6 + randomInt(1,9) * math.pow(10, i);
+            }
+            int6 = int6 * math.pow(10,int5);
+            var str1 = displayStandardForm(math.max(int3,int6));
+            var str2 = displayStandardForm(math.min(int3,int6));
+            var quest = `${str1} - ${str2}<br>Give your answer in standard form`;
+            var ans = displayStandardForm(math.max(int3,int6) - math.min(int3,int6));
+            break;
+        case 'std-mult':
+            var int1 = randomInt(1,2), int2 = randomInt(2,4), int3 = 0;
+            for (let i = 0; i < int1; i++) {
+                int3 = int3 + randomInt(1,9) * math.pow(10, i);
+            }
+            int3 = int3 * math.pow(10,int2);
+            var int4 = randomInt(1,3), int5 = randomInt(int2-1,int2+1), int6 = randomInt(1,9);
+            int6 = int6 * math.pow(10,int5);
+            var str1 = displayStandardForm(int3);
+            var str2 = displayStandardForm(int6);
+            var quest = `(${str1}) x (${str2})<br>Give your answer in standard form`;
+            var ans = displayStandardForm(int3 * int6);
+            break;
+        case 'std-div':
+            var int1 = randomInt(1,9), int2 = randomInt(2,8);
+            var int3 = int1 * randomInt(1,9), int4 = randomInt(int2,9);
+            var int5 = int1 * math.pow(10,int2);
+            var int6 = int3 * math.pow(10,int4);
+            var str1 = displayStandardForm(int5);
+            var str2 = displayStandardForm(int6);
+            var quest = `(${str2}) &divide; (${str1})<br>Give your answer in standard form`;
+            var ans = displayStandardForm(int6 / int5);
+            break;
+        /* --------------------- Ratio ---------------------- */
+        case 'ratio-simp':
+            var int1 = randomInt(2,10), int2 = randomInt(2,10) * int1, int3 = randomIntExcl(2,10, int2) * int1;
+            var quest = `Simplify fully ${int2} : ${int3}`;
+            var int4 = math.gcd(int2,int3);
+            var ans = `${int2 / int4} : ${int3 / int4}`;
+            break;
+        case 'ratio-share':
+            var int1 = randomInt(1,10), int2 = randomIntExcl(1,10, int1), int3 = randomInt(5,15);
+            if(Math.random() > 0.5){
+                var str = 'Share';
+            }else{
+                var str = 'Divide';
+            }
+            var quest = `${str} £${int3 * (int1 + int2)} in the ratio ${int1}:${int2}`;
+            var ans = `£${int1 * int3} : £${int2 * int3}`
+            break;
+        case 'ratio-rev':
+            var int1 = randomInt(1,10), int2 = randomIntExcl(1,10, int1), int3 = randomInt(5,15);
+            if(Math.random() > 0.5){
+                var str = 'largest';
+                var int4 = math.max(int1,int2) * int3;
+            }else{
+                var str = 'smallest';
+                var int4 = math.min(int1,int2) * int3;
+            }
+            var quest = `When an amount is shared in the ratio ${int1}:${int2},<br>the ${str} share is £${int4}.<br>What is the original amount?`;
+            var ans = `£${(int1 + int2) * int3}`;
+            break;
         /* -------------------- Averages -------------------- */
         case 'av-mean':
             var int1 = randomInt(4, 7)

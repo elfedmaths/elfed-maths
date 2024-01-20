@@ -410,6 +410,72 @@ function getCalcNum(type){
             quest = `CALC A cylinder has a diameter of ${int1}cm, and height of ${int2}cm. What is the volume of the cylinder?`;
             ans = (Math.PI * (int1 / 2) * (int1 / 2) * int2).toFixed(1) + 'cm<sup>3</sup>';
             break;
+        case 'nih11': /* ----- Reverse Mean ----- */
+            var int1 = randomInt(3,6), intArr = [];
+            for (let i = 0; i < int1; i++) {
+                intArr.push(randomInt(1,10));
+            }
+            var sum1 = math.sum(intArr);
+            var int2 = (int1 + 1) - math.mod(sum1, int1 + 1);
+            var av1 = (sum1 + int2) / (int1 + 1);
+            intArr = intArr.map(i => i + 'mm');
+            var quest = `NOCALC The rainfall for the first ${int1} days of a month was ${formatArrList(intArr)}. The next day brought the average rainfall to ${av1}mm. How much rain fell on the last day?`;
+            var ans = int2 + 'mm';
+            break;
+        case 'nih12': /* ----- Money Problem Involving Units ----- */
+            var fruitArr = ['Apples', 'Bananas','Grapes','Kiwis','Pears'];
+            var int1 = randomInt(2,9), int2 = randomIntExcl(2,9,int1), int3 = randomInt(0,fruitArr.length - 1);
+            var quest = `NOCALC ${fruitArr[int3]} cost £${int1} per kg. If you buy ${int2}00g of ${fruitArr[int3]} and pay with £10, how much change will you receive??`;
+            var ans = '£' + ((1000 - (int2 * (int1 * 10)))/100).toFixed(2);
+            break;
+        case 'nih13': /* ----- Converting Standard Form ----- */
+            var int = randomInt(1,4);
+            if(int === 1){
+                var int1 = randomInt(2,5), int2 = randomInt(2,5), int3 = 0;
+                for (let i = 0; i < int1; i++) {
+                    int3 = int3 + randomInt(0,9) * math.pow(10, i);
+                }
+                int3 = int3 * math.pow(10,int2);
+                var quest = `NOCALC Convert ${int3} into standard form.`;
+                var ans = displayStandardForm(int3);
+            }else if(int === 2){
+                var int1 = randomInt(2,5), int2 = randomInt(2,5), int3 = 0;
+                for (let i = 0; i < int1; i++) {
+                    int3 = int3 + randomInt(0,9) * math.pow(10, i);
+                }
+                int3 = int3 * math.pow(10,int2);
+                var quest = `NOCALC Convert ${displayStandardForm(int3)}   into an ordinary number.`;
+                var ans = int3;
+            }else if(int === 3){
+                var int1 = randomInt(2,5), int2 = randomInt(int1 + 1,8), int3 = 0;
+                for (let i = 0; i < int1; i++) {
+                    int3 = int3 + randomInt(0,9) * math.pow(10, i);
+                }
+                int3 = int3 / math.pow(10,int2);
+                var quest = `NOCALC Convert ${int3} into standard form.`;
+                var ans = displayStandardForm(int3);
+            }else if(int === 4){
+                var int1 = randomInt(2,5), int2 = randomInt(int1 + 1,8), int3 = 0;
+                for (let i = 0; i < int1; i++) {
+                    int3 = int3 + randomInt(0,9) * math.pow(10, i);
+                }
+                int3 = int3 / math.pow(10,int2);
+                var quest = `NOCALC Convert ${displayStandardForm(int3)}   into an ordinary number.`;
+                var ans = int3;
+            }
+            break;
+        case 'nih14': /* ----- Reverse Percentages ----- */
+            var int = randomInt(1,2);
+            if(int === 1){
+                var int1 = randomInt(1,9), int2 = randomInt(5,15);
+                var quest = `NOCALC An item in a ${int1}0% sale costs £${((int2*int1*10)/100).toFixed(2)}. How much did it cost orginally?`;
+                var ans = `£${(int2).toFixed(2)}`;
+            }else{
+                var int1 = randomInt(1,9), int2 = randomInt(5,15);
+                var quest = `NOCALC An item is sold at a profit of ${int1}0% for £${((int2*(10+int1)*10)/100).toFixed(2)}. How much did it cost orginally?`;
+                var ans = `£${(int2).toFixed(2)}`;
+            }
+            break;
 
         /* ---------- Numeracy Higher ---------- */
         case 'nh1': /* ----- Fractions of Amounts incl. Increase/Decrease ----- */

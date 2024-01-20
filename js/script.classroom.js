@@ -37,6 +37,8 @@ dateElem.addEventListener('click', function() {
   }
 });
 
+let selectedTopic, numeracyQuestArr;
+
 // Select Topic Options
 var selectBtn = document.querySelectorAll('.option-btn');
 selectBtn.forEach(function(btn) {
@@ -46,32 +48,75 @@ selectBtn.forEach(function(btn) {
       elem.classList.remove('selected');
     });
     btn.classList.add('selected');
+    selectedTopic = btn.id;
   });
 });
 
 // New Quest Button
 var newQuest = document.getElementById('new-quest-btn');
-newQuest.addEventListener('click', function(){
-  selectBtn.forEach(function(btn) {
-    if(btn.classList.contains('selected')){
-      hideAns();
-      genQuest(btn.id);
-      closeWindow();
-    }
-  });
+newQuest.addEventListener('click', newQuestions);
+// Refresh All Quest
+var refreshQuest = document.getElementById('refresh-quest');
+refreshQuest.addEventListener('click', newQuestions);
+
+// New Questions
+function newQuestions(){
+  hideAns();
+  newNumeracyArr(selectedTopic);
+  for (let i = 1; i <= 5; i++) {
+    genQuest(i);
+  }
+  closeWindow();
+}
+
+// Specific Question
+var questBtns = document.querySelectorAll('.quest-num');
+questBtns.forEach(questBtn => {
+  questBtn.addEventListener('click', function(elem){
+    var questNum = elem.target.getAttribute('data-quest');
+    hideAns();
+    genQuest(questNum);
+  })
 });
 
-// Refresh Quest
-var refreshQuest = document.getElementById('refresh-quest');
-refreshQuest.addEventListener('click', function(){
-  selectBtn.forEach(function(btn) {
-    if(btn.classList.contains('selected')){
-      hideAns();
-      genQuest(btn.id);
-      closeWindow();
+// Numeracy Questions
+function newNumeracyArr(type){
+  var nfCount = 12;
+  var nifCount = 10;
+  var nihCount = 14;
+  var nhCount = 10;
+  switch(type) {
+    case 'btn-set-nf':
+      numeracyQuestArr = getRandomList(5,1,nfCount);
+      numeracyQuestArr = numeracyQuestArr.map(i => 'nf' + i);
+      break;
+    case 'btn-set-nif':
+      numeracyQuestArr = getRandomList(5,1,nifCount);
+      numeracyQuestArr = numeracyQuestArr.map(i => 'nif' + i);
+      break;
+    case 'btn-set-nih':
+      numeracyQuestArr = getRandomList(5,1,nihCount);
+      numeracyQuestArr = numeracyQuestArr.map(i => 'nih' + i);
+      break;
+    case 'btn-set-nh':
+      numeracyQuestArr = getRandomList(5,1,nhCount);
+      numeracyQuestArr = numeracyQuestArr.map(i => 'nh' + i);
+      break;
+  }
+}
+
+//Toggle Answer
+var questToggleBtns = document.querySelectorAll('.quest-val');
+questToggleBtns.forEach(questToggleBtn => {
+  questToggleBtn.addEventListener('click', function(elem){
+    var ans = elem.target.nextElementSibling;
+    if(ans.classList.contains('show')){
+      ans.classList.remove('show');
+    }else{
+      ans.classList.add('show');
     }
-  });
-});
+  })
+})
 
 //Show-Hide Quest
 var ansPane = document.querySelectorAll('.quest-ans');
@@ -101,180 +146,173 @@ function hideAns(){
   hideIcon.classList.add('hidden');
 }
 
+// Format Line Breaks
+function formatStr(str){
+  str = String(str);
+  var brIndex = str.indexOf('<br>');
+  if(brIndex >= 0){
+    var charAfter = str.charAt(brIndex + 4);
+    var charSrc = "<br>" + charAfter;
+    str = str.replace(charSrc, " " + charAfter.toLowerCase());
+  } 
+  var nocalcIndex = str.indexOf('NOCALC');
+  if(nocalcIndex >= 0){
+    str = str.replace("NOCALC", "<img src='./img/non-calc-icon.svg' alt='No Calc' class='quest-icon'>");
+  }
+  var calcIndex = str.indexOf('CALC');
+  if(calcIndex >= 0){
+    str = str.replace("CALC", "<img src='./img/calc-icon.svg' alt='Calc' class='quest-icon'>");
+  }
+  return str;
+};
+
 // Generate Questions
-function genQuest(id){
-  var quest1, quest2, quest3, quest4, quest5;
-  switch (id) {
-    case 'btn-set-a':
-      quest1 = getCalc('int-add');
-      quest2 = getCalc('int-mult');
-      quest3 = getCalc('perc-find-1');
-      quest4 = getCalc('alg-simp-1');
-      quest5 = getCalc('seq-mult');
+function genQuest(questNum){
+  var quest;
+  questNum = parseInt(questNum);
+  switch (true) {
+    case ((selectedTopic === 'btn-set-a') && (questNum === 1)):
+      quest = getCalc('int-add');
       break;
-    case 'btn-set-b':
-      quest1 = getCalc('int-mult-2x2');
-      quest2 = getCalc('dec-add');
-      quest3 = getCalc('perc-find-2');
-      quest4 = getCalc('int-sub');
-      quest5 = getCalc('frac-simp');
+    case ((selectedTopic === 'btn-set-a') && (questNum === 2)):
+      quest = getCalc('int-mult');
       break;
-    case 'btn-set-c':
-      quest1 = getCalc('dec-sub');
-      quest2 = getCalc('int-div');
-      quest3 = getCalc('dec-mult');
-      quest4 = getCalc('perc-find-3');
-      quest5 = getCalc('alg-simp-2');
+    case ((selectedTopic === 'btn-set-a') && (questNum === 3)):
+      quest = getCalc('perc-find-1');
       break;
-    case 'btn-set-d':
-      quest1 = getCalc('neg-add');
-      quest2 = getCalc('round-dec');
-      quest3 = getCalc('perc-inc');
-      quest4 = getCalc('frac-add');
-      quest5 = getCalc('alg-sub');
+    case ((selectedTopic === 'btn-set-a') && (questNum === 4)):
+      quest = getCalc('alg-simp-1');
       break;
-    case 'btn-set-e':
-      quest1 = getCalc('round-sig');
-      quest2 = getCalc('seq-term');
-      quest3 = getCalc('perc-dec');
-      quest4 = getCalc('frac-sub');
-      quest5 = getCalc('alg-solve-1');
+    case ((selectedTopic === 'btn-set-a') && (questNum === 5)):
+      quest = getCalc('seq-mult');
       break;
-    case 'btn-set-f':
-      quest1 = getCalc('ooo-add-sub');
-      quest2 = getCalc('round-sig-dec');
-      quest3 = getCalc('perc-mult');
-      quest4 = getCalc('frac-mult');
-      quest5 = getCalc('alg-solve-2');
+    case ((selectedTopic === 'btn-set-b') && (questNum === 1)):
+      quest = getCalc('int-mult-2x2');
       break;
-    case 'btn-set-g':
-      quest1 = getCalc('ooo-mult-div');
-      quest2 = getCalc('alg-exp');
-      quest3 = getCalc('neg-div');
-      quest4 = getCalc('seq-nth');
-      quest5 = getCalc('frac-div');
+    case ((selectedTopic === 'btn-set-b') && (questNum === 2)):
+      quest = getCalc('dec-add');
       break;
-    case 'btn-set-h':
-      quest1 = getCalc('frac-amount');
-      quest2 = getCalc('dec-div');
-      quest3 = getCalc('neg-sub');
-      quest4 = getCalc('neg-mult');
-      quest5 = getCalc('alg-fact');
+    case ((selectedTopic === 'btn-set-b') && (questNum === 3)):
+      quest = getCalc('perc-find-2');
+      break;
+    case ((selectedTopic === 'btn-set-b') && (questNum === 4)):
+      quest = getCalc('int-sub');
+      break;
+    case ((selectedTopic === 'btn-set-b') && (questNum === 5)):
+      quest = getCalc('frac-simp');
+      break;
+    case ((selectedTopic === 'btn-set-c') && (questNum === 1)):
+      quest = getCalc('dec-sub');
+      break;
+    case ((selectedTopic === 'btn-set-c') && (questNum === 2)):
+      quest = getCalc('int-div');
+      break;
+    case ((selectedTopic === 'btn-set-c') && (questNum === 3)):
+      quest = getCalc('dec-mult');
+      break;
+    case ((selectedTopic === 'btn-set-c') && (questNum === 4)):
+      quest = getCalc('perc-find-3');
+      break;
+    case ((selectedTopic === 'btn-set-c') && (questNum === 5)):
+      quest = getCalc('alg-simp-2');
+      break;
+    case ((selectedTopic === 'btn-set-d') && (questNum === 1)):
+      quest = getCalc('neg-add');
+      break;
+    case ((selectedTopic === 'btn-set-d') && (questNum === 2)):
+      quest = getCalc('round-dec');
+      break;
+    case ((selectedTopic === 'btn-set-d') && (questNum === 3)):
+      quest = getCalc('perc-inc');
+      break;
+    case ((selectedTopic === 'btn-set-d') && (questNum === 4)):
+      quest = getCalc('frac-add');
+      break;
+    case ((selectedTopic === 'btn-set-d') && (questNum === 5)):
+      quest = getCalc('alg-sub');
+      break;
+    case ((selectedTopic === 'btn-set-e') && (questNum === 1)):
+      quest = getCalc('round-sig');
+      break;
+    case ((selectedTopic === 'btn-set-e') && (questNum === 2)):
+      quest = getCalc('seq-term');
+      break;
+    case ((selectedTopic === 'btn-set-e') && (questNum === 3)):
+      quest = getCalc('perc-dec');
+      break;
+    case ((selectedTopic === 'btn-set-e') && (questNum === 4)):
+      quest = getCalc('frac-sub');
+      break;
+    case ((selectedTopic === 'btn-set-e') && (questNum === 5)):
+      quest = getCalc('alg-solve-1');
+      break;
+    case ((selectedTopic === 'btn-set-f') && (questNum === 1)):
+      quest = getCalc('ooo-add-sub');
+      break;
+    case ((selectedTopic === 'btn-set-f') && (questNum === 2)):
+      quest = getCalc('round-sig-dec');
+      break;
+    case ((selectedTopic === 'btn-set-f') && (questNum === 3)):
+      quest = getCalc('perc-mult');
+      break;
+    case ((selectedTopic === 'btn-set-f') && (questNum === 4)):
+      quest = getCalc('frac-mult');
+      break;
+    case ((selectedTopic === 'btn-set-f') && (questNum === 5)):
+      quest = getCalc('alg-solve-2');
+      break;
+    case ((selectedTopic === 'btn-set-g') && (questNum === 1)):
+      quest = getCalc('ooo-mult-div');
+      break;
+    case ((selectedTopic === 'btn-set-g') && (questNum === 2)):
+      quest = getCalc('alg-exp');
+      break;
+    case ((selectedTopic === 'btn-set-g') && (questNum === 3)):
+      quest = getCalc('neg-div');
+      break;
+    case ((selectedTopic === 'btn-set-g') && (questNum === 4)):
+      quest = getCalc('seq-nth');
+      break;
+    case ((selectedTopic === 'btn-set-g') && (questNum === 5)):
+      quest = getCalc('frac-div');
+      break;
+    case ((selectedTopic === 'btn-set-h') && (questNum === 1)):
+      quest = getCalc('frac-amount');
+      break;
+    case ((selectedTopic === 'btn-set-h') && (questNum === 2)):
+      quest = getCalc('dec-div');
+      break;
+    case ((selectedTopic === 'btn-set-h') && (questNum === 3)):
+      quest = getCalc('neg-sub');
+      break;
+    case ((selectedTopic === 'btn-set-h') && (questNum === 4)):
+      quest = getCalc('neg-mult');
+      break;
+    case ((selectedTopic === 'btn-set-h') && (questNum === 5)):
+      quest = getCalc('alg-fact');
       break;
     //WJEC Numeracy Questions
-    case 'btn-set-nf':
-      var nf = [];
-      for (let i = 1; i <= 12; i++) nf.push(`nf${i}`);
-      var index = randomInt(0,nf.length - 1);
-      quest1 = getCalcNum(nf[index]);
-      nf.splice(index, 1);
-      index = randomInt(0,nf.length - 1);
-      quest2 = getCalcNum(nf[index]);
-      nf.splice(index, 1);
-      index = randomInt(0,nf.length - 1);
-      quest3 = getCalcNum(nf[index]);
-      nf.splice(index, 1);
-      index = randomInt(0,nf.length - 1);
-      quest4 = getCalcNum(nf[index]);
-      nf.splice(index, 1);
-      index = randomInt(0,nf.length - 1);
-      quest5 = getCalcNum(nf[index]);
+    case ((selectedTopic === 'btn-set-nf')):
+      quest = getCalcNum(numeracyQuestArr[questNum - 1]);
       break;
-    case 'btn-set-nif':
-      var nif = [];
-      for (let i = 1; i <= 10; i++) nif.push(`nif${i}`);
-      var index = randomInt(0,nif.length - 1);
-      quest1 = getCalcNum(nif[index]);
-      nif.splice(index, 1);
-      index = randomInt(0,nif.length - 1);
-      quest2 = getCalcNum(nif[index]);
-      nif.splice(index, 1);
-      index = randomInt(0,nif.length - 1);
-      quest3 = getCalcNum(nif[index]);
-      nif.splice(index, 1);
-      index = randomInt(0,nif.length - 1);
-      quest4 = getCalcNum(nif[index]);
-      nif.splice(index, 1);
-      index = randomInt(0,nif.length - 1);
-      quest5 = getCalcNum(nif[index]);
+    case ((selectedTopic === 'btn-set-nif')):
+      quest = getCalcNum(numeracyQuestArr[questNum - 1]);
       break;
-    case 'btn-set-nih':
-      var nih = [];
-      for (let i = 1; i <= 10; i++) nih.push(`nih${i}`);
-      var index = randomInt(0,nih.length - 1);
-      quest1 = getCalcNum(nih[index]);
-      nih.splice(index, 1);
-      index = randomInt(0,nih.length - 1);
-      quest2 = getCalcNum(nih[index]);
-      nih.splice(index, 1);
-      index = randomInt(0,nih.length - 1);
-      quest3 = getCalcNum(nih[index]);
-      nih.splice(index, 1);
-      index = randomInt(0,nih.length - 1);
-      quest4 = getCalcNum(nih[index]);
-      nih.splice(index, 1);
-      index = randomInt(0,nih.length - 1);
-      quest5 = getCalcNum(nih[index]);
+    case ((selectedTopic === 'btn-set-nih')):
+      quest = getCalcNum(numeracyQuestArr[questNum - 1]);
       break;
-    case 'btn-set-nh':
-      var nh = [];
-      for (let i = 1; i <= 10; i++) nh.push(`nh${i}`);
-      var index = randomInt(0,nh.length - 1);
-      quest1 = getCalcNum(nh[index]);
-      nh.splice(index, 1);
-      index = randomInt(0,nh.length - 1);
-      quest2 = getCalcNum(nh[index]);
-      nh.splice(index, 1);
-      index = randomInt(0,nh.length - 1);
-      quest3 = getCalcNum(nh[index]);
-      nh.splice(index, 1);
-      index = randomInt(0,nh.length - 1);
-      quest4 = getCalcNum(nh[index]);
-      nh.splice(index, 1);
-      index = randomInt(0,nh.length - 1);
-      quest5 = getCalcNum(nh[index]);
+    case ((selectedTopic === 'btn-set-nh')):
+      quest = getCalcNum(numeracyQuestArr[questNum - 1]);
       break;
-
     default:
-      quest1 = ["-","-"];
-      quest2 = ["-","-"];
-      quest3 = ["-","-"];
-      quest4 = ["-","-"];
-      quest5 = ["-","-"];
+      quest = ["-","-"];
       break;
   }
 
-  // Format Line Breaks
-  function formatStr(str){
-    str = String(str);
-    var brIndex = str.indexOf('<br>');
-    if(brIndex >= 0){
-      var charAfter = str.charAt(brIndex + 4);
-      var charSrc = "<br>" + charAfter;
-      str = str.replace(charSrc, " " + charAfter.toLowerCase());
-    } 
-    var nocalcIndex = str.indexOf('NOCALC');
-    if(nocalcIndex >= 0){
-      str = str.replace("NOCALC", "<img src='./img/non-calc-icon.svg' alt='No Calc' class='quest-icon'>");
-    }
-    var calcIndex = str.indexOf('CALC');
-    if(calcIndex >= 0){
-      str = str.replace("CALC", "<img src='./img/calc-icon.svg' alt='Calc' class='quest-icon'>");
-    }
-    return str;
-  };
+  // Update Questions & Answers
+  if(questNum){
+    document.getElementById(`question-${questNum}`).innerHTML = formatStr(quest[0]);
+    document.getElementById(`answer-${questNum}`).innerHTML = formatStr(quest[1]);
+  }
 
-  // Update Questions
-  document.getElementById('question-1').innerHTML = formatStr(quest1[0]);
-  document.getElementById('question-2').innerHTML = formatStr(quest2[0]);
-  document.getElementById('question-3').innerHTML = formatStr(quest3[0]);
-  document.getElementById('question-4').innerHTML = formatStr(quest4[0]);
-  document.getElementById('question-5').innerHTML = formatStr(quest5[0]);
-  
-  // Update Answers
-  document.getElementById('answer-1').innerHTML = quest1[1];
-  document.getElementById('answer-2').innerHTML = quest2[1];
-  document.getElementById('answer-3').innerHTML = quest3[1];
-  document.getElementById('answer-4').innerHTML = quest4[1];
-  document.getElementById('answer-5').innerHTML = quest5[1];
 }
