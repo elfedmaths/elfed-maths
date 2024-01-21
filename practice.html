@@ -36,7 +36,6 @@
     <div id="main">
         <div id="center">
             <div id="container">
-                <p id="timer-quest" class="hidden">00:00</p>
                 <div id="question"></div>
                 <div id="answer" style="display:none;"></div>
             </div>
@@ -303,46 +302,6 @@
             <div class="line"></div>
             <div class="flex-row">
                 <input type="button" id="close-quest-menu" value="Select" class="disabled">
-                <input type="button" id="open-time-menu" value="Select" class="disabled hidden">
-            </div>
-        </div>
-        <div class="popup-window hidden" id="time-menu">
-            <h2>Challenge Options</h2>
-            <div class="content">
-                <h2>Timer</h2>
-                <div class="flex-btn">
-                    <input type="radio" value="none" id="none" name="timer-opt" checked >
-                        <label for="none">Untimed</label>
-                    <input type="radio" value="timed" id="timed" name="timer-opt">
-                        <label for="timed">Timed</label>
-                    <input type="radio" value="custom" id="custom" name="timer-opt" disabled>
-                        <label for="custom">Custom</label>
-                </div>
-                <div id="timer-none" class="timer-row">
-                    <p>Untimed challenge - Questions will keep coming until you stop</p>
-                </div>
-                <div id="timer-fixed" class="timer-row hidden">
-                    <div class="flex-btn">
-                        <input type="radio" value="1" id="quest-min-1" name="quest-minutes" checked>
-                            <label for="quest-min-1">1 min</label>
-                        <input type="radio" value="2" id="quest-min-2" name="quest-minutes">
-                            <label for="quest-min-2">2 mins</label>
-                        <input type="radio" value="5" id="quest-min-5" name="quest-minutes">
-                            <label for="quest-min-5">5 mins</label>
-                        <input type="radio" value="10" id="quest-min-10" name="quest-minutes">
-                            <label for="quest-min-10">10 mins</label>
-                        <input type="radio" value="30" id="quest-min-30" name="quest-minutes">
-                            <label for="quest-min-30">30 mins</label>
-                        <input type="radio" value="60" id="quest-min-60" name="quest-minutes">
-                            <label for="quest-min-60">60 mins</label>
-                    </div>
-                </div>
-                <div id="timer-custom" class="timer-row hidden">
-                    <p>Custom</p>
-                </div>
-                <div id="start-container" class="timer-row">
-                    <input type="button" id="confirm-time" value="Select">
-                </div>
             </div>
         </div>
     </div> 

@@ -2,11 +2,9 @@
 
 const popupMenu1 = document.getElementById('popup-menu-1');
 const popupMenu2 = document.getElementById('popup-menu-2');
-const popupMenuTime = document.getElementById('time-menu');
 const controlsPrac = document.getElementById('practice-controls');
 const controlsChal = document.getElementById('challenge-controls');
 const closeBtn = document.getElementById('close-quest-menu');
-const timeBtn = document.getElementById('open-time-menu');
 const noChallengeTopics = document.querySelectorAll('.no-challenge')
 
 const practiceBtn = document.getElementById('practice-btn');
@@ -16,11 +14,11 @@ practiceBtn.addEventListener('click', function(){
     controlsPrac.classList.remove('hidden');
     controlsChal.classList.add('hidden');
     closeBtn.classList.remove('hidden');
-    timeBtn.classList.add('hidden');
     closeBtn.classList.remove('hidden');
     noChallengeTopics.forEach(topic => {
         topic.style.display = 'block';
     })
+    document.getElementById("question").innerHTML = "";
 });
 
 const challengeBtn = document.getElementById('challenge-btn');
@@ -29,24 +27,17 @@ challengeBtn.addEventListener('click', function(){
     popupMenu2.classList.remove('hidden');
     controlsPrac.classList.add('hidden');
     controlsChal.classList.remove('hidden');
-    timeBtn.classList.remove('hidden');
-    closeBtn.classList.add('hidden');
+    closeBtn.classList.remove('hidden');
+    closeBtn.classList.remove('hidden');
     noChallengeTopics.forEach(topic => {
         topic.style.display = 'none';
     })
+    document.getElementById("question").innerHTML = "";
 });
 
 closeBtn.addEventListener('click', function(){
     if(!closeBtn.classList.contains('disabled')){
         closeWindow();
-    }
-})
-
-timeBtn.addEventListener('click', function(){
-    if(!timeBtn.classList.contains('disabled')){
-        popupMenu1.classList.add('hidden');
-        popupMenu2.classList.add('hidden');
-        popupMenuTime.classList.remove('hidden');
     }
 })
 
@@ -61,13 +52,11 @@ function checkInputs(){
     document.getElementById('hide-quest').classList.remove('hide');
     document.getElementById('start-quest').classList.add('hide');
     document.getElementById('close-quest-menu').classList.add('disabled');
-    document.getElementById('open-time-menu').classList.add('disabled');
     checkboxes.forEach(checkbox => {
         if(checkbox.checked){
             document.getElementById('hide-quest').classList.add('hide');
             document.getElementById('start-quest').classList.remove('hide');
             document.getElementById('close-quest-menu').classList.remove('disabled');
-            document.getElementById('open-time-menu').classList.remove('disabled');
         };
     });
 };
@@ -162,45 +151,8 @@ function clearQuest(){
 
 // Challenge Questions
 
-var minutes = "00";
-
-document.getElementById('confirm-time').addEventListener('click', function(){
-    if(document.querySelector('input[name="timer-opt"]:checked').value == "timed"){
-        var mins = document.getElementsByName("quest-minutes");
-        mins.forEach(min => {
-            if(min.checked){
-                minutes = min.value;
-            }
-        });
-        if(minutes < 10){ minutes = "0" + minutes; }
-        document.getElementById("timer-quest").classList.remove('hidden');
-        document.getElementById("timer-quest").innerHTML = minutes + " : 00";
-    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "none"){
-        document.getElementById("timer-quest").classList.add('hidden');
-    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "custom"){
-        document.getElementById("timer-quest").classList.add('hidden');
-    }
-    closeWindow();
-});
-
 document.getElementById('start-timer-quest').addEventListener('click', function(){
     clearData();
-    if(document.querySelector('input[name="timer-opt"]:checked').value == "timed"){
-        const mins = document.getElementsByName("minutes");
-        mins.forEach(min => {
-            if(min.checked){
-                minutes = min.value;
-            }
-        });
-        if(minutes < 10){ minutes = "0" + minutes; }
-        document.getElementById("timer").style.display ="block";
-        document.getElementById("timer").innerHTML = minutes + " : 00";
-        startTimer(minutes);
-    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "none"){
-        document.getElementById("timer").style.display ="none";
-    }else if(document.querySelector('input[name="timer-opt"]:checked').value == "custom"){
-        document.getElementById("timer").style.display ="none";
-    }
     document.getElementById('start-timer-quest').classList.add('disabled');
     document.getElementById('stop-timer-quest').classList.remove('disabled');
     document.getElementById("input-num").disabled = false;
@@ -208,11 +160,9 @@ document.getElementById('start-timer-quest').addEventListener('click', function(
 });
 
 document.getElementById('stop-timer-quest').addEventListener('click', function(){
-    stopTimer();
     stopChallenge();
     document.getElementById('start-timer-quest').classList.remove('disabled');
     document.getElementById('stop-timer-quest').classList.add('disabled');
-    document.getElementById("timer").innerHTML = "00 : 00";
 });
 
 document.getElementById('input-num').addEventListener('change', function(){

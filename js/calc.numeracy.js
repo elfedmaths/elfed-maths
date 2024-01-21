@@ -35,7 +35,7 @@ function getCalcNum(type){
                 ans = int2;
             }else{
                 var int1 = randomInt(2,10), int2 = int1 * randomInt(1,9) * 10;
-                quest = `CALC Calculate <sup>1</sup>&frasl;<sub>${int1}</sub> of £${(int2/10).toFixed(2)}.`;
+                quest = `CALC Calculate <sup class="frac-num">1</sup>&frasl;<sub class="frac-den">${int1}</sub> of £${(int2/10).toFixed(2)}.`;
                 ans = '£' + ((int2/int1)/10).toFixed(2);
             }
             break;
@@ -125,8 +125,8 @@ function getCalcNum(type){
         case 'nf11': /* ----- Simplify Fractions & Ratios ----- */
             var int1 = randomInt(5,20), int2 = int1 * randomInt(1,9), int3 = int1 * randomInt(int2 + 1, 12);
             if(Math.random()<1/2){
-                quest = `CALC Simplify <sup>${int2}</sup>/<sub>${int3}</sub> fully.`;
-                ans = `<sup>${int2/math.gcd(int2,int3)}</sup>/<sub>${int3/math.gcd(int2,int3)}</sub>`;
+                quest = `CALC Simplify <sup class="frac-num">${int2}</sup>&frasl;<sub class="frac-den">${int3}</sub> fully.`;
+                ans = `<sup class="frac-num">${int2/math.gcd(int2,int3)}</sup>&frasl;<sub class="frac-den">${int3/math.gcd(int2,int3)}</sub>`;
             }else{
                 quest = `CALC Simplify the ratio ${int2} : ${int3} fully.`;
                 ans = `${int2/math.gcd(int2,int3)} : ${int3/math.gcd(int2,int3)}`;
@@ -167,7 +167,7 @@ function getCalcNum(type){
                 var int1 = randomInt(2,8), int2 = randomInt(int1 + 1,10), int3 = int2 * randomInt(3,15) * 10;
                 int1 = int1/math.gcd(int1,int2);
                 int2 = int2/math.gcd(int1,int2);
-                quest = `CALC Calculate <sup>${int1}</sup>&frasl;<sub>${int2}</sub> of £${(int3/10).toFixed(2)}.`;
+                quest = `CALC Calculate <sup class="frac-num">${int1}</sup>&frasl;<sub class="frac-den">${int2}</sub> of £${(int3/10).toFixed(2)}.`;
                 ans = '£' + (((int3/int2)*int1)/10).toFixed(2);
             }
             break;
@@ -184,8 +184,8 @@ function getCalcNum(type){
         case 'nif4': /* ----- Simplify Fractions & Ratios ----- */
             var int1 = randomInt(5,20), int2 = int1 * randomInt(1,9), int3 = int1 * randomInt(int2 + 1, 12);
             if(Math.random()<1/2){
-                quest = `CALC Simplify <sup>${int2}</sup>/<sub>${int3}</sub> fully.`;
-                ans = `<sup>${int2/math.gcd(int2,int3)}</sup>/<sub>${int3/math.gcd(int2,int3)}</sub>`;
+                quest = `CALC Simplify <sup class="frac-num">${int2}</sup>&frasl;<sub class="frac-den">${int3}</sub> fully.`;
+                ans = `<sup class="frac-num">${int2/math.gcd(int2,int3)}</sup>&frasl;<sub class="frac-den">${int3/math.gcd(int2,int3)}</sub>`;
             }else{
                 quest = `CALC Simplify the ratio ${int2} : ${int3} fully.`;
                 ans = `${int2/math.gcd(int2,int3)} : ${int3/math.gcd(int2,int3)}`;
@@ -265,19 +265,19 @@ function getCalcNum(type){
                 var int1 = randomInt(2,8), int2 = randomInt(int1 + 1,10), int3 = int2 * randomInt(111,999);
                 int1 = int1/math.gcd(int1,int2);
                 int2 = int2/math.gcd(int1,int2);
-                quest = `CALC Calculate <sup>${int1}</sup>&frasl;<sub>${int2}</sub> of £${(int3/100).toFixed(2)}.`;
+                quest = `CALC Calculate <sup class="frac-num">${int1}</sup>&frasl;<sub class="frac-den">${int2}</sub> of £${(int3/100).toFixed(2)}.`;
                 ans = '£' + (((int3/int2)*int1)/100).toFixed(2);
             }else if(Math.random()<1/2){
                 var int1 = randomInt(1,8), int2 = randomInt(int1 + 1,10), int3 = int2 * randomInt(1,9) * 10;
                 int1 = int1/math.gcd(int1,int2);
                 int2 = int2/math.gcd(int1,int2);  
-                quest = `CALC Work out what £${(int3/10).toFixed(2)} is during a <sup>${int1}</sup>&frasl;<sub>${int2}</sub> off sale.`;
+                quest = `CALC Work out what £${(int3/10).toFixed(2)} is during a <sup class="frac-num">${int1}</sup>&frasl;<sub class="frac-den">${int2}</sub> off sale.`;
                 ans = '£' + ((int3 - ((int3/int2)*int1))/10).toFixed(2);
             }else{
                 var int1 = randomInt(1,8), int2 = randomInt(int1 + 1,10), int3 = int2 * randomInt(1,9) * 10;
                 int1 = int1/math.gcd(int1,int2);
                 int2 = int2/math.gcd(int1,int2);  
-                quest = `CALC What is £${(int3/10).toFixed(2)} when increased by <sup>${int1}</sup>&frasl;<sub>${int2}</sub>?`;
+                quest = `CALC What is £${(int3/10).toFixed(2)} when increased by <sup class="frac-num">${int1}</sup>&frasl;<sub class="frac-den">${int2}</sub>?`;
                 ans = '£' + ((int3 + ((int3/int2)*int1))/10).toFixed(2);
             }
             break;
@@ -354,9 +354,9 @@ function getCalcNum(type){
                 Shop B sells sweets at £${(int3 * int4).toFixed(2)} for ${int4.toFixed(1)}kg.
                 Show clearly which shop is better value.`;
             if((int1*int2).toFixed(2)/int2.toFixed(2)<(int3*int4).toFixed(2)/int4.toFixed(2)){
-                ans = `Shop A at £${((int1*int2).toFixed(2)/int2.toFixed(2)).toFixed(2)} per kg.`;
+                ans = `Shop A at £${((int1*int2).toFixed(2)/int2.toFixed(2)).toFixed(2)} per kg.<br><sub>Shop B at £${((int3*int4).toFixed(2)/int4.toFixed(2)).toFixed(2)} per kg.</sub>`;
             }else{
-                ans = `Shop B at £${((int3*int4).toFixed(2)/int4.toFixed(2)).toFixed(2)} per kg.`
+                ans = `Shop B at £${((int3*int4).toFixed(2)/int4.toFixed(2)).toFixed(2)} per kg.<br><sub>Shop A at £${((int1*int2).toFixed(2)/int2.toFixed(2)).toFixed(2)} per kg.</sub>`
             }
             break;
         case 'nih8': /* ----- Pythagoras (Short and Long) ----- */
@@ -483,13 +483,13 @@ function getCalcNum(type){
             int1 = int1/math.gcd(int1,int2);
             int2 = int2/math.gcd(int1,int2);
             if(Math.random()<1/3){            
-                quest = `CALC Calculate <sup>${int1}</sup>&frasl;<sub>${int2}</sub> of £${(int3/100).toFixed(2)}.`;
+                quest = `CALC Calculate <sup class="frac-num">${int1}</sup>&frasl;${int2}</sub> of £${(int3/100).toFixed(2)}.`;
                 ans = '£' + (((int3/int2)*int1)/100).toFixed(2);
             }else if(Math.random()<1/2){
-                quest = `CALC Work out what £${(int3/100).toFixed(2)} is during a <sup>${int1}</sup>&frasl;<sub>${int2}</sub> off sale.`;
+                quest = `CALC Work out what £${(int3/100).toFixed(2)} is during a <sup class="frac-num">${int1}</sup>&frasl;${int2}</sub> off sale.`;
                 ans = '£' + ((int3 - ((int3/int2)*int1))/100).toFixed(2);
             }else{
-                quest = `CALC What is £${(int3/100).toFixed(2)} when increased by <sup>${int1}</sup>&frasl;<sub>${int2}</sub>?`;
+                quest = `CALC What is £${(int3/100).toFixed(2)} when increased by <sup class="frac-num">${int1}</sup>&frasl;${int2}</sub>?`;
                 ans = '£' + ((int3 + ((int3/int2)*int1))/100).toFixed(2);
             }
             break;

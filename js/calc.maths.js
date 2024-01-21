@@ -218,8 +218,8 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.add(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> + <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
-            var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
+            var quest = `<sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub> + <sup class="frac-num">${num2}</sup>&frasl;<sub class="frac-den">${den2}</sub>`;
+            var ans = `<sup class="frac-num">${ans1['n']}</sup>&frasl;<sub class="frac-den">${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
             if(ans1['d'] == 1){ ans = ans1['n']; }
@@ -228,8 +228,8 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.subtract(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> &minus; <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
-            var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
+            var quest = `<sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub> &minus; <sup class="frac-num">${num2}</sup>&frasl;<sub class="frac-den">${den2}</sub>`;
+            var ans = `<sup class="frac-num">${ans1['n']}</sup>&frasl;<sub class="frac-den">${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
             if(ans1['d'] == 1){ ans = ans1['n']; }
@@ -238,8 +238,8 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.multiply(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> &times; <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
-            var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
+            var quest = `<sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub> &times; <sup class="frac-num">${num2}</sup>&frasl;<sub class="frac-den">${den2}</sub>`;
+            var ans = `<sup class="frac-num">${ans1['n']}</sup>&frasl;<sub class="frac-den">${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
             if(ans1['d'] == 1){ ans = ans1['n']; }
@@ -248,8 +248,8 @@ function getCalc(type){
             var den1 = randomInt(2, 15), num1 = randomInt(1, Math.floor(den1 / 2));
             var den2 = randomInt(2, 15), num2 = randomInt(1, Math.floor(den2 / 2));
             var ans1 = math.divide(math.fraction(num1 + '/' + den1), math.fraction(num2 + '/' + den2));
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> &divide; <sup>${num2}</sup>&frasl;<sub>${den2}</sub>`;
-            var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
+            var quest = `<sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub> &divide; <sup class="frac-num">${num2}</sup>&frasl;<sub class="frac-den">${den2}</sub>`;
+            var ans = `<sup class="frac-num">${ans1['n']}</sup>&frasl;<sub class="frac-den">${ans1['d']}</sub>`;
             if(ans1['n'] == 1 && ans1['d'] == 1){ ans = 1; }
             if(ans1['n'] == 0){ ans = 0; }
             if(ans1['d'] == 1){ ans = ans1['n']; }
@@ -257,13 +257,13 @@ function getCalc(type){
         case 'frac-simp':
             var int1 = randomInt(2, 10), num1 = randomInt(1, 10) * int1, den1 = randomInt(num1 + 1, 15) * int1;
             var ans1 = math.fraction(num1 + '/' + den1)
-            var quest = `Simplify <sup>${num1}</sup>&frasl;<sub>${den1}</sub>`;
-            var ans = `<sup>${ans1['n']}</sup>&frasl;<sub>${ans1['d']}</sub>`;
+            var quest = `Simplify <sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub>`;
+            var ans = `<sup class="frac-num">${ans1['n']}</sup>&frasl;<sub class="frac-den">${ans1['d']}</sub>`;
             break;
         case 'frac-amount':
             var den1 = randomInt(2,15), int1 = randomInt(2,10);
             var num1 = randomInt(1, den1-1 ), int2 = den1 * int1;
-            var quest = `<sup>${num1}</sup>&frasl;<sub>${den1}</sub> of ${int2}`;
+            var quest = `<sup class="frac-num">${num1}</sup>&frasl;<sub class="frac-den">${den1}</sub> of ${int2}`;
             var ans = (int2 / den1) * num1;
             break;
         /* -------------------- Order of Operations -------------------- */
@@ -381,9 +381,9 @@ function getCalc(type){
                     break;
                 case 4:
                     if(sub == 1){ var quest = `Solve ${int1 * int2} &divide; ${letter} = ${int1}`, ans = int2;
-                    }else if(sub == 2){ var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub>  = ${int2}`,ans = int2;
+                    }else if(sub == 2){ var quest = `Solve <sup class="frac-num">${int1 * int2}</sup>&frasl;<sub class="frac-den">${letter}</sub>  = ${int2}`,ans = int2;
                     }else if(sub == 3){ var quest = `Solve ${letter} &divide; ${int1} = ${int2}`,ans = int1 * int2;
-                    }else{ var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub>  = ${int2}`,ans = int1 * int2;
+                    }else{ var quest = `Solve <sup class="frac-num">${letter}</sup>&frasl;<sub class="frac-den">${int1}</sub>  = ${int2}`,ans = int1 * int2;
                     }
                     break;
                 default:
@@ -402,16 +402,16 @@ function getCalc(type){
                     var quest = `Solve ${int1}${letter} &minus; ${int3} = ${(int1 * int2) - int3}`, ans = int2;
                     break;
                 case 3:
-                    var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub> + ${int3} = ${int2 + int3}`, ans = int1 * int2;
+                    var quest = `Solve <sup class="frac-num">${letter}</sup>&frasl;<sub class="frac-den">${int1}</sub> + ${int3} = ${int2 + int3}`, ans = int1 * int2;
                     break;
                 case 4:
-                    var quest = `Solve <sup>${letter}</sup>&frasl;<sub>${int1}</sub> &minus; ${int3} = ${int2 - int3}`, ans = int1 * int2;
+                    var quest = `Solve <sup class="frac-num">${letter}</sup>&frasl;<sub class="frac-den">${int1}</sub> &minus; ${int3} = ${int2 - int3}`, ans = int1 * int2;
                     break;
                 case 5:
-                    var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub> + ${int3} = ${int1 + int3}`, ans = int2;
+                    var quest = `Solve <sup class="frac-num">${int1 * int2}</sup>&frasl;<sub class="frac-den">${letter}</sub> + ${int3} = ${int1 + int3}`, ans = int2;
                     break;
                 case 6:
-                    var quest = `Solve <sup>${int1 * int2}</sup>&frasl;<sub>${letter}</sub> &minus; ${int3} = ${int1 - int3}`, ans = int2;
+                    var quest = `Solve <sup class="frac-num">${int1 * int2}</sup>&frasl;<sub class="frac-den">${letter}</sub> &minus; ${int3} = ${int1 - int3}`, ans = int2;
                     break;
                 default:
                     break;
