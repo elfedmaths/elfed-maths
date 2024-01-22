@@ -1173,10 +1173,14 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
     flex-wrap: nowrap;
 }
 
+#classroom .quest-row p sup{
+    font-size: 1.6vw;
+    margin: 0px 5px 10px 0px;
+}
+
 #classroom .quest-row p sup.frac-num{
     font-size: 1.6vw;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin: 0px 0px 10px 10px;
 }
 
 #classroom .quest-row p sup.margin-right{
@@ -1247,7 +1251,7 @@ input[type="checkbox"]:disabled+label, input[type="radio"]:disabled+label{
 #settings-content{
     overflow-y: scroll;
     padding-bottom: 30px;
-    height: calc(100% - 84px);
+    height: calc(100% - 90px);
 }
 
 #settings-content.reduce-130{
