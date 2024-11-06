@@ -32,7 +32,8 @@
 
 *{
     box-sizing: border-box;
-    cursor: context-menu;
+    cursor: default;
+    user-select: none;
 }
 
 body{
